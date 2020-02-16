@@ -1,0 +1,6 @@
+ <tile id="{ITEM_ID}">
+  <properties>
+{PROPERTIES}
+  </properties>
+  <image width="{IMAGE_WIDTH}" height="{IMAGE_HEIGHT}" source="{IMAGE_PATH}"/>
+ </tile>
