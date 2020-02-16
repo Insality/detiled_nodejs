@@ -6,7 +6,6 @@ const maps = require("./scripts/maps")
 
 function process_tileset(data, output_path, mapping) {
 	console.log("Process tileset", data.name)
-	tilesets.generate_atlas(data, output_path)
 	tilesets.generate_objects(data, output_path, mapping)
 }
 
