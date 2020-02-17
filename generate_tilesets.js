@@ -2,6 +2,7 @@ const fs = require("fs")
 const image_size = require("image-size")
 const path = require("path")
 const rimraf = require("rimraf")
+const defold_object = require("./libs/defold-object")
 
 const TILESET_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml.template")).toString('utf8')
 const TILESET_ITEM_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_item.template")).toString('utf8')
@@ -26,18 +27,32 @@ function process_asset(asset_path, tileset_path) {
 	let images = fs.readdirSync(path.join(asset_path, "images"))
 		.filter(name => name.endsWith(".png"))
 
+	let anchor_x = 0
+	let anchor_y = 0
+
+	let go_path = path.join(asset_path, asset_name + ".go")
+	let go_parsed = defold_object.LoadFromFile(go_path)
+	for (let i in go_parsed.embedded_components) {
+		let elem = go_parsed.embedded_components[i]
+		if (elem.id == "sprite") {
+			anchor_x = elem.position[0].x
+			anchor_y = elem.position[0].y
+		}
+	}
+
 	for (let i in images) {
 		let image = images[i]
 		let image_path = path.join(asset_path, "images", images[i])
 		let size = image_size(image_path)
 
-		let go_path = path.relative(process.cwd(), path.join(asset_path, asset_name + ".go"))
 		let item = {
 			image: image_path,
 			item: asset_name,
 			width: size.width,
 			height: size.height,
-			go_path: "/" + go_path
+			anchor_x: anchor_x + size.width/2,
+			anchor_y: anchor_y + size.height/2,
+			go_path: "/" + path.relative(process.cwd(), go_path)
 		}
 		items[tileset_name].push(item)
 	}
@@ -86,6 +101,8 @@ function write_tilesets(output_path, items) {
 			let item = TILESET_ITEM_TEMPLATE.replace("{ITEM_ID}", i)
 			item = item.replace("{IMAGE_WIDTH}", data.width)
 			item = item.replace("{IMAGE_HEIGHT}", data.height)
+			item = item.replace("{ANCHOR_X}", data.anchor_x)
+			item = item.replace("{ANCHOR_Y}", data.anchor_y)
 
 			let new_image_path = path.join(images_folder, name)
 			new_image_path = path.join(new_image_path, path.basename(data.image))
@@ -95,9 +112,9 @@ function write_tilesets(output_path, items) {
 			item = item.replace("{IMAGE_PATH}", path.relative(tileset_folder, new_image_path))
 
 			let properties = ""
-			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "object_name").replace("{VALUE}", data.item) + "\n"
-			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "go_path").replace("{VALUE}", data.go_path) + "\n"
-			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "image_name").replace("{VALUE}", path.basename(data.image, ".png"))
+			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__object_name").replace("{VALUE}", data.item) + "\n"
+			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__go_path").replace("{VALUE}", data.go_path) + "\n"
+			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__image_name").replace("{VALUE}", path.basename(data.image, ".png"))
 
 			item = item.replace("{PROPERTIES}", properties)
 

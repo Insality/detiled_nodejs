@@ -3,4 +3,9 @@
 {PROPERTIES}
   </properties>
   <image width="{IMAGE_WIDTH}" height="{IMAGE_HEIGHT}" source="{IMAGE_PATH}"/>
+  <objectgroup draworder="index">
+   <object id="1" x="{ANCHOR_X}" y="{ANCHOR_Y}">
+    <point/>
+   </object>
+  </objectgroup>
  </tile>

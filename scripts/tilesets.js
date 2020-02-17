@@ -48,13 +48,11 @@ function get_anchor(tile) {
 
 /// Generate new objects for all images
 // It is not override previous objects, due to customization
-M.generate_objects = function(data, output_path, mapping) {
-	console.log("Start generate game objects for", data.name)
+M.generate_factories = function(data, output_path, mapping) {
+	console.log("Start generate factories for", data.name)
 
 	mapping[data.name] = mapping[data.name] || {}
 	let tiles = data.tiles
-	let generated = 0
-	let skipped = 0
 
 	let spawner_go = ""
 	let objects_ready = {}
@@ -69,43 +67,38 @@ M.generate_objects = function(data, output_path, mapping) {
 			continue
 		}
 
-		let object_name = get_property(props, "object_name")
-		if (!object_name) {
-			console.log("No property `object_name` at object", tile_image)
-			continue
-		}
+		let properties = get_all_properies(tile.properties)
 		let anchor = get_anchor(tile)
+		let object_name = properties.__object_name
 
 		mapping[data.name][tile.id] = {
 			object_name: object_name,
-			image_name: tile_image.split(".")[0],
+			image_name: properties.__image_name,
 			anchor: anchor,
 			width: tile.imagewidth,
 			height: tile.imageheight,
-			properties: get_all_properies(tile.properties)
+			properties: properties
 		}
-
-		let object_path = path.join(output_path, "objects", data.name)
-		fs.mkdirSync(object_path, { recursive: true })
-
-		let object_full_path = path.join(object_path, object_name + ".go")
-		let object_game_path = object_full_path.replace(process.cwd(), "")
 
 		if (!objects_ready[object_name]) {
 			let spawner_data = FACTORY_NODE_TEMPLATE.replace("{1}", object_name)
-			spawner_data = spawner_data.replace("{2}", object_game_path)
+			spawner_data = spawner_data.replace("{2}", properties.__go_path)
 			spawner_go += spawner_data 
 			objects_ready[object_name] = true
 		}
-	}
 
-	console.log("End generate objects. Generated: ", generated, "Skipped:", skipped)
+		// delete system properties from generator
+		delete properties.__go_path
+		delete properties.__object_name
+		delete properties.__image_name
+	}
 
 	let spawner_folder = path.join(output_path, "spawners")
 	fs.mkdirSync(spawner_folder, { recursive: true })
 	let spawner_path = path.join(spawner_folder, "spawner_" + data.name + ".go")
 	fs.writeFileSync(spawner_path, spawner_go)
 	console.log("Add", spawner_path)
+	console.log("End generate spawners")
 }
 
 
