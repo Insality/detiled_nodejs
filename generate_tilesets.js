@@ -8,8 +8,30 @@ const TILESET_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/til
 const TILESET_ITEM_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_item.template")).toString('utf8')
 const TILESET_ITEM_PROPERTY_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_item_property.template")).toString('utf8')
 
+const TILESETS_DB_NAME = "tilesets.db"
 
 let items = {}
+let tilesets_db = {}
+
+
+function load_tilesets_db(output_path) {
+	let filepath = path.join(output_path, TILESETS_DB_NAME)
+	if (fs.existsSync(filepath)) {
+		tilesets_db = JSON.parse(fs.readFileSync(filepath))
+		console.log("Load tilesets.db: ", filepath)
+	} else {
+		tilesets_db = {}
+	}
+}
+
+
+function save_tilesets_db(output_path) {
+	let filepath = path.join(output_path, TILESETS_DB_NAME)
+
+	fs.writeFileSync(filepath, JSON.stringify(tilesets_db, null, 2))
+	console.log("Write tilesets.db:", filepath)
+}
+
 
 function is_asset_folder(target_path) {
 	let folder_name = path.basename(target_path)
@@ -31,7 +53,7 @@ function process_asset(asset_path, tileset_path) {
 	let anchor_y = 0
 
 	let go_path = path.join(asset_path, asset_name + ".go")
-	let go_parsed = defold_object.LoadFromFile(go_path)
+	let go_parsed = defold_object.load_from_file(go_path)
 	for (let i in go_parsed.embedded_components) {
 		let elem = go_parsed.embedded_components[i]
 		if (elem.id == "sprite") {
@@ -78,6 +100,23 @@ function process_dir(assets_folder, output_path, tileset_path) {
 }
 
 
+function get_item_id(tileset, item_data) {
+	let item_id = item_data.item + ":" + path.basename(item_data.image, ".png")
+
+	tilesets_db[tileset] = tilesets_db[tileset] || {}
+
+	if (tilesets_db[tileset][item_id] === undefined) {
+		let max_id = -1
+		for (let i in tilesets_db[tileset]) {
+			max_id = Math.max(tilesets_db[tileset][i], max_id)
+		}
+		tilesets_db[tileset][item_id] = max_id + 1
+	}
+
+	return tilesets_db[tileset][item_id]
+}
+
+
 function write_tilesets(output_path, items) {
 	let tileset_folder = path.join(output_path, "tilesets")
 	let images_folder = path.join(output_path, "images")
@@ -98,7 +137,8 @@ function write_tilesets(output_path, items) {
 		let tileset_items = ""
 		for (let i in item_list) {
 			let data = item_list[i]
-			let item = TILESET_ITEM_TEMPLATE.replace("{ITEM_ID}", i)
+			let item_id = get_item_id(name, data)
+			let item = TILESET_ITEM_TEMPLATE.replace("{ITEM_ID}", item_id)
 			item = item.replace("{IMAGE_WIDTH}", data.width)
 			item = item.replace("{IMAGE_HEIGHT}", data.height)
 			item = item.replace("{ANCHOR_X}", data.anchor_x)
@@ -145,8 +185,12 @@ function main() {
 	}
 
 	items = {}
+	load_tilesets_db(output_path)
+
 	process_dir(assets_folder, output_path)
 	write_tilesets(output_path, items)
+
+	save_tilesets_db(output_path)
 }
 
 main()

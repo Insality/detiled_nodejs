@@ -10,7 +10,6 @@ const M = {}
 
 
 M.generate_spawners = function(name, data, output_path) {
-	console.log("Start generate map_spawner for", name)
 	let filename = "map_spawner_" + name
 	let collection = COLLECTION_TEMPLATE.replace("{1}", filename)
 	let generated_path = output_path.replace(process.cwd(), "")

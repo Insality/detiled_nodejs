@@ -5,7 +5,6 @@ const tilesets = require("./scripts/tilesets")
 const maps = require("./scripts/maps")
 
 function process_tileset(data, output_path, mapping) {
-	console.log("Process tileset", data.name)
 	tilesets.generate_factories(data, output_path, mapping)
 }
 
@@ -15,17 +14,18 @@ function process_map(map_path, data, output_path) {
 	console.log("Process map", name)
 	maps.generate_spawners(name, data, output_path)
 
+	// Add tilesource name to the map
 	for (let i in data.tilesets) {
 		let d = data.tilesets[i]
 		d.name = path.basename(d.source, ".tsx")
 	}
-	console.log("Add tilesourc")
+
 	fs.writeFileSync(map_path, JSON.stringify(data))
 }
 
 
 function process_json(json_path, output_path, mapping) {
-	let json_content  = JSON.parse(fs.readFileSync(json_path))
+	let json_content = JSON.parse(fs.readFileSync(json_path))
 	let json_type = json_content.type
 
 	if (json_type == "tileset") {

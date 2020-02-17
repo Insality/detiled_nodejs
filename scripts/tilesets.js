@@ -98,7 +98,6 @@ M.generate_factories = function(data, output_path, mapping) {
 	let spawner_path = path.join(spawner_folder, "spawner_" + data.name + ".go")
 	fs.writeFileSync(spawner_path, spawner_go)
 	console.log("Add", spawner_path)
-	console.log("End generate spawners")
 }
 
 
