@@ -8,9 +8,13 @@ const TILESET_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/til
 const TILESET_ITEM_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_item.template")).toString('utf8')
 const TILESET_ITEM_PROPERTY_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_item_property.template")).toString('utf8')
 
+const TILESET_ITEM_TILESOURCE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_tilesource.template")).toString('utf8')
+const TILESET_ITEM_TILEITEM = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_tileitem.template")).toString('utf8')
+
 const TILESETS_DB_NAME = "tilesets.db"
 
 let items = {}
+let tilesources = {}
 let tilesets_db = {}
 
 
@@ -40,13 +44,21 @@ function is_asset_folder(target_path) {
 }
 
 
+function is_tilesource_folder(target_path) {
+	let folder_name = path.basename(target_path)
+	let asset_go_path = path.join(target_path, folder_name + ".tilesource")
+	return fs.existsSync(asset_go_path)
+}
+
+
 function process_asset(asset_path, tileset_path) {
 	let tileset_name = tileset_path.join("_")
 	items[tileset_name] = items[tileset_name] || []
+
 	console.log("Process asset", asset_path, tileset_path)
 	let asset_name = path.basename(asset_path)
 
-	let images = fs.readdirSync(path.join(asset_path, "images"))
+	let images = fs.readdirSync(path.join(asset_path, "icons"))
 		.filter(name => name.endsWith(".png"))
 
 	let anchor_x = 0
@@ -64,7 +76,7 @@ function process_asset(asset_path, tileset_path) {
 
 	for (let i in images) {
 		let image = images[i]
-		let image_path = path.join(asset_path, "images", images[i])
+		let image_path = path.join(asset_path, "icons", images[i])
 		let size = image_size(image_path)
 
 		let item = {
@@ -81,6 +93,35 @@ function process_asset(asset_path, tileset_path) {
 }
 
 
+function process_tilesource(asset_path, tileset_path) {
+	let tileset_name = tileset_path.join("_")
+	tilesources[tileset_name] = tilesources[tileset_name] || []
+
+	let asset_name = path.basename(asset_path)
+	let tilesource_path = path.join(asset_path, asset_name + ".tilesource")
+	console.log("Process tilesource", tilesource_path, tileset_path)
+
+	let tilesource_data = fs.readFileSync(tilesource_path).toString('utf8')
+	let tile_width = parseInt(tilesource_data.match(/tile_width: (.*)/)[1])
+	let tile_height = parseInt(tilesource_data.match(/tile_height: (.*)/)[1])
+	let tile_image = tilesource_data.match(/image: "(.*)"/)[1]
+
+	let image_path = path.join(process.cwd(), tile_image)
+	let size = image_size(image_path)
+
+	let tileset = {
+		name: asset_name,
+		width: tile_width,
+		height: tile_height,
+		image_path: image_path,
+		tilesource: tilesource_path,
+		image_width: size.width,
+		image_height: size.height
+	}
+	tilesources[tileset_name].push(tileset)
+}
+
+
 function process_dir(assets_folder, output_path, tileset_path) {
 	tileset_path = tileset_path || []
 	let files = fs.readdirSync(assets_folder)
@@ -90,6 +131,8 @@ function process_dir(assets_folder, output_path, tileset_path) {
 		let target_path = path.join(assets_folder, folders[i])
 		if (is_asset_folder(target_path)) {
 			process_asset(target_path, tileset_path)
+		} else if (is_tilesource_folder(target_path)) {
+			process_tilesource(target_path, tileset_path)
 		} else {
 			let folder_name = path.basename(target_path)
 			let new_path = tileset_path.slice()
@@ -170,6 +213,34 @@ function write_tilesets(output_path, items) {
 		let tileset_path = path.join(tileset_folder, name + ".tsx")
 		console.log("Write tileset", tileset_path)
 		fs.writeFileSync(tileset_path, tileset)
+	}
+
+	for (let category in tilesources) {
+		for (let index in tilesources[category]) {
+			let tilesource = tilesources[category][index]
+			let name = tilesource.name
+
+			let tileset = TILESET_ITEM_TILESOURCE.replace("{TILESET_NAME}", name)
+			tileset = tileset.replace("{TILESET_WIDTH}", tilesource.width)
+			tileset = tileset.replace("{TILESET_HEIGHT}", tilesource.height)
+			let count = (tilesource.image_height / tilesource.height) * (tilesource.image_width / tilesource.width)
+			tileset = tileset.replace("{TILESET_COUNT}", count)
+
+			let image_path = path.join(images_folder, category)
+			image_path = path.join(image_path, path.basename(tilesource.image_path))
+
+			fs.mkdirSync(path.dirname(image_path), { recursive: true })
+			fs.copyFileSync(tilesource.image_path, image_path)
+
+			let item = TILESET_ITEM_TILEITEM.replace("{TILESET_PATH}", path.relative(tileset_folder, image_path))
+			item = item.replace("{IMAGE_WIDTH}", tilesource.image_width)
+			item = item.replace("{IMAGE_HEIGHT}", tilesource.image_height)
+			tileset = tileset.replace("{ITEMS}", item)
+
+			let tileset_path = path.join(tileset_folder, name + ".tsx")
+			console.log("Write tilesource tileset", tileset_path)
+			fs.writeFileSync(tileset_path, tileset)
+		}
 	}
 }
 
