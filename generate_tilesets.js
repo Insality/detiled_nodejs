@@ -7,7 +7,6 @@ const defold_object = require("./libs/defold-object")
 const TILESET_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml.template")).toString('utf8')
 const TILESET_ITEM_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_item.template")).toString('utf8')
 const TILESET_ITEM_PROPERTY_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_item_property.template")).toString('utf8')
-
 const TILESET_ITEM_TILESOURCE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_tilesource.template")).toString('utf8')
 const TILESET_ITEM_TILEITEM = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_tileitem.template")).toString('utf8')
 
@@ -58,7 +57,7 @@ function process_asset(asset_path, tileset_path) {
 	console.log("Process asset", asset_path, tileset_path)
 	let asset_name = path.basename(asset_path)
 
-	let images = fs.readdirSync(path.join(asset_path, "icons"))
+	let images = fs.readdirSync(path.join(asset_path, "images"))
 		.filter(name => name.endsWith(".png"))
 
 	let anchor_x = 0
@@ -76,7 +75,7 @@ function process_asset(asset_path, tileset_path) {
 
 	for (let i in images) {
 		let image = images[i]
-		let image_path = path.join(asset_path, "icons", images[i])
+		let image_path = path.join(asset_path, "images", images[i])
 		let size = image_size(image_path)
 
 		let item = {
