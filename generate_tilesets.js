@@ -11,6 +11,7 @@ const TILESET_ITEM_TILESOURCE = fs.readFileSync(path.join(__filename, "../templa
 const TILESET_ITEM_TILEITEM = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_tileitem.template")).toString('utf8')
 
 const TILESETS_DB_NAME = "tilesets.db"
+const TILESET_DEFAULT_PREFIX = "assets"
 
 let items = {}
 let tilesources = {}
@@ -20,8 +21,13 @@ let tilesets_db = {}
 function load_tilesets_db(output_path) {
 	let filepath = path.join(output_path, TILESETS_DB_NAME)
 	if (fs.existsSync(filepath)) {
-		tilesets_db = JSON.parse(fs.readFileSync(filepath))
-		console.log("Load tilesets.db: ", filepath)
+		let tileset_data = fs.readFileSync(filepath)
+		try {
+			tilesets_db = JSON.parse(tilesed_data)
+			console.log("Load tilesets.db: ", filepath)
+		} catch (err) {
+			tilesets_db = {}
+		}
 	} else {
 		tilesets_db = {}
 	}
@@ -51,7 +57,7 @@ function is_tilesource_folder(target_path) {
 
 
 function process_asset(asset_path, tileset_path) {
-	let tileset_name = tileset_path.join("_")
+	let tileset_name = tileset_path.join("-")
 	items[tileset_name] = items[tileset_name] || []
 
 	console.log("Process asset", asset_path, tileset_path)
@@ -122,7 +128,7 @@ function process_tilesource(asset_path, tileset_path) {
 
 
 function process_dir(assets_folder, output_path, tileset_path) {
-	tileset_path = tileset_path || []
+	tileset_path = tileset_path || [ TILESET_DEFAULT_PREFIX ]
 	let files = fs.readdirSync(assets_folder)
 	let folders = files.filter(name => fs.statSync(path.join(assets_folder, name)).isDirectory())
 
@@ -143,7 +149,7 @@ function process_dir(assets_folder, output_path, tileset_path) {
 
 
 function get_item_id(tileset, item_data) {
-	let item_id = item_data.item + ":" + path.basename(item_data.image, ".png")
+	let item_id = item_data.item + "-" + path.basename(item_data.image, ".png")
 
 	tilesets_db[tileset] = tilesets_db[tileset] || {}
 
