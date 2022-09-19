@@ -54,3 +54,7 @@ Developed by [Insality](https://github.com/Insality)
 ## Issues and suggestions
 
 If you have any issues, questions or suggestions please [create an issue](https://github.com/Insality/defold-tiled-generator/issues) or contact me: [insality@gmail.com](mailto:insality@gmail.com)
+
+
+## ISSUES
+No exporter found for target file. - add .collection exported in tiled

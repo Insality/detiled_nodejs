@@ -10,7 +10,7 @@ const M = {}
 
 
 M.generate_spawners = function(name, data, output_path) {
-	let filename = "map_spawner_" + name
+	let filename = "spawner_" + name
 	let collection = COLLECTION_TEMPLATE.replace("{1}", filename)
 	let generated_path = output_path.replace(process.cwd(), "")
 
@@ -23,7 +23,7 @@ M.generate_spawners = function(name, data, output_path) {
 
 		let spawner_name = "spawner_" + tileset_name
 		let spawner_go = COLLECTION_GO_TEMPLATE.replace("{1}", spawner_name)
-		
+
 		let spawner_path = path.join(generated_path, "spawners", spawner_name + ".go")
 		spawner_go = spawner_go.replace("{2}", spawner_path)
 		console.log("Add spawner:", spawner_path)
@@ -32,7 +32,7 @@ M.generate_spawners = function(name, data, output_path) {
 
 	collection += spawners_go.join("\n")
 
-	let map_spawners_path = path.join(output_path, "map_spawners")
+	let map_spawners_path = path.join(output_path, "maps", name)
 	fs.mkdirSync(map_spawners_path, { recursive: true })
 
 	let output_file = path.join(map_spawners_path, filename + ".collection")

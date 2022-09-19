@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.5" name="{TILESET_NAME}" tilewidth="{TILESET_WIDTH}" tileheight="{TILESET_HEIGHT}" tilecount="{TILESET_COUNT}" columns="0">
+<tileset version="1.9" tiledversion="1.9.2" name="{TILESET_NAME}" tilewidth="{TILESET_WIDTH}" tileheight="{TILESET_HEIGHT}" spacing="{TILESET_SPACING}" margin="{TILESET_MARGIN}" columns="0">
+ <properties>
+  <property name="tilesource" value="{TILESOURCE_PATH}"/>
+ </properties>
 {ITEMS}
 </tileset>

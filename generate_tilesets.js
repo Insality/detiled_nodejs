@@ -104,11 +104,12 @@ function process_tilesource(asset_path, tileset_path) {
 
 	let asset_name = path.basename(asset_path)
 	let tilesource_path = path.join(asset_path, asset_name + ".tilesource")
-	console.log("Process tilesource", tilesource_path, tileset_path)
 
 	let tilesource_data = fs.readFileSync(tilesource_path).toString('utf8')
 	let tile_width = parseInt(tilesource_data.match(/tile_width: (.*)/)[1])
 	let tile_height = parseInt(tilesource_data.match(/tile_height: (.*)/)[1])
+	let tile_spacing = parseInt(tilesource_data.match(/tile_spacing: (.*)/)[1]) || 0
+	let tile_margin = parseInt(tilesource_data.match(/tile_margin: (.*)/)[1]) || 0
 	let tile_image = tilesource_data.match(/image: "(.*)"/)[1]
 
 	let image_path = path.join(process.cwd(), tile_image)
@@ -119,9 +120,11 @@ function process_tilesource(asset_path, tileset_path) {
 		width: tile_width,
 		height: tile_height,
 		image_path: image_path,
-		tilesource: tilesource_path,
+		tilesource_path: "/" + path.relative(process.cwd(), tilesource_path),
 		image_width: size.width,
-		image_height: size.height
+		image_height: size.height,
+		tile_spacing: tile_spacing,
+		tile_margin: tile_margin,
 	}
 	tilesources[tileset_name].push(tileset)
 }
@@ -228,6 +231,9 @@ function write_tilesets(output_path, items) {
 			let tileset = TILESET_ITEM_TILESOURCE.replace("{TILESET_NAME}", name)
 			tileset = tileset.replace("{TILESET_WIDTH}", tilesource.width)
 			tileset = tileset.replace("{TILESET_HEIGHT}", tilesource.height)
+			tileset = tileset.replace("{TILESET_SPACING}", tilesource.tile_spacing)
+			tileset = tileset.replace("{TILESET_MARGIN}", tilesource.tile_margin)
+			tileset = tileset.replace("{TILESOURCE_PATH}", tilesource.tilesource_path)
 			let count = (tilesource.image_height / tilesource.height) * (tilesource.image_width / tilesource.width)
 			tileset = tileset.replace("{TILESET_COUNT}", count)
 
