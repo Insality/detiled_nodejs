@@ -1,4 +1,4 @@
- <tile id="{ITEM_ID}">
+ <tile id="{ITEM_ID}" class="{ITEM_CLASS}">
   <properties>
 {PROPERTIES}
   </properties>

@@ -5,6 +5,7 @@ const process = require("process")
 const { execSync } = require('child_process')
 const tilesets = require("./scripts/tilesets")
 const maps = require("./scripts/maps")
+const defold_object = require("./libs/defold-object")
 
 let TILED_PATH = process.env.TILED || "/Applications/Tiled.app/Contents/MacOS/Tiled"
 
@@ -24,7 +25,27 @@ function process_map(map_path, data, output_path) {
 		d.name = path.basename(d.source, ".tsx")
 	}
 
-	fs.writeFileSync(map_path, JSON.stringify(data))
+	let map_name_collection = name + ".collection"
+	let map_folder = path.join(output_path, "maps", name)
+	let map_collection_path = path.join(map_folder, map_name_collection)
+	let collection_path = path.join(map_collection_path)
+	let collection_parsed = defold_object.load_from_file(collection_path)
+
+	// Add objects
+	for (let index in data.layers) {
+		let layer = data.layers[index]
+		if (layer.type == "objectgroup") {
+			for (o_key in layer.objects) {
+				let object = layer.objects[o_key]
+				console.log("ADD", object)
+			}
+		}
+	}
+
+	fs.mkdirSync(map_folder, { recursive: true })
+	let map_output_path = path.join(output_path, "json_maps")
+	fs.mkdirSync(map_output_path, { recursive: true })
+	fs.writeFileSync(path.join(map_output_path, path.basename(map_path)), JSON.stringify(data))
 }
 
 
@@ -76,7 +97,6 @@ function convert_maps_to_json(tiled_maps_path, temp_maps_folder, output_collecti
 		let map_collection_path = path.join(map_folder, map_name_collection)
 		fs.mkdirSync(map_folder, { recursive: true })
 		execSync(`${TILED_PATH} --export-map ${map_path} ${map_collection_path}`)
-		console.log("map_collection_path", map_collection_path)
 	}
 }
 
@@ -91,7 +111,6 @@ function start_process_dir(tilesets_path, maps_path, output_path) {
 		.map(name => path.join(temp_tilesets_folder, name))
 
 	let temp_maps_folder = fs.mkdtempSync(os.tmpdir())
-
 	let map_output_folder = path.join(output_path, "maps")
 	convert_maps_to_json(maps_path, temp_maps_folder, map_output_folder)
 	let maps = fs.readdirSync(temp_maps_folder)

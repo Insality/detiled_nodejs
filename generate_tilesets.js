@@ -17,6 +17,14 @@ let items = {}
 let tilesources = {}
 let tilesets_db = {}
 
+const PROPERTY_TYPE_NUMBER = "PROPERTY_TYPE_NUMBER"
+const PROPERTY_TYPE_VECTOR3 = "PROPERTY_TYPE_VECTOR3"
+const PROPERTY_TYPE_VECTOR4 = "PROPERTY_TYPE_VECTOR4"
+const PROPERTY_TYPE_QUAT = "PROPERTY_TYPE_QUAT"
+const PROPERTY_TYPE_URL = "PROPERTY_TYPE_URL"
+const PROPERTY_TYPE_HASH = "PROPERTY_TYPE_HASH"
+const PROPERTY_TYPE_BOOLEAN = "PROPERTY_TYPE_BOOLEAN"
+
 
 function load_tilesets_db(output_path) {
 	let filepath = path.join(output_path, TILESETS_DB_NAME)
@@ -56,6 +64,121 @@ function is_tilesource_folder(target_path) {
 }
 
 
+function check_number(original) {
+	let val = original
+	if (!isNaN(parseFloat(val))) {
+		val = val.trim()
+		if (val.indexOf(".") !== -1) {
+			val = val.replace(/0+$/, '')
+		}
+		if (val == String(parseFloat(val))) {
+			return parseFloat(val)
+		}
+	}
+
+	return original
+}
+
+
+function get_content_in_bracers(line) {
+	let regex = /\((.*?)\)/g
+	while ((m = regex.exec(line)) !== null) {
+		// This is necessary to avoid infinite loops with zero-width matches
+		if (m.index === regex.lastIndex) {
+			regex.lastIndex++;
+		}
+
+		let value =  m[1].trim()
+
+		if ((value.charAt(0) === '"' && value.charAt(value.length -1) === '"') ||
+			(value.charAt(0) === "'" && value.charAt(value.length -1) === "'")) {
+			value = value.substr(1, value.length -2);
+		}
+
+		return value
+	}
+	return ""
+}
+
+
+function parse_vector(vector) {
+	let values = []
+	vector.split(",").forEach(function(value) {
+		let new_value = value.trim()
+		if (new_value.length == 0) {
+			new_value = "0"
+		}
+		if (!new_value.includes(".")) {
+			new_value = new_value + ".0"
+		}
+		values.push(new_value)
+	})
+
+	return values.join(", ")
+}
+
+
+function get_properties_from_script(component) {
+	let script_data = fs.readFileSync(path.join(process.cwd(), component)).toString('utf8')
+	let regex = /go.property\(\s*[\"\'](.*)[\"\']\s*,\s*(.*)\s*\)/g
+	let properties = {}
+
+	script_data.split("\n").forEach(function(line, index, arr) {
+		if (line.startsWith("go.property")) {
+			while ((m = regex.exec(line)) !== null) {
+				// This is necessary to avoid infinite loops with zero-width matches
+				if (m.index === regex.lastIndex) {
+					regex.lastIndex++;
+				}
+				if (m[1] && m[2]) {
+					let key = m[1].trim()
+					let type = PROPERTY_TYPE_NUMBER
+
+					let value = m[2].trim()
+					if (value.startsWith("hash")) {
+						value = get_content_in_bracers(value)
+						type = PROPERTY_TYPE_HASH
+					}
+					if (value.startsWith("msg.url")) {
+						value = get_content_in_bracers(value)
+						type = PROPERTY_TYPE_URL
+					}
+					if (value.startsWith("vmath.vector3")) {
+						value = get_content_in_bracers(value)
+						value = parse_vector(value)
+						type = PROPERTY_TYPE_VECTOR3
+					}
+					if (value.startsWith("vmath.vector4")) {
+						value = get_content_in_bracers(value)
+						value = parse_vector(value)
+						type = PROPERTY_TYPE_VECTOR4
+					}
+					if (value.startsWith("vmath.quat")) {
+						value = get_content_in_bracers(value)
+						value = "quat " + parse_vector(value)
+						type = PROPERTY_TYPE_QUAT
+					}
+					if (value.startsWith("resource.")) {
+						value = get_content_in_bracers(value)
+						type = PROPERTY_TYPE_HASH
+					}
+					if (value == "true" || value == "false") {
+						value = (value == "true") && true || false
+						type = PROPERTY_TYPE_BOOLEAN
+					}
+					properties[key] = {
+						value: check_number(value),
+						type: type,
+					}
+				}
+			}
+		}
+	});
+
+	return properties
+}
+
+
 function process_asset(asset_path, tileset_path) {
 	let tileset_name = tileset_path.join("-")
 	items[tileset_name] = items[tileset_name] || []
@@ -71,6 +194,37 @@ function process_asset(asset_path, tileset_path) {
 
 	let go_path = path.join(asset_path, asset_name + ".go")
 	let go_parsed = defold_object.load_from_file(go_path)
+
+	let go_properties = {}
+
+	for (let i in go_parsed.components) {
+		let elem = go_parsed.components[i]
+		if (elem.component && elem.component.endsWith(".script")) {
+			let properties = get_properties_from_script(elem.component)
+			for (let prop in properties) {
+				if (go_properties[prop]) {
+					console.log("Error: go property duplicate", go_path, prop)
+				}
+				go_properties[prop] = properties[prop]
+			}
+		}
+		if (elem.properties) {
+			for (let prop_key in elem.properties) {
+				let prop = elem.properties[prop_key]
+				if (prop.type == "PROPERTY_TYPE_NUMBER") {
+					prop.value = parseFloat(prop.value)
+				}
+				// id, value, type  (PROPERTY_TYPE_NUMBER, PROPERTY_TYPE_VECTOR3, PROPERTY_TYPE_STRING
+				go_properties[prop.id] = {
+					value: prop.value,
+					type: prop.type
+				}
+			}
+		}
+	}
+
+	console.log(go_properties)
+
 	for (let i in go_parsed.embedded_components) {
 		let elem = go_parsed.embedded_components[i]
 		if (elem.id == "sprite") {
@@ -87,6 +241,7 @@ function process_asset(asset_path, tileset_path) {
 		let item = {
 			image: image_path,
 			item: asset_name,
+			properties: go_properties,
 			width: size.width,
 			height: size.height,
 			anchor_x: anchor_x + size.width/2,
@@ -150,9 +305,13 @@ function process_dir(assets_folder, output_path, tileset_path) {
 	}
 }
 
+function get_item_name(item_data) {
+	return item_data.item + "-" + path.basename(item_data.image, ".png")
+}
+
 
 function get_item_id(tileset, item_data) {
-	let item_id = item_data.item + "-" + path.basename(item_data.image, ".png")
+	let item_id = get_item_name(item_data)
 
 	tilesets_db[tileset] = tilesets_db[tileset] || {}
 
@@ -190,6 +349,7 @@ function write_tilesets(output_path, items) {
 			let data = item_list[i]
 			let item_id = get_item_id(name, data)
 			let item = TILESET_ITEM_TEMPLATE.replace("{ITEM_ID}", item_id)
+			item = item.replace("{ITEM_CLASS}", get_item_name(data))
 			item = item.replace("{IMAGE_WIDTH}", data.width)
 			item = item.replace("{IMAGE_HEIGHT}", data.height)
 			item = item.replace("{ANCHOR_X}", data.anchor_x)
@@ -203,9 +363,23 @@ function write_tilesets(output_path, items) {
 			item = item.replace("{IMAGE_PATH}", path.relative(tileset_folder, new_image_path))
 
 			let properties = ""
-			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__object_name").replace("{VALUE}", data.item) + "\n"
-			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__go_path").replace("{VALUE}", data.go_path) + "\n"
-			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__image_name").replace("{VALUE}", path.basename(data.image, ".png"))
+			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__object_name").replace("{VALUE}", data.item).replace("{TYPE}", "") + "\n"
+			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__go_path").replace("{VALUE}", data.go_path).replace("{TYPE}", "") + "\n"
+			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__image_name").replace("{VALUE}", path.basename(data.image, ".png")).replace("{TYPE}", "")
+
+			for (let key in data.properties) {
+				let property_type = data.properties[key].type
+				let property = data.properties[key].value
+				let type = ""
+				if (property_type == PROPERTY_TYPE_BOOLEAN) {
+					type = 'type="bool"'
+				}
+				if (property_type == PROPERTY_TYPE_NUMBER) {
+					type = 'type="float"'
+				}
+
+				properties += "\n" + TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", key).replace("{VALUE}", property).replace("{TYPE}", type)
+			}
 
 			item = item.replace("{PROPERTIES}", properties)
 

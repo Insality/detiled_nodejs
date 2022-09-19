@@ -1,1 +1,1 @@
-   <property name="{KEY}" value="{VALUE}"/>
+   <property name="{KEY}" value="{VALUE}" {TYPE}/>
