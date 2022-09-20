@@ -3,6 +3,7 @@ const image_size = require("image-size")
 const path = require("path")
 const rimraf = require("rimraf")
 const defold_object = require("./libs/defold-object")
+const { XMLParser } = require("fast-xml-parser");
 
 const TILESET_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml.template")).toString('utf8')
 const TILESET_ITEM_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_item.template")).toString('utf8')
@@ -10,7 +11,6 @@ const TILESET_ITEM_PROPERTY_TEMPLATE = fs.readFileSync(path.join(__filename, "..
 const TILESET_ITEM_TILESOURCE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_tilesource.template")).toString('utf8')
 const TILESET_ITEM_TILEITEM = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_tileitem.template")).toString('utf8')
 
-const TILESETS_DB_NAME = "tilesets.db"
 const TILESET_DEFAULT_PREFIX = "assets"
 
 let items = {}
@@ -26,27 +26,32 @@ const PROPERTY_TYPE_HASH = "PROPERTY_TYPE_HASH"
 const PROPERTY_TYPE_BOOLEAN = "PROPERTY_TYPE_BOOLEAN"
 
 
-function load_tilesets_db(output_path) {
-	let filepath = path.join(output_path, TILESETS_DB_NAME)
-	if (fs.existsSync(filepath)) {
-		let tileset_data = fs.readFileSync(filepath)
-		try {
-			tilesets_db = JSON.parse(tilesed_data)
-			console.log("Load tilesets.db: ", filepath)
-		} catch (err) {
-			tilesets_db = {}
+function parse_tilesets_db_from_tsx(output_path) {
+	let tilesets = fs.readdirSync(path.join(output_path, "tilesets"))
+		.filter(name => name.endsWith(".tsx"))
+
+	for (let i in tilesets) {
+		let tileset_info = {}
+
+		let tileset = tilesets[i]
+		let tileset_name = path.basename(tileset, ".tsx")
+		let tileset_path = path.join(output_path, "tilesets", tileset)
+		let tileset_data = fs.readFileSync(tileset_path).toString('utf8')
+		const options = {
+			ignoreAttributes: false,
+			attributeNamePrefix : "@_",
+			allowBooleanAttributes: true
+		};
+		const parser = new XMLParser(options);
+		let parsed_tsx = parser.parse(tileset_data);
+		for (let j in parsed_tsx.tileset.tile) {
+			let tile = parsed_tsx.tileset.tile[j]
+			tileset_info[tile["@_class"]] = parseInt(tile["@_id"])
 		}
-	} else {
-		tilesets_db = {}
+		if (Object.keys(tileset_info).length > 0) {
+			tilesets_db[tileset_name] = tileset_info
+		}
 	}
-}
-
-
-function save_tilesets_db(output_path) {
-	let filepath = path.join(output_path, TILESETS_DB_NAME)
-
-	fs.writeFileSync(filepath, JSON.stringify(tilesets_db, null, 2))
-	console.log("Write tilesets.db:", filepath)
 }
 
 
@@ -441,12 +446,10 @@ function main() {
 	}
 
 	items = {}
-	load_tilesets_db(output_path)
+	parse_tilesets_db_from_tsx(output_path)
 
 	process_dir(assets_folder, output_path)
 	write_tilesets(output_path, items)
-
-	save_tilesets_db(output_path)
 }
 
 main()
