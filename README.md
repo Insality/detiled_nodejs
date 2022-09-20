@@ -1,6 +1,6 @@
-[![](media/tiled-exporter-logo.png)](https://insality.github.io/defold-tiled-generator/)
+[![](detiled_logo)](https://insality.github.io/detiled/)
 
-**Tiled Generator** - bunch of tools to make work with Defold and Tiler easier.
+**De-Tiled Workflow** - bunch of tools to make work with Defold and Tiler easier.
 Tiled Generator can do next stuff:
 
 - Generate Tiled tilesets from Defold assets folder

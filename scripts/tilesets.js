@@ -83,7 +83,7 @@ M.generate_factories = function(data, output_path, mapping) {
 		if (!objects_ready[object_name]) {
 			let spawner_data = FACTORY_NODE_TEMPLATE.replace("{1}", object_name)
 			spawner_data = spawner_data.replace("{2}", properties.__go_path)
-			spawner_go += spawner_data 
+			spawner_go += spawner_data
 			objects_ready[object_name] = true
 		}
 
@@ -93,11 +93,13 @@ M.generate_factories = function(data, output_path, mapping) {
 		delete properties.__image_name
 	}
 
-	let spawner_folder = path.join(output_path, "spawners")
-	fs.mkdirSync(spawner_folder, { recursive: true })
-	let spawner_path = path.join(spawner_folder, "spawner_" + data.name + ".go")
-	fs.writeFileSync(spawner_path, spawner_go)
-	console.log("Add", spawner_path)
+	if (spawner_go.length > 0) {
+		let spawner_folder = path.join(output_path, "spawners")
+		fs.mkdirSync(spawner_folder, { recursive: true })
+		let spawner_path = path.join(spawner_folder, "spawner_" + data.name + ".go")
+		fs.writeFileSync(spawner_path, spawner_go)
+		console.log("Add", spawner_path)
+	}
 }
 
 

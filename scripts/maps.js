@@ -26,8 +26,10 @@ M.generate_spawners = function(name, data, output_path) {
 
 		let spawner_path = path.join(generated_path, "spawners", spawner_name + ".go")
 		spawner_go = spawner_go.replace("{2}", spawner_path)
-		console.log("Add spawner:", spawner_path)
-		spawners_go.push(spawner_go)
+		// It can be what spawner is empty and we don't want create spawner link
+		if (fs.existsSync(path.join(process.cwd(), spawner_path))) {
+			spawners_go.push(spawner_go)
+		}
 	}
 
 	collection += spawners_go.join("\n")

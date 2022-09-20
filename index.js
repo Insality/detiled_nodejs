@@ -37,7 +37,7 @@ function process_map(map_path, data, output_path) {
 		if (layer.type == "objectgroup") {
 			for (o_key in layer.objects) {
 				let object = layer.objects[o_key]
-				console.log("ADD", object)
+				// console.log("ADD", object)
 			}
 		}
 	}
