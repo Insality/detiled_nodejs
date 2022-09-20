@@ -1,4 +1,4 @@
-[![](detiled_logo)](https://insality.github.io/detiled/)
+[![](media/detiled_logo.png)](https://insality.github.io/detiled/)
 
 **De-Tiled Workflow** - bunch of tools to make work with Defold and Tiler easier.
 Tiled Generator can do next stuff:
