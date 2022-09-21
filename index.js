@@ -6,6 +6,7 @@ const { execSync } = require('child_process')
 const tilesets = require("./scripts/tilesets")
 const maps = require("./scripts/maps")
 const defold_object = require("./libs/defold-object")
+const xml_parser = require("./libs/xml_parser")
 
 let TILED_PATH = process.env.TILED || "/Applications/Tiled.app/Contents/MacOS/Tiled"
 
@@ -14,7 +15,29 @@ function process_tileset(data, output_path, mapping) {
 }
 
 
-function process_map(map_path, data, output_path) {
+function get_object_info(map_data, object, mapping) {
+	let tilesets = map_data.tilesets
+
+	let info = {
+		name: "",
+		object_id: "0",
+	}
+	for (let i in tilesets) {
+		if (object.gid >= tilesets[i].firstgid) {
+			info.name = tilesets[i].name
+			info.object_id = (object.gid - tilesets[i].firstgid)
+		}
+	}
+
+	if (info.name.length > 0) {
+		return mapping[info.name]['' + info.object_id]
+	}
+
+	return info
+}
+
+
+function process_map(map_path, data, output_path, mapping) {
 	let name = path.basename(map_path, ".json")
 	console.log("Process map", name)
 	maps.generate_spawners(name, data, output_path)
@@ -32,15 +55,52 @@ function process_map(map_path, data, output_path) {
 	let collection_parsed = defold_object.load_from_file(collection_path)
 
 	// Add objects
+	let tilelayer_counter = 0
 	for (let index in data.layers) {
 		let layer = data.layers[index]
+		if (layer.type == "tilelayer") {
+			tilelayer_counter += 1
+		}
 		if (layer.type == "objectgroup") {
+			let objects = []
+
 			for (o_key in layer.objects) {
 				let object = layer.objects[o_key]
-				// console.log("ADD", object)
+				let object_info = get_object_info(data, object, mapping)
+
+				let height = data.height * data.tileheight
+				let object_id = '' + object.id
+				let object_x = object.x + object_info.width/2 - object_info.anchor.x
+				let object_y = height - object.y + object_info.height/2 - object_info.anchor.y
+
+				collection_parsed.instances = collection_parsed.instances || []
+				collection_parsed.instances.push({
+					id: object_id,
+					prototype: object_info.go_path,
+					position: [{ x: object_x, y: object_y, z: 0 }],
+					rotation: [{ x: 0, y: 0, z: object.rotation }],
+					scale3: [{ x: object.width / object_info.width, y: object.height / object_info.height, z: 1 }]
+				})
+				objects.push( object_id )
 			}
+
+			// Add parent instance
+			let parent_instance = {
+				id: layer.name,
+				children: objects,
+				data: "",
+				position: [ { x: 0, y: 0, z: 0.0001 * tilelayer_counter } ],
+				rotation: [ { x: 0, y: 0, z: 0, w: 0 } ],
+				scale3: [ { x: 0, y: 0, z: 0 } ],
+			}
+			collection_parsed.embedded_instances = collection_parsed.embedded_instances || []
+			collection_parsed.embedded_instances.push(parent_instance)
 		}
 	}
+
+
+
+	defold_object.save_to_file(collection_path, collection_parsed)
 
 	fs.mkdirSync(map_folder, { recursive: true })
 	let map_output_path = path.join(output_path, "json_maps")
@@ -57,14 +117,13 @@ function process_json(json_path, output_path, mapping) {
 		process_tileset(json_content, output_path, mapping)
 	}
 	if (json_type == "map") {
-		process_map(json_path, json_content, output_path)
+		process_map(json_path, json_content, output_path, mapping)
 	}
 	console.log("")
 }
 
 
 function convert_tilesets_to_json(tiled_tilesets_path, temp_tilesets_folder) {
-	console.log(tiled_tilesets_path)
 	let tilesets = fs.readdirSync(tiled_tilesets_path)
 		.filter(name => name.endsWith(".tsx"))
 

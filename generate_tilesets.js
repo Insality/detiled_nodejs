@@ -3,7 +3,7 @@ const image_size = require("image-size")
 const path = require("path")
 const rimraf = require("rimraf")
 const defold_object = require("./libs/defold-object")
-const { XMLParser } = require("fast-xml-parser");
+const xml_parser = require("./libs/xml_parser")
 
 const TILESET_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml.template")).toString('utf8')
 const TILESET_ITEM_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_item.template")).toString('utf8')
@@ -25,6 +25,11 @@ const PROPERTY_TYPE_URL = "PROPERTY_TYPE_URL"
 const PROPERTY_TYPE_HASH = "PROPERTY_TYPE_HASH"
 const PROPERTY_TYPE_BOOLEAN = "PROPERTY_TYPE_BOOLEAN"
 
+const MAP_PROPERTY_TYPE = {
+	PROPERTY_TYPE_BOOLEAN: 'type="bool"',
+	PROPERTY_TYPE_NUMBER: 'type="float"',
+}
+
 
 function parse_tilesets_db_from_tsx(output_path) {
 	let tilesets = fs.readdirSync(path.join(output_path, "tilesets"))
@@ -36,14 +41,7 @@ function parse_tilesets_db_from_tsx(output_path) {
 		let tileset = tilesets[i]
 		let tileset_name = path.basename(tileset, ".tsx")
 		let tileset_path = path.join(output_path, "tilesets", tileset)
-		let tileset_data = fs.readFileSync(tileset_path).toString('utf8')
-		const options = {
-			ignoreAttributes: false,
-			attributeNamePrefix : "@_",
-			allowBooleanAttributes: true
-		};
-		const parser = new XMLParser(options);
-		let parsed_tsx = parser.parse(tileset_data);
+		let parsed_tsx = xml_parser.parse(tileset_path)
 		for (let j in parsed_tsx.tileset.tile) {
 			let tile = parsed_tsx.tileset.tile[j]
 			tileset_info[tile["@_class"]] = parseInt(tile["@_id"])
@@ -216,8 +214,14 @@ function process_asset(asset_path, tileset_path) {
 		if (elem.properties) {
 			for (let prop_key in elem.properties) {
 				let prop = elem.properties[prop_key]
-				if (prop.type == "PROPERTY_TYPE_NUMBER") {
+				if (prop.type == PROPERTY_TYPE_NUMBER) {
 					prop.value = parseFloat(prop.value)
+				}
+				if (prop.type == PROPERTY_TYPE_BOOLEAN) {
+					prop.value = (prop.value == "true") && true || false
+				}
+				if (prop.type == PROPERTY_TYPE_QUAT) {
+					prop.value = "quat " + prop.value
 				}
 				// id, value, type  (PROPERTY_TYPE_NUMBER, PROPERTY_TYPE_VECTOR3, PROPERTY_TYPE_STRING
 				go_properties[prop.id] = {
@@ -228,8 +232,6 @@ function process_asset(asset_path, tileset_path) {
 		}
 	}
 
-	console.log(go_properties)
-
 	for (let i in go_parsed.embedded_components) {
 		let elem = go_parsed.embedded_components[i]
 		if (elem.id == "sprite") {
@@ -239,7 +241,6 @@ function process_asset(asset_path, tileset_path) {
 	}
 
 	for (let i in images) {
-		let image = images[i]
 		let image_path = path.join(asset_path, "images", images[i])
 		let size = image_size(image_path)
 
@@ -375,14 +376,7 @@ function write_tilesets(output_path, items) {
 			for (let key in data.properties) {
 				let property_type = data.properties[key].type
 				let property = data.properties[key].value
-				let type = ""
-				if (property_type == PROPERTY_TYPE_BOOLEAN) {
-					type = 'type="bool"'
-				}
-				if (property_type == PROPERTY_TYPE_NUMBER) {
-					type = 'type="float"'
-				}
-
+				let type = MAP_PROPERTY_TYPE[property_type] || ""
 				properties += "\n" + TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", key).replace("{VALUE}", property).replace("{TYPE}", type)
 			}
 
@@ -445,9 +439,7 @@ function main() {
 		return
 	}
 
-	items = {}
 	parse_tilesets_db_from_tsx(output_path)
-
 	process_dir(assets_folder, output_path)
 	write_tilesets(output_path, items)
 }

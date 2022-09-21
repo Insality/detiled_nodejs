@@ -77,6 +77,7 @@ M.generate_factories = function(data, output_path, mapping) {
 			anchor: anchor,
 			width: tile.imagewidth,
 			height: tile.imageheight,
+			go_path: properties.__go_path,
 			properties: properties
 		}
 
