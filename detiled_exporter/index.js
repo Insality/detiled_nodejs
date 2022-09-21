@@ -37,6 +37,17 @@ function get_object_info(map_data, object, mapping) {
 }
 
 
+function get_property(properties, key, default_value) {
+	for (let i in properties) {
+		if (properties[i].name === key) {
+			return properties[i].value
+		}
+	}
+
+	return default_value
+}
+
+
 function process_map(map_path, data, output_path, mapping) {
 	let name = path.basename(map_path, ".json")
 	console.log("Process map", name)
@@ -69,7 +80,8 @@ function process_map(map_path, data, output_path, mapping) {
 				let object_info = get_object_info(data, object, mapping)
 
 				let height = data.height * data.tileheight
-				let object_id = '' + object.id
+				let object_name = object.name.length > 0 && object.name || object_info.object_name
+				let object_id = object_name + "_" + object.id
 				let object_x = object.x + object_info.width/2 - object_info.anchor.x
 				let object_y = height - object.y + object_info.height/2 - object_info.anchor.y
 
@@ -84,12 +96,13 @@ function process_map(map_path, data, output_path, mapping) {
 				objects.push( object_id )
 			}
 
+			let object_layer_z = get_property(layer.properties, "z", 0.0001 * tilelayer_counter)
 			// Add parent instance
 			let parent_instance = {
 				id: layer.name,
 				children: objects,
 				data: "",
-				position: [ { x: 0, y: 0, z: 0.0001 * tilelayer_counter } ],
+				position: [ { x: 0, y: 0, z: object_layer_z } ],
 				rotation: [ { x: 0, y: 0, z: 0, w: 0 } ],
 				scale3: [ { x: 0, y: 0, z: 0 } ],
 			}
@@ -97,8 +110,6 @@ function process_map(map_path, data, output_path, mapping) {
 			collection_parsed.embedded_instances.push(parent_instance)
 		}
 	}
-
-
 
 	defold_object.save_to_file(collection_path, collection_parsed)
 
@@ -195,18 +206,12 @@ function start_process_dir(tilesets_path, maps_path, output_path) {
 }
 
 
-function main() {
+function start() {
 	console.log("Start tiled generator")
 	let tilesets_path = path.join(process.cwd(), process.argv[2])
 	let maps_path = path.join(process.cwd(), process.argv[3])
 	let output_path = path.join(process.cwd(), process.argv[4])
-
-	if (!fs.existsSync(path.join(process.cwd(), "game.project"))) {
-		console.log("Error: you should run script inside the root of game.project")
-		return
-	}
-
 	start_process_dir(tilesets_path, maps_path, output_path)
 }
 
-main()
+module.exports.start = start

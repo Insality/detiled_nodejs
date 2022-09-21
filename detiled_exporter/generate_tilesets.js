@@ -4,6 +4,8 @@ const path = require("path")
 const rimraf = require("rimraf")
 const defold_object = require("./libs/defold-object")
 const xml_parser = require("./libs/xml_parser")
+const helper = require("./helper")
+const constants = require("./constants")
 
 const TILESET_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml.template")).toString('utf8')
 const TILESET_ITEM_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_item.template")).toString('utf8')
@@ -32,8 +34,8 @@ const MAP_PROPERTY_TYPE = {
 
 
 function parse_tilesets_db_from_tsx(output_path) {
-	let tilesets = fs.readdirSync(path.join(output_path, "tilesets"))
-		.filter(name => name.endsWith(".tsx"))
+	let tilesets_folder = path.join(output_path, constants.TILESETS_FOLDER_NAME)
+	let tilesets = helper.get_files_from(tilesets_folder, "tsx")
 
 	for (let i in tilesets) {
 		let tileset_info = {}
@@ -429,19 +431,15 @@ function write_tilesets(output_path, items) {
 }
 
 
-function main() {
-	console.log("Start generate tilesets")
-	let assets_folder = path.join(process.cwd(), process.argv[2])
-	let output_path = path.join(process.cwd(), process.argv[3])
-
-	if (!fs.existsSync(path.join(process.cwd(), "game.project"))) {
-		console.log("Error: you should run script inside the root of game.project")
-		return
-	}
+function start(assets_folder_path, output_folder_path) {
+	helper.log("Start generate tilesets from Defold assets")
+	let assets_folder = path.resolve(assets_folder_path)
+	let output_path = path.resolve(output_folder_path)
 
 	parse_tilesets_db_from_tsx(output_path)
 	process_dir(assets_folder, output_path)
 	write_tilesets(output_path, items)
 }
 
-main()
+
+module.exports.start = start

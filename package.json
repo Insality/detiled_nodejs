@@ -3,5 +3,32 @@
     "fast-xml-parser": "^4.0.10",
     "image-size": "^1.0.2",
     "rimraf": "^3.0.2"
-  }
+  },
+  "name": "detiled",
+  "description": "[![](media/detiled_logo.png)](https://insality.github.io/detiled/)",
+  "version": "1.0.0",
+  "main": "detiled.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Insality/detiled.git"
+  },
+  "keywords": [
+    "defold",
+    "tiled",
+    "export",
+    "import",
+    "workflow",
+    "processing",
+    "assets"
+  ],
+  "author": "Insality",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Insality/detiled/issues"
+  },
+  "homepage": "https://github.com/Insality/detiled#readme"
 }
