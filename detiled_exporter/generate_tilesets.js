@@ -13,8 +13,6 @@ const TILESET_ITEM_PROPERTY_TEMPLATE = fs.readFileSync(path.join(__filename, "..
 const TILESET_ITEM_TILESOURCE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_tilesource.template")).toString('utf8')
 const TILESET_ITEM_TILEITEM = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_tileitem.template")).toString('utf8')
 
-const TILESET_DEFAULT_PREFIX = "assets"
-
 let items = {}
 let tilesources = {}
 let tilesets_db = {}
@@ -38,12 +36,11 @@ function parse_tilesets_db_from_tsx(output_path) {
 	let tilesets = helper.get_files_from(tilesets_folder, "tsx")
 
 	for (let i in tilesets) {
-		let tileset_info = {}
-
 		let tileset = tilesets[i]
 		let tileset_name = path.basename(tileset, ".tsx")
-		let tileset_path = path.join(output_path, "tilesets", tileset)
-		let parsed_tsx = xml_parser.parse(tileset_path)
+		let parsed_tsx = xml_parser.parse(tileset)
+
+		let tileset_info = {}
 		for (let j in parsed_tsx.tileset.tile) {
 			let tile = parsed_tsx.tileset.tile[j]
 			tileset_info[tile["@_class"]] = parseInt(tile["@_id"])
@@ -294,7 +291,7 @@ function process_tilesource(asset_path, tileset_path) {
 
 
 function process_dir(assets_folder, output_path, tileset_path) {
-	tileset_path = tileset_path || [ TILESET_DEFAULT_PREFIX ]
+	tileset_path = tileset_path || [ constants.ASSETS_FOLDER_NAME ]
 	let files = fs.readdirSync(assets_folder)
 	let folders = files.filter(name => fs.statSync(path.join(assets_folder, name)).isDirectory())
 
