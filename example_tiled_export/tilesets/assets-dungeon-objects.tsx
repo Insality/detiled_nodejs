@@ -5,6 +5,7 @@
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0103" />
+   <property name="__default_image_name" value="tile_0126" />
    <property name="power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0103.png"/>
@@ -19,6 +20,7 @@
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0104" />
+   <property name="__default_image_name" value="tile_0126" />
    <property name="power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0104.png"/>
@@ -33,6 +35,7 @@
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0105" />
+   <property name="__default_image_name" value="tile_0126" />
    <property name="power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0105.png"/>
@@ -47,6 +50,7 @@
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0106" />
+   <property name="__default_image_name" value="tile_0126" />
    <property name="power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0106.png"/>
@@ -61,6 +65,7 @@
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0107" />
+   <property name="__default_image_name" value="tile_0126" />
    <property name="power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0107.png"/>
@@ -75,6 +80,7 @@
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0117" />
+   <property name="__default_image_name" value="tile_0126" />
    <property name="power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0117.png"/>
@@ -89,6 +95,7 @@
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0118" />
+   <property name="__default_image_name" value="tile_0126" />
    <property name="power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0118.png"/>
@@ -103,6 +110,7 @@
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0119" />
+   <property name="__default_image_name" value="tile_0126" />
    <property name="power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0119.png"/>
@@ -117,6 +125,7 @@
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0125" />
+   <property name="__default_image_name" value="tile_0126" />
    <property name="power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0125.png"/>
@@ -131,6 +140,7 @@
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0126" />
+   <property name="__default_image_name" value="tile_0126" />
    <property name="power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0126.png"/>
@@ -145,6 +155,7 @@
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0127" />
+   <property name="__default_image_name" value="tile_0126" />
    <property name="power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0127.png"/>
@@ -159,6 +170,7 @@
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0128" />
+   <property name="__default_image_name" value="tile_0126" />
    <property name="power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0128.png"/>
@@ -173,6 +185,7 @@
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0129" />
+   <property name="__default_image_name" value="tile_0126" />
    <property name="power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0129.png"/>
@@ -187,6 +200,7 @@
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0130" />
+   <property name="__default_image_name" value="tile_0126" />
    <property name="power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0130.png"/>
@@ -201,6 +215,7 @@
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0131" />
+   <property name="__default_image_name" value="tile_0126" />
    <property name="power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0131.png"/>
