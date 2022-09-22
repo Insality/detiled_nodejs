@@ -1,0 +1,309 @@
+name: "default"
+instances {
+  id: "weapon_1"
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 311.321
+    y: 183.797
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_2"
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 329.19
+    y: 183.4
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_6"
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 343.486
+    y: 183.4
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_7"
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 360.958
+    y: 184.988
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_8"
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 377.239
+    y: 185.385
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_9"
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 156.01707
+    y: 90.93651
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.30100957
+    w: 0.95362115
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_10"
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 156.01747
+    y: 117.1372
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.9350857
+    w: 0.35442162
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_11"
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 179.83685
+    y: 117.13799
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.94419545
+    w: -0.3293858
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_12"
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 180.63034
+    y: 91.92922
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.38695237
+    w: -0.9220997
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_13"
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 106.58155
+    y: 182.80785
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 3.5953937
+    y: 5.0644813
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_14"
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 72.47486
+    y: 241.97804
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.87105954
+    w: 0.49117744
+  }
+  scale3 {
+    x: 3.5953937
+    y: 5.0644813
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_15"
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 139.49759
+    y: 244.42108
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.89005375
+    w: -0.4558556
+  }
+  scale3 {
+    x: 3.5953937
+    y: 5.0644813
+    z: 1.0
+  }
+}
+scale_along_z: 0
+embedded_instances {
+  id: "tilemaps"
+  data: "components {\n"
+  "  id: \"dungeon_01-dungeon\"\n"
+  "  component: \"/example/generated/maps/dungeon_01/dungeon_01-dungeon.tilemap\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "Object Layer 1"
+  children: "weapon_1"
+  children: "weapon_10"
+  children: "weapon_11"
+  children: "weapon_12"
+  children: "weapon_13"
+  children: "weapon_14"
+  children: "weapon_15"
+  children: "weapon_2"
+  children: "weapon_6"
+  children: "weapon_7"
+  children: "weapon_8"
+  children: "weapon_9"
+  data: ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 2.0E-4
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}

@@ -259,7 +259,7 @@ function process_asset(asset_path, tileset_path) {
 
 
 function process_tilesource(asset_path, tileset_path) {
-	let tileset_name = tileset_path.join("_")
+	let tileset_name = tileset_path.join("-")
 	tilesources[tileset_name] = tilesources[tileset_name] || []
 
 	let asset_name = path.basename(asset_path)

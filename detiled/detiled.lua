@@ -1,0 +1,3 @@
+local Detiled = {}
+
+return Detiled
