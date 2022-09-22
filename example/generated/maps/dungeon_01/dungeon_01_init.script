@@ -1,0 +1,3 @@
+function init(self)
+	sprite.play_flipbook("/dungeon_01/weapon_11#sprite", "tile_0104")
+end

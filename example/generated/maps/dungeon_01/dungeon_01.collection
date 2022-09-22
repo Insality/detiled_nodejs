@@ -143,15 +143,15 @@ instances {
   id: "weapon_11"
   prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
   position {
-    x: 179.83685
-    y: 117.13799
+    x: 181.0613
+    y: 116.278
     z: 0.0
   }
   rotation {
     x: 0.0
     y: 0.0
-    z: -0.94419545
-    w: -0.3293858
+    z: -0.9238795
+    w: -0.38268343
   }
   scale3 {
     x: 1.0
@@ -239,6 +239,26 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "weapon_16"
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 139.49759
+    y: 244.42108
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.89005375
+    w: -0.4558556
+  }
+  scale3 {
+    x: 3.5953937
+    y: 5.0644813
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "tilemaps"
@@ -284,6 +304,7 @@ embedded_instances {
   children: "weapon_13"
   children: "weapon_14"
   children: "weapon_15"
+  children: "weapon_16"
   children: "weapon_2"
   children: "weapon_6"
   children: "weapon_7"
@@ -300,6 +321,41 @@ embedded_instances {
     y: 0.0
     z: 0.0
     w: 0.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "init"
+  data: "components {\n"
+  "  id: \"dungeon_01_init\"\n"
+  "  component: \"/example/generated/maps/dungeon_01/dungeon_01_init.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
   }
   scale3 {
     x: 1.0
