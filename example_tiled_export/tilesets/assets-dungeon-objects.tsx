@@ -10,7 +10,7 @@
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0103.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -25,7 +25,7 @@
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0104.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -40,7 +40,7 @@
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0105.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -55,7 +55,7 @@
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0106.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -70,7 +70,7 @@
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0107.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -85,7 +85,7 @@
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0117.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -100,7 +100,7 @@
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0118.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -115,7 +115,7 @@
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0119.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -130,7 +130,7 @@
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0125.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -145,7 +145,7 @@
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0126.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -160,7 +160,7 @@
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0127.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -175,7 +175,7 @@
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0128.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -190,7 +190,7 @@
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0129.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -205,7 +205,7 @@
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0130.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -220,7 +220,7 @@
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0131.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>

@@ -4,7 +4,7 @@ instances {
   prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
   position {
     x: 311.321
-    y: 183.797
+    y: 175.797
     z: 0.0
   }
   rotation {
@@ -24,7 +24,7 @@ instances {
   prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
   position {
     x: 329.19
-    y: 183.4
+    y: 175.4
     z: 0.0
   }
   rotation {
@@ -44,7 +44,7 @@ instances {
   prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
   position {
     x: 343.486
-    y: 183.4
+    y: 175.4
     z: 0.0
   }
   rotation {
@@ -64,7 +64,7 @@ instances {
   prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
   position {
     x: 360.958
-    y: 184.988
+    y: 176.988
     z: 0.0
   }
   rotation {
@@ -84,7 +84,7 @@ instances {
   prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
   position {
     x: 377.239
-    y: 185.385
+    y: 177.385
     z: 0.0
   }
   rotation {
@@ -103,8 +103,8 @@ instances {
   id: "weapon_9"
   prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
   position {
-    x: 156.01707
-    y: 90.93651
+    x: 151.42429
+    y: 84.386215
     z: 0.0
   }
   rotation {
@@ -123,8 +123,8 @@ instances {
   id: "weapon_10"
   prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
   position {
-    x: 156.01747
-    y: 117.1372
+    x: 150.71483
+    y: 123.127365
     z: 0.0
   }
   rotation {
@@ -143,8 +143,8 @@ instances {
   id: "weapon_11"
   prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
   position {
-    x: 181.0613
-    y: 116.278
+    x: 186.71814
+    y: 121.93485
     z: 0.0
   }
   rotation {
@@ -163,8 +163,8 @@ instances {
   id: "weapon_12"
   prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
   position {
-    x: 180.63034
-    y: 91.92922
+    x: 186.33928
+    y: 86.324936
     z: 0.0
   }
   rotation {
@@ -184,7 +184,7 @@ instances {
   prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
   position {
     x: 106.58155
-    y: 182.80785
+    y: 142.292
     z: 0.0
   }
   rotation {
@@ -203,8 +203,8 @@ instances {
   id: "weapon_14"
   prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
   position {
-    x: 72.47486
-    y: 241.97804
+    x: 37.805874
+    y: 262.94458
     z: 0.0
   }
   rotation {
@@ -223,8 +223,8 @@ instances {
   id: "weapon_15"
   prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
   position {
-    x: 139.49759
-    y: 244.42108
+    x: 172.37506
+    y: 268.0982
     z: 0.0
   }
   rotation {
@@ -243,8 +243,8 @@ instances {
   id: "weapon_16"
   prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
   position {
-    x: 139.49759
-    y: 244.42108
+    x: 172.37506
+    y: 268.0982
     z: 0.0
   }
   rotation {
@@ -259,12 +259,68 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "weapon_17"
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 92.8567
+    y: 76.96
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 4.0
+    y: 4.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "tilemaps"
+  children: "Group 1"
   data: "components {\n"
   "  id: \"dungeon_01-dungeon\"\n"
   "  component: \"/example/generated/maps/dungeon_01/dungeon_01-dungeon.tilemap\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "Group 1"
+  data: "components {\n"
+  "  id: \"dungeon_01-Group 1-dungeon\"\n"
+  "  component: \"/example/generated/maps/dungeon_01/dungeon_01-Group 1-dungeon.tilemap\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
@@ -305,6 +361,7 @@ embedded_instances {
   children: "weapon_14"
   children: "weapon_15"
   children: "weapon_16"
+  children: "weapon_17"
   children: "weapon_2"
   children: "weapon_6"
   children: "weapon_7"
@@ -314,48 +371,13 @@ embedded_instances {
   position {
     x: 0.0
     y: 0.0
-    z: 2.0E-4
+    z: 1.0E-4
   }
   rotation {
     x: 0.0
     y: 0.0
     z: 0.0
     w: 0.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-embedded_instances {
-  id: "init"
-  data: "components {\n"
-  "  id: \"dungeon_01_init\"\n"
-  "  component: \"/example/generated/maps/dungeon_01/dungeon_01_init.script\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0

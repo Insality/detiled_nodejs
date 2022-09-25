@@ -2,6 +2,7 @@ const Quaternion = require('quaternion');
 const fs = require("fs")
 const os = require("os")
 const path = require("path")
+const rimraf = require("rimraf")
 const process = require("process")
 const { execSync } = require('child_process')
 const tilesets = require("./scripts/tilesets")
@@ -165,10 +166,10 @@ function convert_tilesets_to_json(tiled_tilesets_path, temp_tilesets_folder) {
 
 	for (let i in tilesets) {
 		let tileset_name = tilesets[i]
-		let tileset_path = path.resolve(path.join(tiled_tilesets_path, tileset_name))
+		let tileset_path = path.join(tiled_tilesets_path, tileset_name)
 		let tileset_name_json = path.basename(tileset_name, ".tsx") + ".json"
 
-		let temp_tileset_path = path.resolve(path.join(temp_tilesets_folder, tileset_name_json))
+		let temp_tileset_path = path.join(temp_tilesets_folder, tileset_name_json)
 		execSync(`${TILED_PATH} --export-tileset ${tileset_path} ${temp_tileset_path}`)
 	}
 }
@@ -181,7 +182,7 @@ function convert_maps_to_json(tiled_maps_path, temp_maps_folder, output_collecti
 	for (let i in maps) {
 		let map_name = maps[i]
 		let map_basename = path.basename(map_name, ".tmx")
-		let map_path =  path.resolve(path.join(tiled_maps_path, map_name))
+		let map_path = path.join(tiled_maps_path, map_name)
 		let map_name_json = map_basename + ".json"
 		let map_name_collection = map_basename + ".collection"
 
@@ -190,7 +191,7 @@ function convert_maps_to_json(tiled_maps_path, temp_maps_folder, output_collecti
 
 		console.log("SAVE",output_collection_path, map_basename, map_name_collection)
 		let map_folder = path.join(output_collection_path, map_basename)
-		let map_collection_path = path.resolve(path.join(map_folder, map_name_collection))
+		let map_collection_path = path.join(map_folder, map_name_collection)
 		fs.mkdirSync(map_folder, { recursive: true })
 		console.log(`${TILED_PATH} --export-map ${map_path} ${map_collection_path}`, {stdio: 'inherit'})
 		execSync(`${TILED_PATH} --export-map ${map_path} ${map_collection_path}`, {stdio: 'inherit'})
@@ -199,9 +200,10 @@ function convert_maps_to_json(tiled_maps_path, temp_maps_folder, output_collecti
 
 
 function start_process_dir(tilesets_path, maps_path, output_path) {
-	let jsons = []
+	rimraf.sync(output_path)
+	fs.mkdirSync(output_path, { recursive: true })
 
-	console.log("SDSD", output_path)
+	let jsons = []
 
 	let temp_tilesets_folder = fs.mkdtempSync(os.tmpdir())
 	convert_tilesets_to_json(tilesets_path, temp_tilesets_folder)
@@ -222,12 +224,10 @@ function start_process_dir(tilesets_path, maps_path, output_path) {
 
 	let mapping = {}
 	for (let i in jsons) {
-		// console.log(jsons[i])
 		process_json(jsons[i], output_path, mapping)
 	}
 
 	let mapping_path = path.join(output_path, "mapping.json")
-	fs.mkdirSync(output_path, { recursive: true })
 	fs.writeFileSync(mapping_path, JSON.stringify(mapping))
 	console.log("Write", mapping_path)
 
@@ -236,8 +236,12 @@ function start_process_dir(tilesets_path, maps_path, output_path) {
 }
 
 
-function start(tilesets_path, maps_path, output_path) {
+function start(tilesets_folder_path, maps_folder_path, output_folder_path) {
 	console.log("Start tiled generator")
+
+	let tilesets_path = path.resolve(tilesets_folder_path)
+	let maps_path = path.resolve(maps_folder_path)
+	let output_path = path.resolve(output_folder_path)
 	start_process_dir(tilesets_path, maps_path, output_path)
 }
 

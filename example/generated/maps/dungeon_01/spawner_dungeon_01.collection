@@ -1,7 +1,7 @@
 name: "spawner_dungeon_01"
 instances {
   id: "spawner_assets-dungeon-objects"
-  prototype: "/example/generated/maps/dungeon_01/example/generated/spawners/spawner_assets-dungeon-objects.go"
+  prototype: "/example/generated/spawners/spawner_assets-dungeon-objects.go"
   position {
     x: 0.0
     y: 0.0
@@ -19,4 +19,3 @@ instances {
     z: 1.0
   }
 }
-scale_along_z: 0

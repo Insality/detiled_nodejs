@@ -81,9 +81,12 @@ function decodeDefoldObject(text) {
 		 curr_obj[property_name] += decodeValue(value)
 	  } else if (line == '}') {
 		 curr_obj = prev_reference.pop()
+	  } else if (line.startsWith("data:")) {
+		// Empty data line case
+		curr_obj["data"] = ""
 	  } else {
 		 if (line.length) {
-			console.log('[ERROR]: parse error on line', line)
+			console.log('[ERROR]: parse error on line:', line, "index:", index)
 		 }
 	  }
    })
@@ -196,3 +199,4 @@ function save_to_file(fileName, obj) {
 
 module.exports.load_from_file = load_from_file
 module.exports.save_to_file = save_to_file
+module.exports.decode_object = decodeDefoldObject

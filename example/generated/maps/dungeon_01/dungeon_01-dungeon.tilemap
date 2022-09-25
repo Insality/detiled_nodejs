@@ -4804,58 +4804,5 @@ layers {
     rotate90: 0
   }
 }
-layers {
-  id: "Tile Layer 2"
-  z: 1.0E-4
-  is_visible: 1
-  cell {
-    x: 10
-    y: 6
-    tile: 110
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
-  cell {
-    x: 16
-    y: 7
-    tile: 98
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
-  cell {
-    x: 17
-    y: 7
-    tile: 91
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
-  cell {
-    x: 14
-    y: 9
-    tile: 72
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
-  cell {
-    x: 15
-    y: 9
-    tile: 63
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
-  cell {
-    x: 16
-    y: 9
-    tile: 63
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
-}
 material: "/builtins/materials/tile_map.material"
 blend_mode: BLEND_MODE_ALPHA

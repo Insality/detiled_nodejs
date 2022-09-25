@@ -231,11 +231,14 @@ function process_asset(asset_path, tileset_path) {
 		}
 	}
 
+	let default_image = null
 	for (let i in go_parsed.embedded_components) {
 		let elem = go_parsed.embedded_components[i]
 		if (elem.id == "sprite") {
 			anchor_x = elem.position[0].x
 			anchor_y = elem.position[0].y
+			let sprite_info = defold_object.decode_object(elem.data)
+			default_image = sprite_info.default_animation.replace(/\\\"/g, "")
 		}
 	}
 
@@ -251,7 +254,8 @@ function process_asset(asset_path, tileset_path) {
 			height: size.height,
 			anchor_x: anchor_x + size.width/2,
 			anchor_y: anchor_y + size.height/2,
-			go_path: "/" + path.relative(process.cwd(), go_path)
+			go_path: "/" + path.relative(process.cwd(), go_path),
+			default_image: default_image,
 		}
 		items[tileset_name].push(item)
 	}
@@ -370,7 +374,8 @@ function write_tilesets(output_path, items) {
 			let properties = ""
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__object_name").replace("{VALUE}", data.item).replace("{TYPE}", "") + "\n"
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__go_path").replace("{VALUE}", data.go_path).replace("{TYPE}", "") + "\n"
-			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__image_name").replace("{VALUE}", path.basename(data.image, ".png")).replace("{TYPE}", "")
+			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__image_name").replace("{VALUE}", path.basename(data.image, ".png")).replace("{TYPE}", "") + "\n"
+			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__default_image_name").replace("{VALUE}", data.default_image).replace("{TYPE}", "")
 
 			for (let key in data.properties) {
 				let property_type = data.properties[key].type

@@ -6,7 +6,7 @@ embedded_instances {
   data: "embedded_components {\n"
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
-  "  data: \"tile_set: \\\"/assets/assets_dungeon/dungeon_atlas.atlas\\\"\\n"
+  "  data: \"tile_set: \\\"/example/assets/dungeon/dungeon_atlas.atlas\\\"\\n"
   "default_animation: \\\"tile_0096\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
