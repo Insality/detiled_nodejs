@@ -9,10 +9,12 @@ const regex_value_is_number = /^-?[0-9.]+$/
 
 function decodeValue(value) {
    if (value.match(regex_value_is_string)) {
-	  // обрамление двойными кавычками => строка
-	  // убираем " в начале и конце
-	  value = value.substring(1, value.length-1)
-	  value = value.replace(/\\n/g, "\n")
+		// обрамление двойными кавычками => строка
+		// убираем " в начале и конце
+		value = value.substring(1, value.length-1)
+		value = value.replace(/\\"/g, "")
+		value = value.replace(/\\n/g, "\n")
+		value = value.replace(/\\/g, "")
 
    } else if (value.match(regex_value_is_number)) {
 	  value = parseFloat(value)
@@ -86,7 +88,7 @@ function decodeDefoldObject(text) {
 		curr_obj["data"] = ""
 	  } else {
 		 if (line.length) {
-			console.log('[ERROR]: parse error on line:', line, "index:", index)
+			console.log('[ERROR]: parse error on line:', line, "index:", index, text)
 		 }
 	  }
    })

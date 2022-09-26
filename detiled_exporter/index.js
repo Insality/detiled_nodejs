@@ -81,6 +81,10 @@ function process_map(map_path, data, output_path, mapping) {
 					console.log("Error wrong object on layer", object_info, layer.name)
 					continue
 				}
+				if (mapping_info.is_collection) {
+					console.log("COLLECTION", mapping_info.object_name)
+					continue
+				}
 
 				let height = data.height * data.tileheight
 				let object_name = object.name.length > 0 && object.name || mapping_info.object_name

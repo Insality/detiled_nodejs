@@ -3,15 +3,16 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "dungeon_01.tmx",
+    "activeFile": "/Users/insality/code/js/detiled/example_tiled_export/tilesets/assets-dungeon-objects.tsx",
     "expandedProjectPaths": [
+        "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "/Users/insality/code/js/detiled/example_tiled_export/tilesets/assets-dungeon-objects.tsx": {
             "dynamicWrapping": true,
             "scaleInDock": 2.5795,
-            "scaleInEditor": 1
+            "scaleInEditor": 2.3216
         },
         "/Users/insality/code/js/detiled/example_tiled_export/tilesets/dungeon.tsx": {
             "dynamicWrapping": false,
@@ -19,11 +20,18 @@
             "scaleInEditor": 1
         },
         "dungeon_01.tmx": {
-            "scale": 3.8737,
+            "expandedGroupLayers": [
+                5,
+                4,
+                7,
+                8,
+                10
+            ],
+            "scale": 2.63,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 205.74644396829905,
-                "y": 256.9894416191238
+                "x": 211.78707224334602,
+                "y": 97.52851711026616
             }
         }
     },
@@ -40,8 +48,8 @@
     "project": "dungeon_01.tiled-project",
     "property.type": "float",
     "recentFiles": [
-        "/Users/insality/code/js/detiled/example_tiled_export/tilesets/assets-dungeon-objects.tsx",
+        "dungeon_01.tmx",
         "/Users/insality/code/js/detiled/example_tiled_export/tilesets/dungeon.tsx",
-        "dungeon_01.tmx"
+        "/Users/insality/code/js/detiled/example_tiled_export/tilesets/assets-dungeon-objects.tsx"
     ]
 }

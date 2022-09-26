@@ -61,3 +61,6 @@ typings/
 .next
 /.internal
 /build
+deployer_version_settings.txt
+
+.deployer_cache

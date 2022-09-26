@@ -52,6 +52,13 @@ function parse_tilesets_db_from_tsx(output_path) {
 }
 
 
+function is_collection_asset_folder(target_path) {
+	let folder_name = path.basename(target_path)
+	let asset_go_path = path.join(target_path, folder_name + ".collection")
+	return fs.existsSync(asset_go_path)
+}
+
+
 function is_asset_folder(target_path) {
 	let folder_name = path.basename(target_path)
 	let asset_go_path = path.join(target_path, folder_name + ".go")
@@ -181,24 +188,7 @@ function get_properties_from_script(component) {
 }
 
 
-function process_asset(asset_path, tileset_path) {
-	let tileset_name = tileset_path.join("-")
-	items[tileset_name] = items[tileset_name] || []
-
-	console.log("Process asset", asset_path, tileset_path)
-	let asset_name = path.basename(asset_path)
-
-	let images = fs.readdirSync(path.join(asset_path, "images"))
-		.filter(name => name.endsWith(".png"))
-
-	let anchor_x = 0
-	let anchor_y = 0
-
-	let go_path = path.join(asset_path, asset_name + ".go")
-	let go_parsed = defold_object.load_from_file(go_path)
-
-	let go_properties = {}
-
+function parse_properties_from_go(go_parsed, go_properties) {
 	for (let i in go_parsed.components) {
 		let elem = go_parsed.components[i]
 		if (elem.component && elem.component.endsWith(".script")) {
@@ -210,6 +200,7 @@ function process_asset(asset_path, tileset_path) {
 				go_properties[prop] = properties[prop]
 			}
 		}
+
 		if (elem.properties) {
 			for (let prop_key in elem.properties) {
 				let prop = elem.properties[prop_key]
@@ -230,7 +221,87 @@ function process_asset(asset_path, tileset_path) {
 			}
 		}
 	}
+}
 
+
+function process_collection_asset(asset_path, tileset_path) {
+	let tileset_name = tileset_path.join("-")
+	items[tileset_name] = items[tileset_name] || []
+
+	console.log("Process collection asset", asset_path, tileset_path)
+	let asset_name = path.basename(asset_path)
+
+	let images = fs.readdirSync(path.join(asset_path, "images"))
+		.filter(name => name.endsWith(".png"))
+
+	let anchor_x = 0
+	let anchor_y = 0
+
+	let go_path = path.join(asset_path, asset_name + ".collection")
+	let go_parsed = defold_object.load_from_file(go_path)
+
+	let go_properties = {}
+	for (i in go_parsed.embedded_instances) {
+		let go_data = defold_object.decode_object(go_parsed.embedded_instances[i].data)
+		parse_properties_from_go(go_data, go_properties)
+
+		for (let j in go_data.embedded_components) {
+			let component = go_data.embedded_components[j]
+			if (component.id == "sprite") {
+				console.log("SDSDS", component)
+				anchor_x = component.position[0].x
+				anchor_y = component.position[0].y
+				default_image = component.default_animation
+			}
+		}
+	}
+
+	// get sprite component for anchor, default image, sprite component path
+	// generate for each in icons folder instance
+	for (let i in images) {
+		let image_path = path.join(asset_path, "images", images[i])
+		let size = image_size(image_path)
+
+		let item = {
+			image: image_path,
+			item: asset_name,
+			is_collection: true,
+			properties: go_properties,
+			width: size.width,
+			height: size.height,
+			anchor_x: anchor_x + size.width/2,
+			anchor_y: anchor_y + size.height/2,
+			go_path: "/" + path.relative(process.cwd(), go_path),
+			default_image: default_image,
+		}
+		console.log(item)
+		items[tileset_name].push(item)
+	}
+}
+
+
+function process_asset(asset_path, tileset_path) {
+	let tileset_name = tileset_path.join("-")
+	items[tileset_name] = items[tileset_name] || []
+
+	console.log("Process asset", asset_path, tileset_path)
+	let asset_name = path.basename(asset_path)
+
+	let images = fs.readdirSync(path.join(asset_path, "images"))
+		.filter(name => name.endsWith(".png"))
+
+	let anchor_x = 0
+	let anchor_y = 0
+
+	let go_path = path.join(asset_path, asset_name + ".go")
+	let go_parsed = defold_object.load_from_file(go_path)
+	// console.log("GOPARSED", go_parsed)
+
+	let go_properties = {}
+
+	parse_properties_from_go(go_parsed, go_properties)
+
+	// console.log("goOo", go_parsed)
 	let default_image = null
 	for (let i in go_parsed.embedded_components) {
 		let elem = go_parsed.embedded_components[i]
@@ -249,6 +320,7 @@ function process_asset(asset_path, tileset_path) {
 		let item = {
 			image: image_path,
 			item: asset_name,
+			is_collection: false,
 			properties: go_properties,
 			width: size.width,
 			height: size.height,
@@ -301,7 +373,9 @@ function process_dir(assets_folder, output_path, tileset_path) {
 
 	for (let i in folders) {
 		let target_path = path.join(assets_folder, folders[i])
-		if (is_asset_folder(target_path)) {
+		if (is_collection_asset_folder(target_path)) {
+			process_collection_asset(target_path, tileset_path)
+		} else if (is_asset_folder(target_path)) {
 			process_asset(target_path, tileset_path)
 		} else if (is_tilesource_folder(target_path)) {
 			process_tilesource(target_path, tileset_path)
@@ -375,6 +449,7 @@ function write_tilesets(output_path, items) {
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__object_name").replace("{VALUE}", data.item).replace("{TYPE}", "") + "\n"
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__go_path").replace("{VALUE}", data.go_path).replace("{TYPE}", "") + "\n"
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__image_name").replace("{VALUE}", path.basename(data.image, ".png")).replace("{TYPE}", "") + "\n"
+			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__is_collection").replace("{VALUE}", data.is_collection && "true" || "false").replace("{TYPE}", 'type="bool"') + "\n"
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__default_image_name").replace("{VALUE}", data.default_image).replace("{TYPE}", "")
 
 			for (let key in data.properties) {

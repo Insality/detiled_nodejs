@@ -73,6 +73,7 @@ M.generate_factories = function(data, output_path, mapping) {
 
 		mapping[data.name][tile.id] = {
 			object_name: object_name,
+			is_collection: properties.__is_collection,
 			image_name: properties.__image_name,
 			anchor: anchor,
 			width: tile.imagewidth,
@@ -92,6 +93,7 @@ M.generate_factories = function(data, output_path, mapping) {
 		delete properties.__go_path
 		delete properties.__object_name
 		delete properties.__image_name
+		delete properties.__is_collection
 	}
 
 	if (spawner_go.length > 0) {
