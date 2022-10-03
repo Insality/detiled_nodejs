@@ -15,8 +15,8 @@
 
 const fs = require("fs");
 const path = require("path");
-const tilesets_generator = require("./detiled_exporter/generate_tilesets");
-const export_tiled = require("./detiled_exporter/index");
+const tilesets_generator = require("./detiled_exporter/scripts/generate_tilesets");
+const export_tiled = require("./detiled_exporter/scripts/generate_defold");
 
 let COMMANDS = {
 	"help": help,

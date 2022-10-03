@@ -7,7 +7,7 @@
     "rimraf": "^3.0.2"
   },
   "name": "detiled",
-  "description": "[![](media/detiled_logo.png)](https://insality.github.io/detiled/)",
+  "description": "Generate tilesets from Defold and Defold collections from Tiled maps",
   "version": "0.1.0",
   "main": "detiled.js",
   "bin": "detiled.js",

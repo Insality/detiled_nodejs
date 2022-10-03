@@ -3,8 +3,8 @@ const path = require("path")
 const process = require("process")
 const settings = require("../settings.json")
 
-const FACTORY_NODE_TEMPLATE = fs.readFileSync(path.join(__dirname, "../templates/factory_node.template")).toString('utf8')
-const COLLECTION_FACTORY_NODE_TEMPLATE = fs.readFileSync(path.join(__dirname, "../templates/collection_factory_node.template")).toString('utf8')
+const FACTORY_NODE_TEMPLATE = fs.readFileSync(path.join(__dirname, "templates/factory_node.template")).toString('utf8')
+const COLLECTION_FACTORY_NODE_TEMPLATE = fs.readFileSync(path.join(__dirname, "templates/collection_factory_node.template")).toString('utf8')
 
 const M = {}
 

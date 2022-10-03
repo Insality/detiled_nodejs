@@ -3,8 +3,8 @@ const path = require("path")
 const process = require("process")
 const settings = require("../settings.json")
 
-const COLLECTION_TEMPLATE = fs.readFileSync(path.join(__dirname, "../templates/collection.template")).toString('utf8')
-const COLLECTION_GO_TEMPLATE = fs.readFileSync(path.join(__dirname, "../templates/collection_go.template")).toString('utf8')
+const COLLECTION_TEMPLATE = fs.readFileSync(path.join(__dirname, "templates/collection.template")).toString('utf8')
+const COLLECTION_GO_TEMPLATE = fs.readFileSync(path.join(__dirname, "templates/collection_go.template")).toString('utf8')
 
 const M = {}
 

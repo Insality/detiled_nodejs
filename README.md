@@ -19,7 +19,6 @@ But current usage:
 ### Generate tilesets
 
 `node generate_tilesets.js {assets_folder} {output_folder}`
-If in output folder exists file *tilesets.db*, is will be loaded.
 Tool should be called from game.project folder
 Output folder can be use separatly in Tiles (for example by your level designers)
 
@@ -40,8 +39,6 @@ Generator will create map_spawner collection with only used spawners in this map
 
 
 ### Mapping
-The most important file after generate tilesets: tilesets.db. It can help to keep id of resources persistant on the maps
-Don't lose it and better to store it under VCS
 
 
 ## License

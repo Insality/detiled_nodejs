@@ -1,13 +1,14 @@
-const Quaternion = require('quaternion');
 const fs = require("fs")
 const os = require("os")
 const path = require("path")
 const rimraf = require("rimraf")
 const process = require("process")
+const Quaternion = require('quaternion');
 const { execSync } = require('child_process')
-const tilesets = require("./scripts/tilesets")
-const maps = require("./scripts/maps")
 const defold_parser = require("defold-parser")
+
+const tilesets = require("./process_tilesets")
+const maps = require("./process_maps")
 
 let TILED_PATH = process.env.TILED || "/Applications/Tiled.app/Contents/MacOS/Tiled"
 

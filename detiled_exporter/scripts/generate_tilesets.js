@@ -1,17 +1,20 @@
 const fs = require("fs")
-const image_size = require("image-size")
 const path = require("path")
-const defold_parser = require("defold-parser")
 const rimraf = require("rimraf")
-const xml_parser = require("./libs/xml_parser")
-const helper = require("./helper")
-const constants = require("./constants")
+const image_size = require("image-size")
+const defold_parser = require("defold-parser")
 
-const TILESET_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml.template")).toString('utf8')
-const TILESET_ITEM_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_item.template")).toString('utf8')
-const TILESET_ITEM_PROPERTY_TEMPLATE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_item_property.template")).toString('utf8')
-const TILESET_ITEM_TILESOURCE = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_tilesource.template")).toString('utf8')
-const TILESET_ITEM_TILEITEM = fs.readFileSync(path.join(__filename, "../templates/tileset_xml_tileitem.template")).toString('utf8')
+const helper = require("../helper")
+const constants = require("../constants")
+const xml_parser = require("../libs/xml_parser")
+
+console.log(__filename, "./templates/tileset_xml.template")
+console.log(path.join(__filename, "./templates/tileset_xml.template"))
+const TILESET_TEMPLATE = fs.readFileSync(path.join(__dirname, "templates/tileset_xml.template")).toString('utf8')
+const TILESET_ITEM_TEMPLATE = fs.readFileSync(path.join(__dirname, "templates/tileset_xml_item.template")).toString('utf8')
+const TILESET_ITEM_PROPERTY_TEMPLATE = fs.readFileSync(path.join(__dirname, "templates/tileset_xml_item_property.template")).toString('utf8')
+const TILESET_ITEM_TILESOURCE = fs.readFileSync(path.join(__dirname, "templates/tileset_xml_tilesource.template")).toString('utf8')
+const TILESET_ITEM_TILEITEM = fs.readFileSync(path.join(__dirname, "templates/tileset_xml_tileitem.template")).toString('utf8')
 
 let items = {}
 let tilesources = {}
