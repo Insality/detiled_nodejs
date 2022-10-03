@@ -8,8 +8,9 @@
   },
   "name": "detiled",
   "description": "[![](media/detiled_logo.png)](https://insality.github.io/detiled/)",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "detiled.js",
+  "bin": "detiled.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -30,6 +31,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Insality/detiled/issues"
+  },
+  "funding": {
+    "url": "https://github.com/sponsors/insality"
   },
   "homepage": "https://github.com/Insality/detiled#readme"
 }

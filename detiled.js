@@ -20,7 +20,6 @@ const export_tiled = require("./detiled_exporter/index");
 
 let COMMANDS = {
 	"help": help,
-	// ({config_path}, {sheet_name}, {list_name})
 	"generate_tilesets": tilesets_generator.start,
 	"export": export_tiled.start,
 }
@@ -37,12 +36,14 @@ function help() {
 
 Hi! The Detiled exporter available commands:
 
-Export assets from Defold asset folder to Tiled's tilesets:
-	detiled generate_tilesets [defold_assets_folder_path] [output_folder_path]
 
-Generate Defold collections and other assets from Tiled's maps and tilesets:
-	detiled export [tilesets_folder_path] [maps_folder_path] [output_folder_path]
-	`);
+detiled generate_tilesets [defold_assets_folder_path] [output_folder_path]
+	-- Export assets from Defold asset folder to Tiled's tilesets
+
+
+detiled export [tilesets_folder_path] [maps_folder_path] [output_folder_path]
+	-- Generate Defold collections and other assets from Tiled's maps and tilesets
+`);
 };
 
 
