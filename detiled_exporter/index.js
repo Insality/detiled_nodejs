@@ -8,9 +8,9 @@ const { execSync } = require('child_process')
 const tilesets = require("./scripts/tilesets")
 const maps = require("./scripts/maps")
 const defold_parser = require("defold-parser")
-const xml_parser = require("./libs/xml_parser")
 
 let TILED_PATH = process.env.TILED || "/Applications/Tiled.app/Contents/MacOS/Tiled"
+
 
 function process_tileset(data, output_path, mapping) {
 	tilesets.generate_factories(data, output_path, mapping)
@@ -117,11 +117,11 @@ function process_map(map_path, data, output_path, mapping) {
 				let quat_rotation = Quaternion.fromEuler(-rotation, 0, 0).normalize()
 				collection_parsed.instances = collection_parsed.instances || []
 				collection_parsed.instances.push({
-					id: object_id,
-					prototype: mapping_info.go_path,
-					position: [{ x: object_x, y: object_y, z: 0 }],
-					rotation: [ quat_rotation ],
-					scale3: [{ x: scale_x, y: scale_y, z: 1 }]
+					id: [ object_id ],
+					prototype: [ mapping_info.go_path ],
+					position: [{ x: [ object_x ], y: [ object_y ], z: [ 0 ] }],
+					rotation: [{ x: [ quat_rotation.x ], y: [ quat_rotation.y ], z: [ quat_rotation.z ], w: [ quat_rotation.w ] }],
+					scale3: [{ x: [ scale_x ], y: [ scale_y ], z: [ 1 ] }]
 				})
 				objects.push( object_id )
 			}
@@ -129,12 +129,12 @@ function process_map(map_path, data, output_path, mapping) {
 			let object_layer_z = get_property(layer.properties, "z", 0.0001 * tilelayer_counter)
 			// Add parent instance
 			let parent_instance = {
-				id: layer.name,
+				id: [ layer.name ],
 				children: objects,
-				data: "",
-				position: [ { x: 0, y: 0, z: object_layer_z } ],
-				rotation: [ { x: 0, y: 0, z: 0, w: 0 } ],
-				scale3: [ { x: 0, y: 0, z: 0 } ],
+				data: [ "" ],
+				position: [ { x: [ 0 ], y: [ 0 ], z: [ object_layer_z ] } ],
+				rotation: [ { x: [ 0 ], y: [ 0 ], z: [ 0 ], w: [ 0 ] } ],
+				scale3: [ { x: [ 0 ], y: [ 0 ], z: [ 0 ] } ],
 			}
 			collection_parsed.embedded_instances = collection_parsed.embedded_instances || []
 			collection_parsed.embedded_instances.push(parent_instance)
