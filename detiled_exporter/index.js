@@ -7,7 +7,7 @@ const process = require("process")
 const { execSync } = require('child_process')
 const tilesets = require("./scripts/tilesets")
 const maps = require("./scripts/maps")
-const defold_object = require("./libs/defold-object")
+const defold_parser = require("defold-parser")
 const xml_parser = require("./libs/xml_parser")
 
 let TILED_PATH = process.env.TILED || "/Applications/Tiled.app/Contents/MacOS/Tiled"
@@ -61,7 +61,7 @@ function process_map(map_path, data, output_path, mapping) {
 	let map_folder = path.join(output_path, "maps", name)
 	let map_collection_path = path.join(map_folder, map_name_collection)
 	let collection_path = path.join(map_collection_path)
-	let collection_parsed = defold_object.load_from_file(collection_path)
+	let collection_parsed = defold_parser.load_from_file(collection_path)
 
 	// Add objects
 	let tilelayer_counter = 0
@@ -141,7 +141,7 @@ function process_map(map_path, data, output_path, mapping) {
 		}
 	}
 
-	defold_object.save_to_file(collection_path, collection_parsed)
+	defold_parser.save_to_file(collection_path, collection_parsed)
 
 	fs.mkdirSync(map_folder, { recursive: true })
 	let map_output_path = path.join(output_path, "json_maps")

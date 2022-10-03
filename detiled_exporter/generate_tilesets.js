@@ -1,8 +1,8 @@
 const fs = require("fs")
 const image_size = require("image-size")
 const path = require("path")
+const defold_parser = require("defold-parser")
 const rimraf = require("rimraf")
-const defold_object = require("./libs/defold-object")
 const xml_parser = require("./libs/xml_parser")
 const helper = require("./helper")
 const constants = require("./constants")
@@ -191,8 +191,9 @@ function get_properties_from_script(component) {
 function parse_properties_from_go(go_parsed, go_properties) {
 	for (let i in go_parsed.components) {
 		let elem = go_parsed.components[i]
-		if (elem.component && elem.component.endsWith(".script")) {
-			let properties = get_properties_from_script(elem.component)
+		let component = elem.component[0]
+		if (component && component.endsWith(".script")) {
+			let properties = get_properties_from_script(component)
 			for (let prop in properties) {
 				if (go_properties[prop]) {
 					console.log("Error: go property duplicate", go_path, prop)
@@ -238,20 +239,19 @@ function process_collection_asset(asset_path, tileset_path) {
 	let anchor_y = 0
 
 	let go_path = path.join(asset_path, asset_name + ".collection")
-	let go_parsed = defold_object.load_from_file(go_path)
+	let go_parsed = defold_parser.load_from_file(go_path)
 
 	let go_properties = {}
 	for (i in go_parsed.embedded_instances) {
-		let go_data = defold_object.decode_object(go_parsed.embedded_instances[i].data)
+		let go_data = go_parsed.embedded_instances[i].data[0]
 		parse_properties_from_go(go_data, go_properties)
 
 		for (let j in go_data.embedded_components) {
 			let component = go_data.embedded_components[j]
-			if (component.id == "sprite") {
-				console.log("SDSDS", component)
-				anchor_x = component.position[0].x
-				anchor_y = component.position[0].y
-				default_image = component.default_animation
+			if (component.id[0] == "sprite") {
+				anchor_x = component.position[0].x[0]
+				anchor_y = component.position[0].y[0]
+				default_image = component.data[0].default_animation[0]
 			}
 		}
 	}
@@ -274,7 +274,6 @@ function process_collection_asset(asset_path, tileset_path) {
 			go_path: "/" + path.relative(process.cwd(), go_path),
 			default_image: default_image,
 		}
-		console.log(item)
 		items[tileset_name].push(item)
 	}
 }
@@ -294,22 +293,19 @@ function process_asset(asset_path, tileset_path) {
 	let anchor_y = 0
 
 	let go_path = path.join(asset_path, asset_name + ".go")
-	let go_parsed = defold_object.load_from_file(go_path)
-	// console.log("GOPARSED", go_parsed)
+	let go_parsed = defold_parser.load_from_file(go_path)
 
 	let go_properties = {}
 
 	parse_properties_from_go(go_parsed, go_properties)
 
-	// console.log("goOo", go_parsed)
 	let default_image = null
 	for (let i in go_parsed.embedded_components) {
 		let elem = go_parsed.embedded_components[i]
-		if (elem.id == "sprite") {
-			anchor_x = elem.position[0].x
-			anchor_y = elem.position[0].y
-			let sprite_info = defold_object.decode_object(elem.data)
-			default_image = sprite_info.default_animation.replace(/\\\"/g, "")
+		if (elem.id[0] == "sprite") {
+			anchor_x = elem.position[0].x[0]
+			anchor_y = elem.position[0].y[0]
+			default_image = elem.data[0].default_animation[0].replace(/\\\"/g, "")
 		}
 	}
 

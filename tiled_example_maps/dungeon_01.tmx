@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="2022.09.22" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="22">
+<map version="1.9" tiledversion="2022.09.22" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="23">
  <editorsettings>
   <export target="../../../s/dungeon_01..collection" format="defoldcollection"/>
  </editorsettings>
@@ -43,7 +43,7 @@
   <object id="14" gid="142" x="52.6905" y="32.4431" width="57.5263" height="81.0317" rotation="121.164"/>
   <object id="15" gid="142" x="189.184" y="75.2423" width="57.5263" height="81.0317" rotation="234.24"/>
   <object id="16" gid="142" x="189.184" y="75.2423" width="57.5263" height="81.0317" rotation="234.24"/>
-  <object id="17" gid="134" x="60.8567" y="243.04" width="64" height="64"/>
+  <object id="17" gid="134" x="68.2047" y="233.047" width="49.3041" height="44.0135"/>
   <object id="18" gid="148" x="296.941" y="231.294" width="16" height="16"/>
   <object id="19" gid="149" x="366.815" y="227.876" width="16" height="16"/>
   <object id="20" gid="149" x="276.434" y="281.421" width="16" height="16"/>

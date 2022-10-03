@@ -4,6 +4,7 @@ const process = require("process")
 const settings = require("../settings.json")
 
 const FACTORY_NODE_TEMPLATE = fs.readFileSync(path.join(__dirname, "../templates/factory_node.template")).toString('utf8')
+const COLLECTION_FACTORY_NODE_TEMPLATE = fs.readFileSync(path.join(__dirname, "../templates/collection_factory_node.template")).toString('utf8')
 
 const M = {}
 
@@ -83,7 +84,8 @@ M.generate_factories = function(data, output_path, mapping) {
 		}
 
 		if (!objects_ready[object_name]) {
-			let spawner_data = FACTORY_NODE_TEMPLATE.replace("{1}", object_name)
+			let template = properties.__is_collection && COLLECTION_FACTORY_NODE_TEMPLATE || FACTORY_NODE_TEMPLATE
+			let spawner_data = template.replace("{1}", object_name)
 			spawner_data = spawner_data.replace("{2}", properties.__go_path)
 			spawner_go += spawner_data
 			objects_ready[object_name] = true

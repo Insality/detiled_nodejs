@@ -3,7 +3,7 @@ scale_along_z: 0
 embedded_instances {
   id: "tilemaps"
   children: "Group 1"
-  data:   "components {\n"
+  data: "components {\n"
   "  id: \"dungeon_01-dungeon\"\n"
   "  component: \"/example/generated/maps/dungeon_01/dungeon_01-dungeon.tilemap\"\n"
   "  position {\n"
@@ -18,11 +18,10 @@ embedded_instances {
   "    w: 1.0\n"
   "  }\n"
   "}\n"
-
   ""
   position {
-    x: 0
-    y: 0
+    x: 0.0
+    y: 0.0
     z: 0.0
   }
   rotation {
@@ -39,7 +38,7 @@ embedded_instances {
 }
 embedded_instances {
   id: "Group 1"
-  data:   "components {\n"
+  data: "components {\n"
   "  id: \"dungeon_01-Group 1-dungeon\"\n"
   "  component: \"/example/generated/maps/dungeon_01/dungeon_01-Group 1-dungeon.tilemap\"\n"
   "  position {\n"
@@ -54,11 +53,10 @@ embedded_instances {
   "    w: 1.0\n"
   "  }\n"
   "}\n"
-
   ""
   position {
-    x: 0
-    y: 0
+    x: 0.0
+    y: 0.0
     z: 0.0
   }
   rotation {
@@ -74,7 +72,20 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "Object Layer 1"
+  id: "O"
+  id: "b"
+  id: "j"
+  id: "e"
+  id: "c"
+  id: "t"
+  id: " "
+  id: "L"
+  id: "a"
+  id: "y"
+  id: "e"
+  id: "r"
+  id: " "
+  id: "1"
   children: "weapon_2"
   children: "weapon_7"
   children: "weapon_8"
@@ -86,241 +97,1514 @@ embedded_instances {
   children: "weapon_19"
   children: "weapon_20"
   children: "weapon_21"
-  data: ""
   position {
-    x: 0.0
-    y: 0.0
-    z: 0.0001
   }
   rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
   }
   scale3 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
   }
 }
 instances {
-  id: "weapon_2"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  id: "w"
+  id: "e"
+  id: "a"
+  id: "p"
+  id: "o"
+  id: "n"
+  id: "_"
+  id: "2"
+  prototype: "/"
+  prototype: "e"
+  prototype: "x"
+  prototype: "a"
+  prototype: "m"
+  prototype: "p"
+  prototype: "l"
+  prototype: "e"
+  prototype: "/"
+  prototype: "a"
+  prototype: "s"
+  prototype: "s"
+  prototype: "e"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "d"
+  prototype: "u"
+  prototype: "n"
+  prototype: "g"
+  prototype: "e"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "o"
+  prototype: "b"
+  prototype: "j"
+  prototype: "e"
+  prototype: "c"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "."
+  prototype: "g"
+  prototype: "o"
   position {
-    x: 329.19
-    y: 175.4
-    z: 0.0
   }
   rotation {
-    w: 1.0
-    x: 0.0
-    y: 0.0
-    z: 0.0
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    scale {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    toMatrix {
+    }
+    toMatrix4 {
+    }
+    rotateVector {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
   }
   scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
   }
 }
 instances {
-  id: "weapon_7"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  id: "w"
+  id: "e"
+  id: "a"
+  id: "p"
+  id: "o"
+  id: "n"
+  id: "_"
+  id: "7"
+  prototype: "/"
+  prototype: "e"
+  prototype: "x"
+  prototype: "a"
+  prototype: "m"
+  prototype: "p"
+  prototype: "l"
+  prototype: "e"
+  prototype: "/"
+  prototype: "a"
+  prototype: "s"
+  prototype: "s"
+  prototype: "e"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "d"
+  prototype: "u"
+  prototype: "n"
+  prototype: "g"
+  prototype: "e"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "o"
+  prototype: "b"
+  prototype: "j"
+  prototype: "e"
+  prototype: "c"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "."
+  prototype: "g"
+  prototype: "o"
   position {
-    x: 360.958
-    y: 176.988
-    z: 0.0
   }
   rotation {
-    w: 1.0
-    x: 0.0
-    y: 0.0
-    z: 0.0
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    scale {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    toMatrix {
+    }
+    toMatrix4 {
+    }
+    rotateVector {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
   }
   scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
   }
 }
 instances {
-  id: "weapon_8"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  id: "w"
+  id: "e"
+  id: "a"
+  id: "p"
+  id: "o"
+  id: "n"
+  id: "_"
+  id: "8"
+  prototype: "/"
+  prototype: "e"
+  prototype: "x"
+  prototype: "a"
+  prototype: "m"
+  prototype: "p"
+  prototype: "l"
+  prototype: "e"
+  prototype: "/"
+  prototype: "a"
+  prototype: "s"
+  prototype: "s"
+  prototype: "e"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "d"
+  prototype: "u"
+  prototype: "n"
+  prototype: "g"
+  prototype: "e"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "o"
+  prototype: "b"
+  prototype: "j"
+  prototype: "e"
+  prototype: "c"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "."
+  prototype: "g"
+  prototype: "o"
   position {
-    x: 377.239
-    y: 177.385
-    z: 0.0
   }
   rotation {
-    w: 1.0
-    x: 0.0
-    y: 0.0
-    z: 0.0
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    scale {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    toMatrix {
+    }
+    toMatrix4 {
+    }
+    rotateVector {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
   }
   scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
   }
 }
 instances {
-  id: "weapon_13"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  id: "w"
+  id: "e"
+  id: "a"
+  id: "p"
+  id: "o"
+  id: "n"
+  id: "_"
+  id: "1"
+  id: "3"
+  prototype: "/"
+  prototype: "e"
+  prototype: "x"
+  prototype: "a"
+  prototype: "m"
+  prototype: "p"
+  prototype: "l"
+  prototype: "e"
+  prototype: "/"
+  prototype: "a"
+  prototype: "s"
+  prototype: "s"
+  prototype: "e"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "d"
+  prototype: "u"
+  prototype: "n"
+  prototype: "g"
+  prototype: "e"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "o"
+  prototype: "b"
+  prototype: "j"
+  prototype: "e"
+  prototype: "c"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "."
+  prototype: "g"
+  prototype: "o"
   position {
-    x: 106.58155
-    y: 142.292
-    z: 0.0
   }
   rotation {
-    w: 1.0
-    x: 0.0
-    y: 0.0
-    z: 0.0
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    scale {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    toMatrix {
+    }
+    toMatrix4 {
+    }
+    rotateVector {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
   }
   scale3 {
-    x: 3.59539375
-    y: 5.06448125
-    z: 1.0
   }
 }
 instances {
-  id: "weapon_14"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  id: "w"
+  id: "e"
+  id: "a"
+  id: "p"
+  id: "o"
+  id: "n"
+  id: "_"
+  id: "1"
+  id: "4"
+  prototype: "/"
+  prototype: "e"
+  prototype: "x"
+  prototype: "a"
+  prototype: "m"
+  prototype: "p"
+  prototype: "l"
+  prototype: "e"
+  prototype: "/"
+  prototype: "a"
+  prototype: "s"
+  prototype: "s"
+  prototype: "e"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "d"
+  prototype: "u"
+  prototype: "n"
+  prototype: "g"
+  prototype: "e"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "o"
+  prototype: "b"
+  prototype: "j"
+  prototype: "e"
+  prototype: "c"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "."
+  prototype: "g"
+  prototype: "o"
   position {
-    x: 37.805872867779826
-    y: 262.94457233565106
-    z: 0.0
   }
   rotation {
-    w: 0.49117742927638186
-    x: 0.0
-    y: 0.0
-    z: -0.8710595461674505
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    scale {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    toMatrix {
+    }
+    toMatrix4 {
+    }
+    rotateVector {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
   }
   scale3 {
-    x: 3.59539375
-    y: 5.06448125
-    z: 1.0
   }
 }
 instances {
-  id: "weapon_15"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  id: "w"
+  id: "e"
+  id: "a"
+  id: "p"
+  id: "o"
+  id: "n"
+  id: "_"
+  id: "1"
+  id: "5"
+  prototype: "/"
+  prototype: "e"
+  prototype: "x"
+  prototype: "a"
+  prototype: "m"
+  prototype: "p"
+  prototype: "l"
+  prototype: "e"
+  prototype: "/"
+  prototype: "a"
+  prototype: "s"
+  prototype: "s"
+  prototype: "e"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "d"
+  prototype: "u"
+  prototype: "n"
+  prototype: "g"
+  prototype: "e"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "o"
+  prototype: "b"
+  prototype: "j"
+  prototype: "e"
+  prototype: "c"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "."
+  prototype: "g"
+  prototype: "o"
   position {
-    x: 172.3750652896878
-    y: 268.0981908223234
-    z: 0.0
   }
   rotation {
-    w: -0.4558556223635002
-    x: 0.0
-    y: 0.0
-    z: -0.8900537352090524
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    scale {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    toMatrix {
+    }
+    toMatrix4 {
+    }
+    rotateVector {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
   }
   scale3 {
-    x: 3.59539375
-    y: 5.06448125
-    z: 1.0
   }
 }
 instances {
-  id: "weapon_16"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  id: "w"
+  id: "e"
+  id: "a"
+  id: "p"
+  id: "o"
+  id: "n"
+  id: "_"
+  id: "1"
+  id: "6"
+  prototype: "/"
+  prototype: "e"
+  prototype: "x"
+  prototype: "a"
+  prototype: "m"
+  prototype: "p"
+  prototype: "l"
+  prototype: "e"
+  prototype: "/"
+  prototype: "a"
+  prototype: "s"
+  prototype: "s"
+  prototype: "e"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "d"
+  prototype: "u"
+  prototype: "n"
+  prototype: "g"
+  prototype: "e"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "o"
+  prototype: "b"
+  prototype: "j"
+  prototype: "e"
+  prototype: "c"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "."
+  prototype: "g"
+  prototype: "o"
   position {
-    x: 172.3750652896878
-    y: 268.0981908223234
-    z: 0.0
   }
   rotation {
-    w: -0.4558556223635002
-    x: 0.0
-    y: 0.0
-    z: -0.8900537352090524
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    scale {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    toMatrix {
+    }
+    toMatrix4 {
+    }
+    rotateVector {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
   }
   scale3 {
-    x: 3.59539375
-    y: 5.06448125
-    z: 1.0
   }
 }
 instances {
-  id: "weapon_18"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  id: "w"
+  id: "e"
+  id: "a"
+  id: "p"
+  id: "o"
+  id: "n"
+  id: "_"
+  id: "1"
+  id: "8"
+  prototype: "/"
+  prototype: "e"
+  prototype: "x"
+  prototype: "a"
+  prototype: "m"
+  prototype: "p"
+  prototype: "l"
+  prototype: "e"
+  prototype: "/"
+  prototype: "a"
+  prototype: "s"
+  prototype: "s"
+  prototype: "e"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "d"
+  prototype: "u"
+  prototype: "n"
+  prototype: "g"
+  prototype: "e"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "o"
+  prototype: "b"
+  prototype: "j"
+  prototype: "e"
+  prototype: "c"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "."
+  prototype: "g"
+  prototype: "o"
   position {
-    x: 304.941
-    y: 88.70599999999999
-    z: 0.0
   }
   rotation {
-    w: 1.0
-    x: 0.0
-    y: 0.0
-    z: 0.0
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    scale {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    toMatrix {
+    }
+    toMatrix4 {
+    }
+    rotateVector {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
   }
   scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
   }
 }
 instances {
-  id: "weapon_19"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  id: "w"
+  id: "e"
+  id: "a"
+  id: "p"
+  id: "o"
+  id: "n"
+  id: "_"
+  id: "1"
+  id: "9"
+  prototype: "/"
+  prototype: "e"
+  prototype: "x"
+  prototype: "a"
+  prototype: "m"
+  prototype: "p"
+  prototype: "l"
+  prototype: "e"
+  prototype: "/"
+  prototype: "a"
+  prototype: "s"
+  prototype: "s"
+  prototype: "e"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "d"
+  prototype: "u"
+  prototype: "n"
+  prototype: "g"
+  prototype: "e"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "o"
+  prototype: "b"
+  prototype: "j"
+  prototype: "e"
+  prototype: "c"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "."
+  prototype: "g"
+  prototype: "o"
   position {
-    x: 374.815
-    y: 92.124
-    z: 0.0
   }
   rotation {
-    w: 1.0
-    x: 0.0
-    y: 0.0
-    z: 0.0
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    scale {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    toMatrix {
+    }
+    toMatrix4 {
+    }
+    rotateVector {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
   }
   scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
   }
 }
 instances {
-  id: "weapon_20"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  id: "w"
+  id: "e"
+  id: "a"
+  id: "p"
+  id: "o"
+  id: "n"
+  id: "_"
+  id: "2"
+  id: "0"
+  prototype: "/"
+  prototype: "e"
+  prototype: "x"
+  prototype: "a"
+  prototype: "m"
+  prototype: "p"
+  prototype: "l"
+  prototype: "e"
+  prototype: "/"
+  prototype: "a"
+  prototype: "s"
+  prototype: "s"
+  prototype: "e"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "d"
+  prototype: "u"
+  prototype: "n"
+  prototype: "g"
+  prototype: "e"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "o"
+  prototype: "b"
+  prototype: "j"
+  prototype: "e"
+  prototype: "c"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "."
+  prototype: "g"
+  prototype: "o"
   position {
-    x: 284.434
-    y: 38.57900000000001
-    z: 0.0
   }
   rotation {
-    w: 1.0
-    x: 0.0
-    y: 0.0
-    z: 0.0
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    scale {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    toMatrix {
+    }
+    toMatrix4 {
+    }
+    rotateVector {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
   }
   scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
   }
 }
 instances {
-  id: "weapon_21"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  id: "w"
+  id: "e"
+  id: "a"
+  id: "p"
+  id: "o"
+  id: "n"
+  id: "_"
+  id: "2"
+  id: "1"
+  prototype: "/"
+  prototype: "e"
+  prototype: "x"
+  prototype: "a"
+  prototype: "m"
+  prototype: "p"
+  prototype: "l"
+  prototype: "e"
+  prototype: "/"
+  prototype: "a"
+  prototype: "s"
+  prototype: "s"
+  prototype: "e"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "d"
+  prototype: "u"
+  prototype: "n"
+  prototype: "g"
+  prototype: "e"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "o"
+  prototype: "b"
+  prototype: "j"
+  prototype: "e"
+  prototype: "c"
+  prototype: "t"
+  prototype: "s"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "/"
+  prototype: "w"
+  prototype: "e"
+  prototype: "a"
+  prototype: "p"
+  prototype: "o"
+  prototype: "n"
+  prototype: "."
+  prototype: "g"
+  prototype: "o"
   position {
-    x: 339.498
-    y: 35.541
-    z: 0.0
   }
   rotation {
-    w: 1.0
-    x: 0.0
-    y: 0.0
-    z: 0.0
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    add {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    sub {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    mul {
+    }
+    scale {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    dot {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    div {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    pow {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    equals {
+    }
+    toMatrix {
+    }
+    toMatrix4 {
+    }
+    rotateVector {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
+    slerp {
+    }
   }
   scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
   }
 }

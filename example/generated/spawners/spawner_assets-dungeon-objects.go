@@ -1,6 +1,6 @@
 embedded_components {
   id: "player"
-  type: "factory"
+  type: "collectionfactory"
   data: "prototype: \"/example/assets/dungeon/objects/player/player.collection\"\n"
   "load_dynamically: false\n"
   ""

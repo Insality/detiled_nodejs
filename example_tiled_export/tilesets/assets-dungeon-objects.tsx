@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.9" tiledversion="1.9.2" name="assets-dungeon-objects" tilewidth="16" tileheight="16" spacing="{TILESET_SPACING}" margin="{TILESET_MARGIN}" columns="0">
+ <tile id="20" class="player-some">
+  <properties>
+   <property name="__object_name" value="player" />
+   <property name="__go_path" value="/example/assets/dungeon/objects/player/player.collection" />
+   <property name="__image_name" value="some" />
+   <property name="__is_collection" value="true" type="bool"/>
+   <property name="__default_image_name" value="tile_0096" />
+   <property name="life" value="20" type="float"/>
+   <property name="v3" value="1.0, 2.0, 3.0" />
+   <property name="v4" value="4.0, 5.0, 6.0, 7.0" />
+   <property name="quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
+   <property name="url" value="s" />
+   <property name="hash" value="set" />
+   <property name="bool" value="true" type="bool"/>
+   <property name="atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
+   <property name="res_font" value="" />
+  </properties>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/some.png"/>
+  <objectgroup draworder="index">
+   <object id="1" x="8" y="8">
+    <point/>
+   </object>
+  </objectgroup>
+ </tile>
  <tile id="0" class="player-tile_0096">
   <properties>
    <property name="__object_name" value="player" />
@@ -7,10 +31,10 @@
    <property name="__image_name" value="tile_0096" />
    <property name="__is_collection" value="true" type="bool"/>
    <property name="__default_image_name" value="tile_0096" />
-   <property name="life" value="10" type="float"/>
+   <property name="life" value="20" type="float"/>
    <property name="v3" value="1.0, 2.0, 3.0" />
    <property name="v4" value="4.0, 5.0, 6.0, 7.0" />
-   <property name="quar" value="quat 1.0, 2.0, 3.0, 4.0" />
+   <property name="quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
    <property name="url" value="s" />
    <property name="hash" value="set" />
    <property name="bool" value="true" type="bool"/>
@@ -31,10 +55,10 @@
    <property name="__image_name" value="tile_0097" />
    <property name="__is_collection" value="true" type="bool"/>
    <property name="__default_image_name" value="tile_0096" />
-   <property name="life" value="10" type="float"/>
+   <property name="life" value="20" type="float"/>
    <property name="v3" value="1.0, 2.0, 3.0" />
    <property name="v4" value="4.0, 5.0, 6.0, 7.0" />
-   <property name="quar" value="quat 1.0, 2.0, 3.0, 4.0" />
+   <property name="quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
    <property name="url" value="s" />
    <property name="hash" value="set" />
    <property name="bool" value="true" type="bool"/>
@@ -55,10 +79,10 @@
    <property name="__image_name" value="tile_0098" />
    <property name="__is_collection" value="true" type="bool"/>
    <property name="__default_image_name" value="tile_0096" />
-   <property name="life" value="10" type="float"/>
+   <property name="life" value="20" type="float"/>
    <property name="v3" value="1.0, 2.0, 3.0" />
    <property name="v4" value="4.0, 5.0, 6.0, 7.0" />
-   <property name="quar" value="quat 1.0, 2.0, 3.0, 4.0" />
+   <property name="quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
    <property name="url" value="s" />
    <property name="hash" value="set" />
    <property name="bool" value="true" type="bool"/>
@@ -79,10 +103,10 @@
    <property name="__image_name" value="tile_0099" />
    <property name="__is_collection" value="true" type="bool"/>
    <property name="__default_image_name" value="tile_0096" />
-   <property name="life" value="10" type="float"/>
+   <property name="life" value="20" type="float"/>
    <property name="v3" value="1.0, 2.0, 3.0" />
    <property name="v4" value="4.0, 5.0, 6.0, 7.0" />
-   <property name="quar" value="quat 1.0, 2.0, 3.0, 4.0" />
+   <property name="quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
    <property name="url" value="s" />
    <property name="hash" value="set" />
    <property name="bool" value="true" type="bool"/>
@@ -103,10 +127,10 @@
    <property name="__image_name" value="tile_0100" />
    <property name="__is_collection" value="true" type="bool"/>
    <property name="__default_image_name" value="tile_0096" />
-   <property name="life" value="10" type="float"/>
+   <property name="life" value="20" type="float"/>
    <property name="v3" value="1.0, 2.0, 3.0" />
    <property name="v4" value="4.0, 5.0, 6.0, 7.0" />
-   <property name="quar" value="quat 1.0, 2.0, 3.0, 4.0" />
+   <property name="quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
    <property name="url" value="s" />
    <property name="hash" value="set" />
    <property name="bool" value="true" type="bool"/>
