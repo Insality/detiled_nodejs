@@ -64,3 +64,5 @@ typings/
 deployer_version_settings.txt
 
 .deployer_cache
+*.code-workspace
+*.tiled-session
