@@ -310,7 +310,6 @@ function convert_maps_to_json(tiled_maps_path, temp_maps_folder, output_collecti
 		let map_folder = path.join(output_collection_path, map_basename)
 		let map_collection_path = path.join(map_folder, map_name_collection)
 		fs.mkdirSync(map_folder, { recursive: true })
-		console.log(`${TILED_PATH} --export-map ${map_path} ${map_collection_path}`, {stdio: 'inherit'})
 		execSync(`${TILED_PATH} --export-map ${map_path} ${map_collection_path}`, {stdio: 'inherit'})
 	}
 }

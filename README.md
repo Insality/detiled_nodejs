@@ -14,6 +14,7 @@
 - Generate **Defold** factory and collectionfactory for all tilesets used in generation. This is allow you create DLC folder assets for liveupdate for example
 - Generate *mapping file* - list of all usable entities with a lot of additional info (size, properties, urls and other)
 - **Defold** script properties is supported - you can adjust it in **Tiled** for each object
+- Generate objects into **Defold** collections directly, without any code to spawn it *(can be disabled via layer property)*
 - **Tiled** layer groups are supported
 - Several images for single asset to generate different **Tiled** tileset objects for easier game objects customization
 
@@ -36,7 +37,7 @@ npm update -g detiled
 
 ### Defold Dependency
 
-*Currently in development*
+*Currently in development. For basic workflow it's not required*
 
 
 ## Usage
@@ -67,7 +68,71 @@ detiled export [tilesets_folder_path] [maps_folder_path] [output_folder_path]
 
 ### Mapping
 
-At export step with `detiled export` will generate the `mapping.json` file. This file contains all info from all tilesets, included properties, asset info and all other useful stuff you can use in the game
+At export step with `detiled export` will generate the `mapping.json` at `output_folder_path`. This file contains all info from all tilesets, included properties, asset info and all other useful stuff you can use in the game.
+Example of mapping of single asset:
+```json
+"some_tileset_name": { // Records for every processed tileset
+	"20": { // Id of object from Tiled map inside tileset
+		"object_name": "weapon", // The go name
+		"is_collection": false, // Flag if this is collection or not
+		"image_name": "tile_0131", // The image assigned to this object
+		"image_url": "#sprite", // The anchor image url from go/collection
+		"anchor": {
+			"x": 0,
+			"y": 8
+		}, // Offset from object position to center of anchor image
+		"width": 16, // Anchor image width
+		"height": 16, // Anchor image height
+		"go_path": "/example/assets/dungeon/objects/weapon/weapon.go", // File path in game assets
+		"properties": {
+			"__default_image_name": "tile_0126", // The default image in Defold assets of anchor image
+			"weapon:detiled_init_image:detiled_image_url": "#sprite", // Autofill property for script property of generated asset. The same as image_url
+			"weapon:detiled_init_image:detiled_init_image": "tile_0131", // Autofill property for script property of generated asset. The same as image_name
+			"weapon:weapon_script:power": 20 // Default script property value
+		}
+	}
+}
+```
+
+
+## Generate Tiled tilesets flow
+
+To generate tilesets you should pass the assets folder. The assets folder is a folder with your game assets.
+
+The every object should be placed inside folder with the same name as this folder.
+Assets can be **(in priority order)**:
+- the `{name}.collection` object inside `{name}` folder
+- the `{name}.go` object inside `{name}` folder
+- the `{name}.tilesource` object inside `{name}` folder
+
+if asset is not found inside folder, the script goes recursive inside other folders
+The tileset name is generated with names of all folders before. For example if your assets placed in `assets->dungeon->objects` the tileset will have the name `assets-dungeon-objects.tsx`
+
+Every asset can have images for Tiled items. This images should be placed inside `images` folder in asset folder. For every image in this folder will be generated object for Tiled tileset. If no images was found, will be used the placeholder image.
+
+To place correctly the objects from Tiled to Defold, the exported will inspect the `*.collection` or `*.go` file to find the anchor image and his position.
+
+Anchor image will be used to gather offset for game object position generation, also this anchor image can be adjusted with relative image of Tiled object for every object inside `images` folder. See `autofill properties` and `anchor image` to get more info.
+
+If you remove or rename asset, it will be removed from tilesets on next tilesets generation. The tileset item ID of removed asset will be never use again (if you generate over existing tilesets).
+
+You can change the images and add new objects (or images for existing object) without any risks.
+
+Due the override issues, keep the `tsx` and `tmx` files under version control.
+
+
+
+## Generate Defold assets flow
+
+### Properties
+- `no_export` - set to true to skip export of this object layer. Useful if you want create objects of this layer by yourself.
+- `z` - set value to adjust the z position of generated object layer
+
+
+## Glossary
+- Anchor image
+- Autofill properties
+- Image anchor
 
 
 ## TODO Docs
