@@ -407,8 +407,8 @@ instances {
   id: "fire_26"
   prototype: "/example/assets/dungeon/objects/fire/fire.go"
   position {
-    x: 178.272
-    y: 51.3
+    x: 161.272
+    y: 35.3
     z: 0.0
   }
   rotation {
@@ -418,8 +418,8 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 1.0
-    y: 1.0
+    x: 0.4
+    y: 0.4
     z: 1.0
   }
 }
@@ -427,8 +427,28 @@ instances {
   id: "fire_27"
   prototype: "/example/assets/dungeon/objects/fire/fire.go"
   position {
-    x: 208.698
-    y: 51.3
+    x: 191.698
+    y: 35.3
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.4
+    y: 0.4
+    z: 1.0
+  }
+}
+instances {
+  id: "water_31"
+  prototype: "/example/assets/dungeon/objects/water/water.go"
+  position {
+    x: 288.153
+    y: 143.634
     z: 0.0
   }
   rotation {

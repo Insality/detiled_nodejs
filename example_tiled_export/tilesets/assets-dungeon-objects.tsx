@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.9" tiledversion="1.9.2" name="assets-dungeon-objects" tilewidth="NaN" tileheight="NaN" spacing="{TILESET_SPACING}" margin="{TILESET_MARGIN}" columns="0">
- <tile id="21" class="fire">
+<tileset version="1.9" tiledversion="1.9.2" name="assets-dungeon-objects" tilewidth="80" tileheight="80" spacing="{TILESET_SPACING}" margin="{TILESET_MARGIN}" columns="0">
+ <tile id="26" class="fire-fire">
   <properties>
    <property name="__object_name" value="fire" />
    <property name="__go_path" value="/example/assets/dungeon/objects/fire/fire.go" />
-   <property name="__image_name" value="entity" />
+   <property name="__image_name" value="fire" />
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="null" />   <property name="__image_url" value="null" />
   </properties>
-  <image width="undefined" height="undefined" source="../images/assets-dungeon-objects/entity.png"/>
+  <image width="80" height="80" source="../images/assets-dungeon-objects/assets-dungeon-objects-fire-fire.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="NaN" y="NaN">
+   <object id="1" x="40" y="40">
+    <point/>
+   </object>
+  </objectgroup>
+ </tile>
+ <tile id="25" class="player-new_icon">
+  <properties>
+   <property name="__object_name" value="player" />
+   <property name="__go_path" value="/example/assets/dungeon/objects/player/player.collection" />
+   <property name="__image_name" value="new_icon" />
+   <property name="__is_collection" value="true" type="bool"/>
+   <property name="__default_image_name" value="tile_0096" />   <property name="__image_url" value="go#sprite" />
+   <property name="player:detiled_init_image:detiled_init_image" value="" />
+   <property name="player:detiled_init_image:detiled_image_url" value="" />
+   <property name="go:player_script:life" value="30" type="float"/>
+   <property name="go:player_script:v3" value="1.0, 2.0, 3.0" />
+   <property name="go:player_script:v4" value="4.0, 5.0, 6.0, 7.0" />
+   <property name="go:player_script:quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
+   <property name="go:player_script:url" value="s" />
+   <property name="go:player_script:hash" value="set" />
+   <property name="go:player_script:bool" value="true" type="bool"/>
+   <property name="go:player_script:atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
+   <property name="go:player_script:res_font" value="" />
+  </properties>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-player-new_icon.png"/>
+  <objectgroup draworder="index">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -34,7 +60,7 @@
    <property name="go:player_script:atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
    <property name="go:player_script:res_font" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0096.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-player-tile_0096.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -60,7 +86,7 @@
    <property name="go:player_script:atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
    <property name="go:player_script:res_font" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0097.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-player-tile_0097.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -86,7 +112,7 @@
    <property name="go:player_script:atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
    <property name="go:player_script:res_font" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0098.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-player-tile_0098.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -112,7 +138,7 @@
    <property name="go:player_script:atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
    <property name="go:player_script:res_font" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0099.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-player-tile_0099.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -138,14 +164,14 @@
    <property name="go:player_script:atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
    <property name="go:player_script:res_font" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0100.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-player-tile_0100.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
  </tile>
- <tile id="22" class="water">
+ <tile id="27" class="water-water">
   <properties>
    <property name="__object_name" value="water" />
    <property name="__go_path" value="/example/assets/dungeon/objects/water/water.go" />
@@ -153,9 +179,9 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="null" />   <property name="__image_url" value="null" />
   </properties>
-  <image width="undefined" height="undefined" source="../images/assets-dungeon-objects/entity.png"/>
+  <image width="32" height="32" source="../images/assets-dungeon-objects/assets-dungeon-objects-water-water.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="NaN" y="NaN">
+   <object id="1" x="16" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -171,7 +197,7 @@
    <property name="weapon:detiled_init_image:detiled_init_image" value="" />
    <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0103.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-weapon-tile_0103.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -189,7 +215,7 @@
    <property name="weapon:detiled_init_image:detiled_init_image" value="" />
    <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0104.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-weapon-tile_0104.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -207,7 +233,7 @@
    <property name="weapon:detiled_init_image:detiled_init_image" value="" />
    <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0105.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-weapon-tile_0105.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -225,7 +251,7 @@
    <property name="weapon:detiled_init_image:detiled_init_image" value="" />
    <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0106.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-weapon-tile_0106.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -243,7 +269,7 @@
    <property name="weapon:detiled_init_image:detiled_init_image" value="" />
    <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0107.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-weapon-tile_0107.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -261,7 +287,7 @@
    <property name="weapon:detiled_init_image:detiled_init_image" value="" />
    <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0117.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-weapon-tile_0117.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -279,7 +305,7 @@
    <property name="weapon:detiled_init_image:detiled_init_image" value="" />
    <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0118.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-weapon-tile_0118.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -297,7 +323,7 @@
    <property name="weapon:detiled_init_image:detiled_init_image" value="" />
    <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0119.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-weapon-tile_0119.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -315,7 +341,7 @@
    <property name="weapon:detiled_init_image:detiled_init_image" value="" />
    <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0125.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-weapon-tile_0125.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -333,7 +359,7 @@
    <property name="weapon:detiled_init_image:detiled_init_image" value="" />
    <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0126.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-weapon-tile_0126.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -351,7 +377,7 @@
    <property name="weapon:detiled_init_image:detiled_init_image" value="" />
    <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0127.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-weapon-tile_0127.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -369,7 +395,7 @@
    <property name="weapon:detiled_init_image:detiled_init_image" value="" />
    <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0128.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-weapon-tile_0128.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -387,7 +413,7 @@
    <property name="weapon:detiled_init_image:detiled_init_image" value="" />
    <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0129.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-weapon-tile_0129.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -405,7 +431,7 @@
    <property name="weapon:detiled_init_image:detiled_init_image" value="" />
    <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0130.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-weapon-tile_0130.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>
@@ -423,7 +449,7 @@
    <property name="weapon:detiled_init_image:detiled_init_image" value="" />
    <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
-  <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0131.png"/>
+  <image width="16" height="16" source="../images/assets-dungeon-objects/assets-dungeon-objects-weapon-tile_0131.png"/>
   <objectgroup draworder="index">
    <object id="1" x="8" y="16">
     <point/>

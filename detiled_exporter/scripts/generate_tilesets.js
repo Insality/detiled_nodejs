@@ -320,7 +320,7 @@ function get_item_name(item_data) {
 	if (item_data.image) {
 		return item_data.item + "-" + path.basename(item_data.image, ".png")
 	} else {
-		return item_data.item
+		return item_data.item + "-" + item_data.item
 	}
 }
 
@@ -370,9 +370,10 @@ function write_tilesets(output_path, items) {
 			item = item.replace("{ANCHOR_X}", data.anchor_x)
 			item = item.replace("{ANCHOR_Y}", data.anchor_y)
 
+			let tiled_image_name = name + "-" + get_item_name(data) + ".png"
 			let new_image_path = path.join(images_folder, name)
 			let image_name = data.image || path.join(process.cwd(), constants.DEFAULT_IMAGE)
-			new_image_path = path.join(new_image_path, path.basename(image_name))
+			new_image_path = path.join(new_image_path, tiled_image_name)
 
 			fs.mkdirSync(path.dirname(new_image_path), { recursive: true })
 			fs.copyFileSync(image_name, new_image_path)

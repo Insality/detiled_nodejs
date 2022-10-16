@@ -3,5 +3,5 @@
 	"ASSETS_FOLDER_NAME": "assets",
 	"ASSETS_IMAGES_FOLDER": "images",
 	"DEFAULT_IMAGE": "./detiled_exporter/icons/entity.png",
-	"DEFAULT_IMAGE_SIZE": {"x": 32, "y": 32}
+	"DEFAULT_IMAGE_SIZE": {"width": 32, "height": 32}
 }
