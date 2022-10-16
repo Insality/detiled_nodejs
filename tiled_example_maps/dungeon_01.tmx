@@ -52,7 +52,7 @@
   <object id="20" gid="149" x="276.434" y="281.421" width="16" height="16"/>
   <object id="21" gid="149" x="331.498" y="284.459" width="16" height="16"/>
   <object id="23" gid="144" x="98.4942" y="106.02" width="16" height="16"/>
-  <object id="24" gid="133" x="63.0532" y="239.663" width="16" height="16"/>
+  <object id="24" gid="133" x="30.4872" y="287.032" width="100.376" height="100.376"/>
  </objectgroup>
  <group id="11" name="Group 1">
   <layer id="2" name="Tile Layer 2" width="30" height="20">

@@ -1,410 +1,26 @@
 name: "dungeon_01_object_layer_1"
-instances {
-  id: "weapon_2"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
-  position {
-    x: 329.19
-    y: 175.4
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "detiled_init_image"
-    properties {
-      id: "detiled_init_image"
-      value: "tile_0105"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "detiled_image_url"
-      value: "#sprite"
-      type: PROPERTY_TYPE_URL
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "weapon_7"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
-  position {
-    x: 360.958
-    y: 176.988
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "detiled_init_image"
-    properties {
-      id: "detiled_init_image"
-      value: "tile_0118"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "detiled_image_url"
-      value: "#sprite"
-      type: PROPERTY_TYPE_URL
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "weapon_8"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
-  position {
-    x: 377.239
-    y: 177.385
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "detiled_init_image"
-    properties {
-      id: "detiled_init_image"
-      value: "tile_0125"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "detiled_image_url"
-      value: "#sprite"
-      type: PROPERTY_TYPE_URL
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "weapon_13"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
-  position {
-    x: 106.58155
-    y: 142.292
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "detiled_init_image"
-    properties {
-      id: "detiled_init_image"
-      value: "tile_0107"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "detiled_image_url"
-      value: "#sprite"
-      type: PROPERTY_TYPE_URL
-    }
-  }
-  scale3 {
-    x: 3.5953937
-    y: 5.0644813
-    z: 1.0
-  }
-}
-instances {
-  id: "weapon_14"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
-  position {
-    x: 37.805874
-    y: 262.94458
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: -0.87105954
-    w: 0.49117744
-  }
-  component_properties {
-    id: "weapon_script"
-    properties {
-      id: "power"
-      value: "2000.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-  }
-  component_properties {
-    id: "detiled_init_image"
-    properties {
-      id: "detiled_init_image"
-      value: "tile_0107"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "detiled_image_url"
-      value: "#sprite"
-      type: PROPERTY_TYPE_URL
-    }
-  }
-  scale3 {
-    x: 3.5953937
-    y: 5.0644813
-    z: 1.0
-  }
-}
-instances {
-  id: "weapon_15"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
-  position {
-    x: 172.37506
-    y: 268.0982
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: -0.89005375
-    w: -0.4558556
-  }
-  component_properties {
-    id: "detiled_init_image"
-    properties {
-      id: "detiled_init_image"
-      value: "tile_0107"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "detiled_image_url"
-      value: "#sprite"
-      type: PROPERTY_TYPE_URL
-    }
-  }
-  scale3 {
-    x: 3.5953937
-    y: 5.0644813
-    z: 1.0
-  }
-}
-instances {
-  id: "weapon_16"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
-  position {
-    x: 172.37506
-    y: 268.0982
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: -0.89005375
-    w: -0.4558556
-  }
-  component_properties {
-    id: "detiled_init_image"
-    properties {
-      id: "detiled_init_image"
-      value: "tile_0107"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "detiled_image_url"
-      value: "#sprite"
-      type: PROPERTY_TYPE_URL
-    }
-  }
-  scale3 {
-    x: 3.5953937
-    y: 5.0644813
-    z: 1.0
-  }
-}
-instances {
-  id: "weapon_18"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
-  position {
-    x: 304.941
-    y: 88.706
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "detiled_init_image"
-    properties {
-      id: "detiled_init_image"
-      value: "tile_0127"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "detiled_image_url"
-      value: "#sprite"
-      type: PROPERTY_TYPE_URL
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "weapon_19"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
-  position {
-    x: 374.815
-    y: 92.124
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "detiled_init_image"
-    properties {
-      id: "detiled_init_image"
-      value: "tile_0128"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "detiled_image_url"
-      value: "#sprite"
-      type: PROPERTY_TYPE_URL
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "weapon_20"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
-  position {
-    x: 284.434
-    y: 38.579
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "detiled_init_image"
-    properties {
-      id: "detiled_init_image"
-      value: "tile_0128"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "detiled_image_url"
-      value: "#sprite"
-      type: PROPERTY_TYPE_URL
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "weapon_21"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
-  position {
-    x: 339.498
-    y: 35.541
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "detiled_init_image"
-    properties {
-      id: "detiled_init_image"
-      value: "tile_0128"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "detiled_image_url"
-      value: "#sprite"
-      type: PROPERTY_TYPE_URL
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "weapon_23"
-  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
-  position {
-    x: 106.4942
-    y: 213.98
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "detiled_init_image"
-    properties {
-      id: "detiled_init_image"
-      value: "tile_0118"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "detiled_image_url"
-      value: "#sprite"
-      type: PROPERTY_TYPE_URL
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
+scale_along_z: 0
 collection_instances {
   id: "player_1"
+  instance_properties {
+    id: "player"
+    properties {
+      id: "detiled_init_image"
+      properties {
+        id: "detiled_image_url"
+        value: "go#sprite"
+        type: PROPERTY_TYPE_HASH
+      }
+    }
+    properties {
+      id: "detiled_init_image"
+      properties {
+        id: "detiled_init_image"
+        value: "tile_0096"
+        type: PROPERTY_TYPE_HASH
+      }
+    }
+  }
   collection: "/example/assets/dungeon/objects/player/player.collection"
   position {
     x: 311.321
@@ -417,22 +33,6 @@ collection_instances {
     z: 0.0
     w: 1.0
   }
-  instance_properties {
-    id: "player"
-    properties {
-      id: "detiled_init_image"
-      properties {
-        id: "detiled_init_image"
-        value: "tile_0096"
-        type: PROPERTY_TYPE_HASH
-      }
-      properties {
-        id: "detiled_image_url"
-        value: "player#sprite"
-        type: PROPERTY_TYPE_URL
-      }
-    }
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -441,6 +41,25 @@ collection_instances {
 }
 collection_instances {
   id: "player_6"
+  instance_properties {
+    id: "player"
+    properties {
+      id: "detiled_init_image"
+      properties {
+        id: "detiled_image_url"
+        value: "go#sprite"
+        type: PROPERTY_TYPE_HASH
+      }
+    }
+    properties {
+      id: "detiled_init_image"
+      properties {
+        id: "detiled_init_image"
+        value: "tile_0098"
+        type: PROPERTY_TYPE_HASH
+      }
+    }
+  }
   collection: "/example/assets/dungeon/objects/player/player.collection"
   position {
     x: 343.486
@@ -453,22 +72,6 @@ collection_instances {
     z: 0.0
     w: 1.0
   }
-  instance_properties {
-    id: "player"
-    properties {
-      id: "detiled_init_image"
-      properties {
-        id: "detiled_init_image"
-        value: "tile_0098"
-        type: PROPERTY_TYPE_HASH
-      }
-      properties {
-        id: "detiled_image_url"
-        value: "player#sprite"
-        type: PROPERTY_TYPE_URL
-      }
-    }
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -477,20 +80,16 @@ collection_instances {
 }
 collection_instances {
   id: "player_9"
-  collection: "/example/assets/dungeon/objects/player/player.collection"
-  position {
-    x: 151.42429
-    y: 84.386215
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: -0.30100957
-    w: 0.95362115
-  }
   instance_properties {
     id: "player"
+    properties {
+      id: "detiled_init_image"
+      properties {
+        id: "detiled_image_url"
+        value: "go#sprite"
+        type: PROPERTY_TYPE_HASH
+      }
+    }
     properties {
       id: "detiled_init_image"
       properties {
@@ -498,12 +97,19 @@ collection_instances {
         value: "tile_0097"
         type: PROPERTY_TYPE_HASH
       }
-      properties {
-        id: "detiled_image_url"
-        value: "player#sprite"
-        type: PROPERTY_TYPE_URL
-      }
     }
+  }
+  collection: "/example/assets/dungeon/objects/player/player.collection"
+  position {
+    x: 151.42429187195583
+    y: 84.38621474569197
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.3010095646366747
+    w: 0.953621120779757
   }
   scale3 {
     x: 1.0
@@ -513,20 +119,16 @@ collection_instances {
 }
 collection_instances {
   id: "player_10"
-  collection: "/example/assets/dungeon/objects/player/player.collection"
-  position {
-    x: 150.71483
-    y: 123.127365
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: -0.9350857
-    w: 0.35442162
-  }
   instance_properties {
     id: "player"
+    properties {
+      id: "detiled_init_image"
+      properties {
+        id: "detiled_image_url"
+        value: "go#sprite"
+        type: PROPERTY_TYPE_HASH
+      }
+    }
     properties {
       id: "detiled_init_image"
       properties {
@@ -534,12 +136,19 @@ collection_instances {
         value: "tile_0097"
         type: PROPERTY_TYPE_HASH
       }
-      properties {
-        id: "detiled_image_url"
-        value: "player#sprite"
-        type: PROPERTY_TYPE_URL
-      }
     }
+  }
+  collection: "/example/assets/dungeon/objects/player/player.collection"
+  position {
+    x: 150.71483477468516
+    y: 123.127366637846
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.9350857322097145
+    w: 0.35442160405063133
   }
   scale3 {
     x: 1.0
@@ -549,20 +158,16 @@ collection_instances {
 }
 collection_instances {
   id: "player_11"
-  collection: "/example/assets/dungeon/objects/player/player.collection"
-  position {
-    x: 186.71814
-    y: 121.93485
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: -0.9238795
-    w: -0.38268343
-  }
   instance_properties {
     id: "player"
+    properties {
+      id: "detiled_init_image"
+      properties {
+        id: "detiled_image_url"
+        value: "go#sprite"
+        type: PROPERTY_TYPE_HASH
+      }
+    }
     properties {
       id: "detiled_init_image"
       properties {
@@ -570,12 +175,19 @@ collection_instances {
         value: "tile_0097"
         type: PROPERTY_TYPE_HASH
       }
-      properties {
-        id: "detiled_image_url"
-        value: "player#sprite"
-        type: PROPERTY_TYPE_URL
-      }
     }
+  }
+  collection: "/example/assets/dungeon/objects/player/player.collection"
+  position {
+    x: 186.71814575050763
+    y: 121.93485424949236
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.9238795325112867
+    w: -0.3826834323650897
   }
   scale3 {
     x: 1.0
@@ -585,20 +197,16 @@ collection_instances {
 }
 collection_instances {
   id: "player_12"
-  collection: "/example/assets/dungeon/objects/player/player.collection"
-  position {
-    x: 186.33928
-    y: 86.324936
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: -0.38695237
-    w: -0.9220997
-  }
   instance_properties {
     id: "player"
+    properties {
+      id: "detiled_init_image"
+      properties {
+        id: "detiled_image_url"
+        value: "go#sprite"
+        type: PROPERTY_TYPE_HASH
+      }
+    }
     properties {
       id: "detiled_init_image"
       properties {
@@ -606,12 +214,19 @@ collection_instances {
         value: "tile_0097"
         type: PROPERTY_TYPE_HASH
       }
-      properties {
-        id: "detiled_image_url"
-        value: "player#sprite"
-        type: PROPERTY_TYPE_URL
-      }
     }
+  }
+  collection: "/example/assets/dungeon/objects/player/player.collection"
+  position {
+    x: 186.33928568940735
+    y: 86.32493877279344
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.3869523800314981
+    w: -0.9220996993752679
   }
   scale3 {
     x: 1.0
@@ -620,11 +235,30 @@ collection_instances {
   }
 }
 collection_instances {
-  id: "player_17"
+  id: "player_24"
+  instance_properties {
+    id: "player"
+    properties {
+      id: "detiled_init_image"
+      properties {
+        id: "detiled_image_url"
+        value: "go#sprite"
+        type: PROPERTY_TYPE_HASH
+      }
+    }
+    properties {
+      id: "detiled_init_image"
+      properties {
+        id: "detiled_init_image"
+        value: "tile_0096"
+        type: PROPERTY_TYPE_HASH
+      }
+    }
+  }
   collection: "/example/assets/dungeon/objects/player/player.collection"
   position {
-    x: 92.85675
-    y: 86.953
+    x: 80.6752
+    y: 32.96800000000002
     z: 0.0
   }
   rotation {
@@ -633,37 +267,449 @@ collection_instances {
     z: 0.0
     w: 1.0
   }
-  instance_properties {
-    id: "player"
-    properties {
-      id: "detiled_init_image"
-      properties {
-        id: "detiled_init_image"
-        value: "tile_0097"
-        type: PROPERTY_TYPE_HASH
-      }
-      properties {
-        id: "detiled_image_url"
-        value: "player#sprite"
-        type: PROPERTY_TYPE_URL
-      }
-    }
-  }
-  instance_properties {
-    id: "go"
-    properties {
-      id: "player_script"
-      properties {
-        id: "life"
-        value: "50.0"
-        type: PROPERTY_TYPE_NUMBER
-      }
-    }
-  }
   scale3 {
-    x: 3.0815063
-    y: 2.7508438
+    x: 6.2735
+    y: 6.2735
     z: 1.0
   }
 }
-scale_along_z: 0
+instances {
+  id: "weapon_2"
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_image_url"
+      value: "#sprite"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_init_image"
+      value: "tile_0105"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 329.19
+    y: 175.4
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_7"
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_image_url"
+      value: "#sprite"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_init_image"
+      value: "tile_0118"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 360.958
+    y: 176.988
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_8"
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_image_url"
+      value: "#sprite"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_init_image"
+      value: "tile_0125"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 377.239
+    y: 177.385
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_13"
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_image_url"
+      value: "#sprite"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_init_image"
+      value: "tile_0107"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 106.58155
+    y: 142.292
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 3.59539375
+    y: 5.06448125
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_14"
+  component_properties {
+    id: "weapon_script"
+    properties {
+      id: "power"
+      value: "2000"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_image_url"
+      value: "#sprite"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_init_image"
+      value: "tile_0107"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 37.805872867779826
+    y: 262.94457233565106
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.8710595461674505
+    w: 0.49117742927638186
+  }
+  scale3 {
+    x: 3.59539375
+    y: 5.06448125
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_15"
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_image_url"
+      value: "#sprite"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_init_image"
+      value: "tile_0107"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 172.3750652896878
+    y: 268.0981908223234
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.8900537352090524
+    w: -0.4558556223635002
+  }
+  scale3 {
+    x: 3.59539375
+    y: 5.06448125
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_16"
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_image_url"
+      value: "#sprite"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_init_image"
+      value: "tile_0107"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 172.3750652896878
+    y: 268.0981908223234
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.8900537352090524
+    w: -0.4558556223635002
+  }
+  scale3 {
+    x: 3.59539375
+    y: 5.06448125
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_18"
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_image_url"
+      value: "#sprite"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_init_image"
+      value: "tile_0127"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 304.941
+    y: 88.70599999999999
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_19"
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_image_url"
+      value: "#sprite"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_init_image"
+      value: "tile_0128"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 374.815
+    y: 92.124
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_20"
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_image_url"
+      value: "#sprite"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_init_image"
+      value: "tile_0128"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 284.434
+    y: 38.57900000000001
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_21"
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_image_url"
+      value: "#sprite"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_init_image"
+      value: "tile_0128"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 339.498
+    y: 35.541
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "weapon_23"
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_image_url"
+      value: "#sprite"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_init_image"
+      value: "tile_0118"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 106.4942
+    y: 213.98000000000002
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
