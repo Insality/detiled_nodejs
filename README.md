@@ -70,7 +70,7 @@ detiled export [tilesets_folder_path] [maps_folder_path] [output_folder_path]
 
 At export step with `detiled export` will generate the `mapping.json` at `output_folder_path`. This file contains all info from all tilesets, included properties, asset info and all other useful stuff you can use in the game.
 Example of mapping of single asset:
-```json
+```js
 "some_tileset_name": { // Records for every processed tileset
 	"20": { // Id of object from Tiled map inside tileset
 		"object_name": "weapon", // The go name
@@ -108,9 +108,9 @@ Assets can be **(in priority order)**:
 if asset is not found inside folder, the script goes recursive inside other folders
 The tileset name is generated with names of all folders before. For example if your assets placed in `assets->dungeon->objects` the tileset will have the name `assets-dungeon-objects.tsx`
 
-Every asset can have images for Tiled items. This images should be placed inside `images` folder in asset folder. For every image in this folder will be generated object for Tiled tileset. If no images was found, will be used the placeholder image.
+Every asset can have images for **Tiled** items. This images should be placed inside `images` folder in asset folder. For every image in this folder will be generated object for Tiled tileset. If no images was found, will be used the placeholder image.
 
-To place correctly the objects from Tiled to Defold, the exported will inspect the `*.collection` or `*.go` file to find the anchor image and his position.
+To place correctly the objects from **Tiled** to **Defold**, the exported will inspect the `*.collection` or `*.go` file to find the anchor image and his position.
 
 Anchor image will be used to gather offset for game object position generation, also this anchor image can be adjusted with relative image of Tiled object for every object inside `images` folder. See `autofill properties` and `anchor image` to get more info.
 
@@ -120,9 +120,22 @@ You can change the images and add new objects (or images for existing object) wi
 
 Due the override issues, keep the `tsx` and `tmx` files under version control.
 
+All properties inside asset will be proposed to Tiled object properties. So you able to override it inside Tiled object properties on map editing. It's very useful to custom the properties of single object *(health of enemy, amount of gold or unique ID to get different data from you game database)*.
+
+You can scale objects and rotate them, this is supported by **Detiled**.
 
 
 ## Generate Defold assets flow
+
+To generate **Defold** assets, you should point the previous generated tilesets folder, the folder with created `tmx` **Tiled** maps and folder, where generated assets should be placed. The generated folder will be erased before generate, so don't modify it or don't place any handmade assets.
+
+To use generated map (it will be collection name with name of the map), include this collection inside your game collection.
+
+For every tilesets will be generated `spawners` - the game object with all required factories or collectionfactories for this tileset.
+
+Every generated map will include all required spawners to able spawn all entities inside *(if you want to spawn in manually)*.
+
+Since **Tiled** tilemap export is not perfect, I recommend you to re-save project in **Defold** after the export step to remove all unintended changes inside your VSC
 
 ### Properties
 - `no_export` - set to true to skip export of this object layer. Useful if you want create objects of this layer by yourself.
@@ -130,23 +143,9 @@ Due the override issues, keep the `tsx` and `tmx` files under version control.
 
 
 ## Glossary
-- Anchor image
-- Autofill properties
-- Image anchor
-
-
-## TODO Docs
-
-- map spawners, how they generated
-- assets generating flow
-- defold resources generating flow
-- groups
-- z layering
-- custom/additional tiled propeties for export
-- scaling/rotate go/collection
-- multiply images with single go/collection
-- go/collection properties
-- autofill properties
+- `Anchor image` - the image from asset, which exported thinks as main image. It find it as game object with sprite component. If sprite component or game object inside collection have the asset name, it will have more priority, than others. Otherwise the sprite with name `#sprite` have more priority than other sprite components
+- `Autofill properties` - the `detiled` properties, that can be set automatically on export. It have name `detiled_*`. For example `detiled_init_image` will be setup for all scripts of assets if will be found. You can use `detiled_init_image.script` to setup the image of asset on creating *(since **Defold** is not allow to override go or collection sprite properties directly)*
+- `Image anchor` - offset from anchor image to center of game object (or collection). It used to place perfectly objects from **Tiled** to **Defold** on export
 
 
 ## License
