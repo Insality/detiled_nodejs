@@ -8,7 +8,7 @@
   },
   "name": "detiled",
   "description": "Generate tilesets from Defold and Defold collections from Tiled maps",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "detiled.js",
   "bin": "detiled.js",
   "scripts": {
