@@ -145,6 +145,21 @@
    </object>
   </objectgroup>
  </tile>
+ <tile id="22" class="water">
+  <properties>
+   <property name="__object_name" value="water" />
+   <property name="__go_path" value="/example/assets/dungeon/objects/water/water.go" />
+   <property name="__image_name" value="entity" />
+   <property name="__is_collection" value="false" type="bool"/>
+   <property name="__default_image_name" value="null" />   <property name="__image_url" value="null" />
+  </properties>
+  <image width="undefined" height="undefined" source="../images/assets-dungeon-objects/entity.png"/>
+  <objectgroup draworder="index">
+   <object id="1" x="NaN" y="NaN">
+    <point/>
+   </object>
+  </objectgroup>
+ </tile>
  <tile id="6" class="weapon-tile_0103">
   <properties>
    <property name="__object_name" value="weapon" />
