@@ -51,6 +51,7 @@ Developed by [Insality](https://github.com/Insality)
 **MIT** License
 
 ## TODO Docs
+- Tiled Enviroment path
 - map spawners, how they generated
 - assets generating flow
 - defold resources generating flow

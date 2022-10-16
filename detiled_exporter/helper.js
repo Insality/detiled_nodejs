@@ -17,8 +17,10 @@ const MAP_PROPERTY_TYPE = {
 }
 
 
-M.log = function(message) {
-	console.log("[Di-Tiled]:", message)
+M.log = function() {
+	var args = Array.prototype.slice.call(arguments);
+	args.unshift("[Detiled]: ");
+	console.log.apply(console, args);
 };
 
 
@@ -185,6 +187,23 @@ M.get_files_from = function(target_path, extname) {
 
 	return files_name;
 };
+
+
+M.get_assets_item_data = function(image_path, asset_name, properties, size, anchor, go_path, default_image, image_url, is_collection) {
+	return {
+		image: image_path,
+		item: asset_name,
+		is_collection: is_collection,
+		properties: properties,
+		width: size.width,
+		height: size.height,
+		anchor_x: anchor.x + size.width/2,
+		anchor_y: anchor.y + size.height/2,
+		go_path: "/" + path.relative(process.cwd(), go_path),
+		default_image: default_image,
+		image_url: image_url,
+	}
+}
 
 
 module.exports = M

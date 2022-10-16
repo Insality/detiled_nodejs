@@ -1,21 +1,11 @@
 const fs = require("fs")
 const path = require("path")
 const process = require("process")
-const settings = require("../settings.json")
 
 const FACTORY_NODE_TEMPLATE = fs.readFileSync(path.join(__dirname, "templates/factory_node.template")).toString('utf8')
 const COLLECTION_FACTORY_NODE_TEMPLATE = fs.readFileSync(path.join(__dirname, "templates/collection_factory_node.template")).toString('utf8')
 
 const M = {}
-
-
-function get_property(props, prop_name) {
-	for (let i in props) {
-		if (props[i].name == prop_name) {
-			return props[i].value
-		}
-	}
-}
 
 
 function get_all_properies(props) {
@@ -92,7 +82,7 @@ M.generate_factories = function(data, output_path, mapping) {
 			objects_ready[object_name] = true
 		}
 
-		// delete system properties from generator
+		// Delete system properties from generator
 		delete properties.__go_path
 		delete properties.__object_name
 		delete properties.__image_name

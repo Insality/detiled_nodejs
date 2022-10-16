@@ -370,6 +370,39 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "weapon_23"
+  prototype: "/example/assets/dungeon/objects/weapon/weapon.go"
+  position {
+    x: 106.4942
+    y: 213.98
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "detiled_init_image"
+    properties {
+      id: "detiled_init_image"
+      value: "tile_0118"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "detiled_image_url"
+      value: "#sprite"
+      type: PROPERTY_TYPE_URL
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 collection_instances {
   id: "player_1"
   collection: "/example/assets/dungeon/objects/player/player.collection"

@@ -1,4 +1,5 @@
 {
 	"TILESETS_FOLDER_NAME": "tilesets",
-	"ASSETS_FOLDER_NAME": "assets"
+	"ASSETS_FOLDER_NAME": "assets",
+	"ASSETS_IMAGES_FOLDER": "images"
 }

@@ -7,9 +7,3 @@ go.property("hash", hash("set"))
 go.property("bool", false)
 go.property("atlas", resource.atlas(""))
 go.property("res_font", resource.font())
-
-function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
