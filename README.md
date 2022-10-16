@@ -4,7 +4,7 @@
 
 [![npm](https://img.shields.io/npm/v/detiled?label=detiled)](https://www.npmjs.com/package/detiled)
 
-**Detiled** - the set of tools to make work with [**Defold**](https://defold.com/) and [**Tiler**](https://www.mapeditor.org/) easier. **Detiled** have designed workflow how to generate **Tiled** tilemaps and tools for generate **Defold** assets from **Tiled** maps.
+**Detiled** - the set of tools to make work with [**Defold**](https://defold.com/) and [**Tiled**](https://www.mapeditor.org/) easier. **Detiled** have designed workflow how to generate **Tiled** tilemaps and tools for generate **Defold** assets from **Tiled** maps.
 
 
 ## Features
