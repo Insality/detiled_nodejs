@@ -317,8 +317,8 @@ function process_dir(assets_folder, output_path, tileset_path) {
 }
 
 function get_item_name(item_data) {
-	if (item_data.image) {
-		return item_data.item + "-" + path.basename(item_data.image, ".png")
+	if (item_data.image_name) {
+		return item_data.item + "-" + item_data.image_name
 	} else {
 		return item_data.item + "-" + item_data.item
 	}
@@ -372,17 +372,17 @@ function write_tilesets(output_path, items) {
 
 			let tiled_image_name = name + "-" + get_item_name(data) + ".png"
 			let new_image_path = path.join(images_folder, name)
-			let image_name = data.image || path.join(process.cwd(), constants.DEFAULT_IMAGE)
+			let image_path = data.image_path || path.join(process.cwd(), constants.DEFAULT_IMAGE)
 			new_image_path = path.join(new_image_path, tiled_image_name)
 
 			fs.mkdirSync(path.dirname(new_image_path), { recursive: true })
-			fs.copyFileSync(image_name, new_image_path)
+			fs.copyFileSync(image_path, new_image_path)
 			item = item.replace("{IMAGE_PATH}", path.relative(tileset_folder, new_image_path))
 
 			let properties = ""
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__object_name").replace("{VALUE}", data.item).replace("{TYPE}", "") + "\n"
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__go_path").replace("{VALUE}", data.go_path).replace("{TYPE}", "") + "\n"
-			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__image_name").replace("{VALUE}", path.basename(image_name, ".png")).replace("{TYPE}", "") + "\n"
+			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__image_name").replace("{VALUE}", path.basename(image_path, ".png")).replace("{TYPE}", "") + "\n"
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__is_collection").replace("{VALUE}", data.is_collection && "true" || "false").replace("{TYPE}", 'type="bool"') + "\n"
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__default_image_name").replace("{VALUE}", data.default_image).replace("{TYPE}", "")
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__image_url").replace("{VALUE}", data.image_url).replace("{TYPE}", "")

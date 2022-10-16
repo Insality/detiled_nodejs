@@ -52,7 +52,11 @@
   <object id="20" gid="149" x="276.434" y="281.421" width="16" height="16"/>
   <object id="21" gid="149" x="331.498" y="284.459" width="16" height="16"/>
   <object id="23" gid="144" x="98.4942" y="106.02" width="16" height="16"/>
-  <object id="25" gid="134" x="35.7189" y="298.032" width="80.7421" height="102.468" rotation="0.480196"/>
+  <object id="25" gid="134" x="35.7189" y="298.032" width="80.7421" height="102.468" rotation="0.480196">
+   <properties>
+    <property name="go:player_script:hash" value="osoe"/>
+   </properties>
+  </object>
   <object id="26" gid="159" x="145.272" y="300.7" width="32" height="32"/>
   <object id="27" gid="159" x="175.698" y="300.7" width="32" height="32"/>
   <object id="31" gid="160" x="272.153" y="192.366" width="32" height="32"/>

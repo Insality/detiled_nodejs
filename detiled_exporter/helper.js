@@ -191,10 +191,11 @@ M.get_files_from = function(target_path, extname) {
 
 M.get_assets_item_data = function(image_path, asset_name, properties, size, anchor, go_path, default_image, image_url, is_collection) {
 	return {
-		image: image_path,
+		image_path: image_path,
+		image_name: image_path && path.basename(image_path, ".png"),
 		item: asset_name,
 		is_collection: is_collection,
-		properties: properties,
+		properties: JSON.parse(JSON.stringify(properties)),
 		width: size.width,
 		height: size.height,
 		anchor_x: anchor.x + size.width/2,

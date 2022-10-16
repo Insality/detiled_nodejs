@@ -673,6 +673,17 @@ collection_instances {
       }
     }
   }
+  instance_properties {
+    id: "go"
+    properties {
+      id: "player_script"
+      properties {
+        id: "hash"
+        value: "osoe"
+        type: PROPERTY_TYPE_HASH
+      }
+    }
+  }
   scale3 {
     x: 5.0463815
     y: 6.40425
