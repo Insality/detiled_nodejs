@@ -1,0 +1,9 @@
+go.property("detiled_init_image", hash(""))
+go.property("detiled_image_url", msg.url())
+
+function init(self)
+	if self.detiled_init_image ~= hash("") then
+		print("set image")
+		sprite.play_flipbook(self.detiled_image_url, self.detiled_init_image)
+	end
+end
