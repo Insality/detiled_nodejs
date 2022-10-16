@@ -162,6 +162,12 @@ function process_map(map_path, data, output_path, mapping) {
 			tilelayer_counter += 1
 		}
 		if (layer.type == "objectgroup") {
+			let is_no_export = get_property(layer.properties, "no_export", false)
+			if (is_no_export) {
+				helper.log("Skip export of layer " + layer.name + " due property no_export")
+				continue;
+			}
+
 			// Create collection with this layer
 			let layer_name = layer.name.replaceAll(" ", "_").toLowerCase()
 			let collection_layer_name = name + "_" + layer_name
