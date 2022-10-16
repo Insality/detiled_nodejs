@@ -76,6 +76,7 @@ M.generate_factories = function(data, output_path, mapping) {
 			object_name: object_name,
 			is_collection: properties.__is_collection,
 			image_name: properties.__image_name,
+			image_url: properties.__image_url,
 			anchor: anchor,
 			width: tile.imagewidth,
 			height: tile.imageheight,
@@ -95,6 +96,7 @@ M.generate_factories = function(data, output_path, mapping) {
 		delete properties.__go_path
 		delete properties.__object_name
 		delete properties.__image_name
+		delete properties.__image_url
 		delete properties.__is_collection
 	}
 

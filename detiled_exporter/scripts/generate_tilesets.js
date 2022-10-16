@@ -95,13 +95,10 @@ function get_properties_from_script(component, component_name, go_id) {
 				}
 				if (m[1] && m[2]) {
 					let property_info = helper.script_to_defold_property(m[1], m[2])
-					if (!property_info.key.startsWith("detiled_")) {
-						properties[go_id + ":" + component_name + ":" + property_info.key] = {
-							value: check_number(property_info.value),
-							type: property_info.type,
-						}
+					properties[go_id + ":" + component_name + ":" + property_info.key] = {
+						value: check_number(property_info.value),
+						type: property_info.type,
 					}
-
 				}
 			}
 		}
@@ -130,11 +127,9 @@ function parse_properties_from_go(go_parsed, go_properties, go_id) {
 				let prop = elem.properties[prop_key]
 				let property_info = helper.defold_to_tiled_property_value(prop.id[0], prop.value[0], prop.type[0])
 
-				if (!property_info.key.startsWith("detiled_")) {
-					go_properties[go_id + ":" + elem.id[0] + ":" + property_info.key] = {
-						value: property_info.value,
-						type: property_info.type
-					}
+				go_properties[go_id + ":" + elem.id[0] + ":" + property_info.key] = {
+					value: property_info.value,
+					type: property_info.type
 				}
 			}
 		}

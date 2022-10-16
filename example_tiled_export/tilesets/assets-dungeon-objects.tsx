@@ -7,6 +7,8 @@
    <property name="__image_name" value="tile_0096" />
    <property name="__is_collection" value="true" type="bool"/>
    <property name="__default_image_name" value="tile_0096" />   <property name="__image_url" value="player#sprite" />
+   <property name="player:detiled_init_image:detiled_init_image" value="" />
+   <property name="player:detiled_init_image:detiled_image_url" value="" />
    <property name="go:player_script:life" value="30" type="float"/>
    <property name="go:player_script:v3" value="1.0, 2.0, 3.0" />
    <property name="go:player_script:v4" value="4.0, 5.0, 6.0, 7.0" />
@@ -31,6 +33,8 @@
    <property name="__image_name" value="tile_0097" />
    <property name="__is_collection" value="true" type="bool"/>
    <property name="__default_image_name" value="tile_0096" />   <property name="__image_url" value="player#sprite" />
+   <property name="player:detiled_init_image:detiled_init_image" value="" />
+   <property name="player:detiled_init_image:detiled_image_url" value="" />
    <property name="go:player_script:life" value="30" type="float"/>
    <property name="go:player_script:v3" value="1.0, 2.0, 3.0" />
    <property name="go:player_script:v4" value="4.0, 5.0, 6.0, 7.0" />
@@ -55,6 +59,8 @@
    <property name="__image_name" value="tile_0098" />
    <property name="__is_collection" value="true" type="bool"/>
    <property name="__default_image_name" value="tile_0096" />   <property name="__image_url" value="player#sprite" />
+   <property name="player:detiled_init_image:detiled_init_image" value="" />
+   <property name="player:detiled_init_image:detiled_image_url" value="" />
    <property name="go:player_script:life" value="30" type="float"/>
    <property name="go:player_script:v3" value="1.0, 2.0, 3.0" />
    <property name="go:player_script:v4" value="4.0, 5.0, 6.0, 7.0" />
@@ -79,6 +85,8 @@
    <property name="__image_name" value="tile_0099" />
    <property name="__is_collection" value="true" type="bool"/>
    <property name="__default_image_name" value="tile_0096" />   <property name="__image_url" value="player#sprite" />
+   <property name="player:detiled_init_image:detiled_init_image" value="" />
+   <property name="player:detiled_init_image:detiled_image_url" value="" />
    <property name="go:player_script:life" value="30" type="float"/>
    <property name="go:player_script:v3" value="1.0, 2.0, 3.0" />
    <property name="go:player_script:v4" value="4.0, 5.0, 6.0, 7.0" />
@@ -103,6 +111,8 @@
    <property name="__image_name" value="tile_0100" />
    <property name="__is_collection" value="true" type="bool"/>
    <property name="__default_image_name" value="tile_0096" />   <property name="__image_url" value="player#sprite" />
+   <property name="player:detiled_init_image:detiled_init_image" value="" />
+   <property name="player:detiled_init_image:detiled_image_url" value="" />
    <property name="go:player_script:life" value="30" type="float"/>
    <property name="go:player_script:v3" value="1.0, 2.0, 3.0" />
    <property name="go:player_script:v4" value="4.0, 5.0, 6.0, 7.0" />
@@ -128,6 +138,8 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
    <property name="weapon:weapon_script:power" value="20" type="float"/>
+   <property name="weapon:detiled_init_image:detiled_init_image" value="" />
+   <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0103.png"/>
   <objectgroup draworder="index">
@@ -144,6 +156,8 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
    <property name="weapon:weapon_script:power" value="20" type="float"/>
+   <property name="weapon:detiled_init_image:detiled_init_image" value="" />
+   <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0104.png"/>
   <objectgroup draworder="index">
@@ -160,6 +174,8 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
    <property name="weapon:weapon_script:power" value="20" type="float"/>
+   <property name="weapon:detiled_init_image:detiled_init_image" value="" />
+   <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0105.png"/>
   <objectgroup draworder="index">
@@ -176,6 +192,8 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
    <property name="weapon:weapon_script:power" value="20" type="float"/>
+   <property name="weapon:detiled_init_image:detiled_init_image" value="" />
+   <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0106.png"/>
   <objectgroup draworder="index">
@@ -192,6 +210,8 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
    <property name="weapon:weapon_script:power" value="20" type="float"/>
+   <property name="weapon:detiled_init_image:detiled_init_image" value="" />
+   <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0107.png"/>
   <objectgroup draworder="index">
@@ -208,6 +228,8 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
    <property name="weapon:weapon_script:power" value="20" type="float"/>
+   <property name="weapon:detiled_init_image:detiled_init_image" value="" />
+   <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0117.png"/>
   <objectgroup draworder="index">
@@ -224,6 +246,8 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
    <property name="weapon:weapon_script:power" value="20" type="float"/>
+   <property name="weapon:detiled_init_image:detiled_init_image" value="" />
+   <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0118.png"/>
   <objectgroup draworder="index">
@@ -240,6 +264,8 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
    <property name="weapon:weapon_script:power" value="20" type="float"/>
+   <property name="weapon:detiled_init_image:detiled_init_image" value="" />
+   <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0119.png"/>
   <objectgroup draworder="index">
@@ -256,6 +282,8 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
    <property name="weapon:weapon_script:power" value="20" type="float"/>
+   <property name="weapon:detiled_init_image:detiled_init_image" value="" />
+   <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0125.png"/>
   <objectgroup draworder="index">
@@ -272,6 +300,8 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
    <property name="weapon:weapon_script:power" value="20" type="float"/>
+   <property name="weapon:detiled_init_image:detiled_init_image" value="" />
+   <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0126.png"/>
   <objectgroup draworder="index">
@@ -288,6 +318,8 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
    <property name="weapon:weapon_script:power" value="20" type="float"/>
+   <property name="weapon:detiled_init_image:detiled_init_image" value="" />
+   <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0127.png"/>
   <objectgroup draworder="index">
@@ -304,6 +336,8 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
    <property name="weapon:weapon_script:power" value="20" type="float"/>
+   <property name="weapon:detiled_init_image:detiled_init_image" value="" />
+   <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0128.png"/>
   <objectgroup draworder="index">
@@ -320,6 +354,8 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
    <property name="weapon:weapon_script:power" value="20" type="float"/>
+   <property name="weapon:detiled_init_image:detiled_init_image" value="" />
+   <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0129.png"/>
   <objectgroup draworder="index">
@@ -336,6 +372,8 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
    <property name="weapon:weapon_script:power" value="20" type="float"/>
+   <property name="weapon:detiled_init_image:detiled_init_image" value="" />
+   <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0130.png"/>
   <objectgroup draworder="index">
@@ -352,6 +390,8 @@
    <property name="__is_collection" value="false" type="bool"/>
    <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
    <property name="weapon:weapon_script:power" value="20" type="float"/>
+   <property name="weapon:detiled_init_image:detiled_init_image" value="" />
+   <property name="weapon:detiled_init_image:detiled_image_url" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0131.png"/>
   <objectgroup draworder="index">

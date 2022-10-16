@@ -50,9 +50,38 @@ function get_property(properties, key, default_value) {
 }
 
 
+function autofill_detiled_properties(object, mapping_info) {
+	if (!mapping_info.properties) {
+		return
+	}
+
+	for (key in mapping_info.properties) {
+		let property_path = key.split(":")
+		if (property_path[2] == "detiled_init_image") {
+			object.properties = object.properties || []
+			object.properties.push({
+				name: key,
+				type: "string",
+				value: mapping_info.image_name
+			})
+		}
+		if (property_path[2] == "detiled_image_url") {
+			object.properties = object.properties || []
+			object.properties.push({
+				name: key,
+				type: "string",
+				value: mapping_info.image_url
+			})
+		}
+	}
+}
+
+
 function get_properties_for_collection(object, mapping_info) {
 	let properties_by_go = {}
 	let result = []
+
+	autofill_detiled_properties(object, mapping_info)
 
 	if (object.properties) {
 		for (let index in object.properties) {
@@ -84,6 +113,8 @@ function get_properties_for_collection(object, mapping_info) {
 
 function get_properties_for_object(object, mapping_info) {
 	let result = []
+
+	autofill_detiled_properties(object, mapping_info)
 
 	if (object.properties) {
 		for (let index in object.properties) {

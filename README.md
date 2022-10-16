@@ -1,6 +1,6 @@
 [![](media/detiled_logo.png)](https://insality.github.io/detiled/)
 
-**De-Tiled Workflow** - bunch of tools to make work with Defold and Tiler easier.
+**Detiled Workflow** - bunch of tools to make work with Defold and Tiler easier.
 Tiled Generator can do next stuff:
 
 - Generate Tiled tilesets from Defold assets folder
@@ -9,18 +9,21 @@ Tiled Generator can do next stuff:
 
 ## Setup
 
--- TODO
+Detiled contains two modules: npm module for export work and Defold library to additional work with generated assets and Maps/Tilesets jsons
+
+Install Detiled module:
+`npm install -g detiled`
 
 ## Usage
 
-Okay, need to refactor all project
-But current usage:
-
 ### Generate tilesets
 
-`node generate_tilesets.js {assets_folder} {output_folder}`
-Tool should be called from game.project folder
-Output folder can be use separatly in Tiles (for example by your level designers)
+`detiled generate_tilesets [defold_assets_folder_path] [output_folder_path]`
+	-- Export assets from Defold asset folder to Tiled's tilesets
+
+
+`detiled export [tilesets_folder_path] [maps_folder_path] [output_folder_path]`
+	-- Generate Defold collections and other assets from Tiled's maps and tilesets
 
 
 ### Generate Defold stuff
@@ -46,6 +49,18 @@ Generator will create map_spawner collection with only used spawners in this map
 Developed by [Insality](https://github.com/Insality)
 
 **MIT** License
+
+## TODO Docs
+- map spawners, how they generated
+- assets generating flow
+- defold resources generating flow
+- groups
+- z layering
+- custom/additional tiled propeties for export
+- scaling/rotate go/collection
+- multiply images with single go/collection
+- go/collection properties
+- autofill properties
 
 
 ## Issues and suggestions
