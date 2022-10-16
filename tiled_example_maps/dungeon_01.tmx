@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="2022.09.22" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="25">
+<map version="1.9" tiledversion="2022.09.22" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="29">
  <editorsettings>
   <export target="../../../s/dungeon_01..collection" format="defoldcollection"/>
  </editorsettings>
@@ -30,7 +30,6 @@
 </data>
  </layer>
  <objectgroup id="3" name="Object Layer 1">
-  <object id="1" gid="133" x="303.321" y="144.203" width="16" height="16"/>
   <object id="2" gid="140" x="321.19" y="144.6" width="16" height="16"/>
   <object id="6" gid="135" x="335.486" y="144.6" width="16" height="16"/>
   <object id="7" gid="144" x="352.958" y="143.012" width="16" height="16"/>
@@ -52,7 +51,9 @@
   <object id="20" gid="149" x="276.434" y="281.421" width="16" height="16"/>
   <object id="21" gid="149" x="331.498" y="284.459" width="16" height="16"/>
   <object id="23" gid="144" x="98.4942" y="106.02" width="16" height="16"/>
-  <object id="24" gid="133" x="30.4872" y="287.032" width="100.376" height="100.376"/>
+  <object id="25" gid="134" x="35.7189" y="298.032" width="80.7421" height="102.468" rotation="0.480196"/>
+  <object id="26" gid="154" x="146.272" y="300.7" width="32" height="32"/>
+  <object id="27" gid="154" x="176.698" y="300.7" width="32" height="32"/>
  </objectgroup>
  <group id="11" name="Group 1">
   <layer id="2" name="Tile Layer 2" width="30" height="20">

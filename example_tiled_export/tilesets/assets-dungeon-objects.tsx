@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.9" tiledversion="1.9.2" name="assets-dungeon-objects" tilewidth="16" tileheight="16" spacing="{TILESET_SPACING}" margin="{TILESET_MARGIN}" columns="0">
- <tile id="0" class="player-tile_0096">
+<tileset version="1.9" tiledversion="1.9.2" name="assets-dungeon-objects" tilewidth="NaN" tileheight="NaN" spacing="{TILESET_SPACING}" margin="{TILESET_MARGIN}" columns="0">
+ <tile id="21" class="fire">
+  <properties>
+   <property name="__object_name" value="fire" />
+   <property name="__go_path" value="/example/assets/dungeon/objects/fire/fire.go" />
+   <property name="__image_name" value="entity" />
+   <property name="__is_collection" value="false" type="bool"/>
+   <property name="__default_image_name" value="null" />   <property name="__image_url" value="null" />
+  </properties>
+  <image width="undefined" height="undefined" source="../images/assets-dungeon-objects/entity.png"/>
+  <objectgroup draworder="index">
+   <object id="1" x="NaN" y="NaN">
+    <point/>
+   </object>
+  </objectgroup>
+ </tile>
+ <tile id="1" class="player-tile_0096">
   <properties>
    <property name="__object_name" value="player" />
    <property name="__go_path" value="/example/assets/dungeon/objects/player/player.collection" />
@@ -26,7 +41,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="1" class="player-tile_0097">
+ <tile id="2" class="player-tile_0097">
   <properties>
    <property name="__object_name" value="player" />
    <property name="__go_path" value="/example/assets/dungeon/objects/player/player.collection" />
@@ -52,7 +67,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="2" class="player-tile_0098">
+ <tile id="3" class="player-tile_0098">
   <properties>
    <property name="__object_name" value="player" />
    <property name="__go_path" value="/example/assets/dungeon/objects/player/player.collection" />
@@ -78,7 +93,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="3" class="player-tile_0099">
+ <tile id="4" class="player-tile_0099">
   <properties>
    <property name="__object_name" value="player" />
    <property name="__go_path" value="/example/assets/dungeon/objects/player/player.collection" />
@@ -104,7 +119,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="4" class="player-tile_0100">
+ <tile id="5" class="player-tile_0100">
   <properties>
    <property name="__object_name" value="player" />
    <property name="__go_path" value="/example/assets/dungeon/objects/player/player.collection" />
@@ -130,7 +145,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="5" class="weapon-tile_0103">
+ <tile id="6" class="weapon-tile_0103">
   <properties>
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
@@ -148,7 +163,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="6" class="weapon-tile_0104">
+ <tile id="7" class="weapon-tile_0104">
   <properties>
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
@@ -166,7 +181,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="7" class="weapon-tile_0105">
+ <tile id="8" class="weapon-tile_0105">
   <properties>
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
@@ -184,7 +199,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="8" class="weapon-tile_0106">
+ <tile id="9" class="weapon-tile_0106">
   <properties>
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
@@ -202,7 +217,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="9" class="weapon-tile_0107">
+ <tile id="10" class="weapon-tile_0107">
   <properties>
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
@@ -220,7 +235,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="10" class="weapon-tile_0117">
+ <tile id="11" class="weapon-tile_0117">
   <properties>
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
@@ -238,7 +253,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="11" class="weapon-tile_0118">
+ <tile id="12" class="weapon-tile_0118">
   <properties>
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
@@ -256,7 +271,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="12" class="weapon-tile_0119">
+ <tile id="13" class="weapon-tile_0119">
   <properties>
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
@@ -274,7 +289,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="13" class="weapon-tile_0125">
+ <tile id="14" class="weapon-tile_0125">
   <properties>
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
@@ -292,7 +307,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="14" class="weapon-tile_0126">
+ <tile id="15" class="weapon-tile_0126">
   <properties>
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
@@ -310,7 +325,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="15" class="weapon-tile_0127">
+ <tile id="16" class="weapon-tile_0127">
   <properties>
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
@@ -328,7 +343,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="16" class="weapon-tile_0128">
+ <tile id="17" class="weapon-tile_0128">
   <properties>
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
@@ -346,7 +361,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="17" class="weapon-tile_0129">
+ <tile id="18" class="weapon-tile_0129">
   <properties>
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
@@ -364,7 +379,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="18" class="weapon-tile_0130">
+ <tile id="19" class="weapon-tile_0130">
   <properties>
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
@@ -382,7 +397,7 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="19" class="weapon-tile_0131">
+ <tile id="20" class="weapon-tile_0131">
   <properties>
    <property name="__object_name" value="weapon" />
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />

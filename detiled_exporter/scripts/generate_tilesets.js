@@ -162,8 +162,12 @@ function process_collection_asset(asset_path, tileset_path) {
 	helper.log("Process collection asset", path.relative(process.cwd(), asset_path), tileset_path.join("-"))
 
 	let asset_name = path.basename(asset_path)
-	let images = fs.readdirSync(path.join(asset_path, constants.ASSETS_IMAGES_FOLDER))
-		.filter(name => name.endsWith(".png"))
+	let image_folder_path = path.join(asset_path, constants.ASSETS_IMAGES_FOLDER)
+	let images = []
+	if (fs.existsSync(image_folder_path)) {
+		images = fs.readdirSync(image_folder_path)
+			.filter(name => name.endsWith(".png"))
+	}
 
 	let anchor = { x: 0, y: 0 }
 	let default_image = null
@@ -190,12 +194,18 @@ function process_collection_asset(asset_path, tileset_path) {
 		}
 	}
 
-	for (let i in images) {
-		let image_path = path.join(asset_path, constants.ASSETS_IMAGES_FOLDER, images[i])
-		let size = image_size(image_path)
+	if (images.length > 0) {
+		for (let i in images) {
+			let image_path = path.join(image_folder_path, images[i])
+			let size = image_size(image_path)
 
-		let item = helper.get_assets_item_data(image_path, asset_name, go_properties, size,
-			anchor, go_path, default_image, image_url, true)
+			let item = helper.get_assets_item_data(image_path, asset_name, go_properties, size,
+				anchor, go_path, default_image, image_url, true)
+			items[tileset_name].push(item)
+		}
+	} else {
+		let item = helper.get_assets_item_data(null, asset_name, go_properties, constants.DEFAULT_IMAGE_SIZE,
+			anchor, go_path, null, null, true)
 		items[tileset_name].push(item)
 	}
 }
@@ -208,8 +218,12 @@ function process_asset(asset_path, tileset_path) {
 	helper.log("Process game object asset", path.relative(process.cwd(), asset_path), tileset_path.join("-"))
 
 	let asset_name = path.basename(asset_path)
-	let images = fs.readdirSync(path.join(asset_path, constants.ASSETS_IMAGES_FOLDER))
-		.filter(name => name.endsWith(".png"))
+	let image_folder_path = path.join(asset_path, constants.ASSETS_IMAGES_FOLDER)
+	let images = []
+	if (fs.existsSync(image_folder_path)) {
+		images = fs.readdirSync(image_folder_path)
+			.filter(name => name.endsWith(".png"))
+	}
 
 	let anchor = { x: 0, y: 0 }
 	let default_image = null
@@ -230,12 +244,18 @@ function process_asset(asset_path, tileset_path) {
 		}
 	}
 
-	for (let i in images) {
-		let image_path = path.join(asset_path, constants.ASSETS_IMAGES_FOLDER, images[i])
-		let size = image_size(image_path)
+	if (images.length > 0) {
+		for (let i in images) {
+			let image_path = path.join(image_folder_path, images[i])
+			let size = image_size(image_path)
 
-		let item = helper.get_assets_item_data(image_path, asset_name, go_properties, size,
-				anchor, go_path, default_image, image_url, false)
+			let item = helper.get_assets_item_data(image_path, asset_name, go_properties, size,
+					anchor, go_path, default_image, image_url, false)
+			items[tileset_name].push(item)
+		}
+	} else {
+		let item = helper.get_assets_item_data(null, asset_name, go_properties, constants.DEFAULT_IMAGE_SIZE,
+			anchor, go_path, null, null, false)
 		items[tileset_name].push(item)
 	}
 }
@@ -297,7 +317,11 @@ function process_dir(assets_folder, output_path, tileset_path) {
 }
 
 function get_item_name(item_data) {
-	return item_data.item + "-" + path.basename(item_data.image, ".png")
+	if (item_data.image) {
+		return item_data.item + "-" + path.basename(item_data.image, ".png")
+	} else {
+		return item_data.item
+	}
 }
 
 
@@ -347,16 +371,17 @@ function write_tilesets(output_path, items) {
 			item = item.replace("{ANCHOR_Y}", data.anchor_y)
 
 			let new_image_path = path.join(images_folder, name)
-			new_image_path = path.join(new_image_path, path.basename(data.image))
+			let image_name = data.image || path.join(process.cwd(), constants.DEFAULT_IMAGE)
+			new_image_path = path.join(new_image_path, path.basename(image_name))
 
 			fs.mkdirSync(path.dirname(new_image_path), { recursive: true })
-			fs.copyFileSync(data.image, new_image_path)
+			fs.copyFileSync(image_name, new_image_path)
 			item = item.replace("{IMAGE_PATH}", path.relative(tileset_folder, new_image_path))
 
 			let properties = ""
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__object_name").replace("{VALUE}", data.item).replace("{TYPE}", "") + "\n"
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__go_path").replace("{VALUE}", data.go_path).replace("{TYPE}", "") + "\n"
-			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__image_name").replace("{VALUE}", path.basename(data.image, ".png")).replace("{TYPE}", "") + "\n"
+			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__image_name").replace("{VALUE}", path.basename(image_name, ".png")).replace("{TYPE}", "") + "\n"
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__is_collection").replace("{VALUE}", data.is_collection && "true" || "false").replace("{TYPE}", 'type="bool"') + "\n"
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__default_image_name").replace("{VALUE}", data.default_image).replace("{TYPE}", "")
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__image_url").replace("{VALUE}", data.image_url).replace("{TYPE}", "")

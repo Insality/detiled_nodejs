@@ -1,12 +1,28 @@
 tile_set: "/example/assets/dungeon/tileset/dungeon/dungeon.tilesource"
 layers {
   id: "Tile Layer 2"
-  z: 9.999999747378752e-05
+  z: 1.0E-4
   is_visible: 1
   cell {
     x: 10
     y: 6
     tile: 110
+    h_flip: 0
+    v_flip: 0
+    rotate90: 0
+  }
+  cell {
+    x: 16
+    y: 7
+    tile: 98
+    h_flip: 0
+    v_flip: 0
+    rotate90: 0
+  }
+  cell {
+    x: 17
+    y: 7
+    tile: 91
     h_flip: 0
     v_flip: 0
     rotate90: 0
@@ -35,26 +51,10 @@ layers {
     v_flip: 0
     rotate90: 0
   }
-  cell {
-    x: 16
-    y: 7
-    tile: 98
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
-  cell {
-    x: 17
-    y: 7
-    tile: 91
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
 }
 layers {
   id: "Tile Layer 3"
-  z: 0.0001000099946395494
+  z: 1.00009995E-4
   is_visible: 1
   cell {
     x: 13
@@ -129,6 +129,5 @@ layers {
     rotate90: 0
   }
 }
-
 material: "/builtins/materials/tile_map.material"
 blend_mode: BLEND_MODE_ALPHA
