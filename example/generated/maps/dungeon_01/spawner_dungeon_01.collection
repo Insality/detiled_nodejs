@@ -1,4 +1,5 @@
 name: "spawner_dungeon_01"
+scale_along_z: 0
 instances {
   id: "spawner_assets-dungeon-objects"
   prototype: "/example/generated/spawners/spawner_assets-dungeon-objects.go"

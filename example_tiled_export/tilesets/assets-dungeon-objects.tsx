@@ -6,20 +6,20 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/player/player.collection" />
    <property name="__image_name" value="tile_0096" />
    <property name="__is_collection" value="true" type="bool"/>
-   <property name="__default_image_name" value="tile_0096" />
-   <property name="life" value="20" type="float"/>
-   <property name="v3" value="1.0, 2.0, 3.0" />
-   <property name="v4" value="4.0, 5.0, 6.0, 7.0" />
-   <property name="quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
-   <property name="url" value="s" />
-   <property name="hash" value="set" />
-   <property name="bool" value="true" type="bool"/>
-   <property name="atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
-   <property name="res_font" value="" />
+   <property name="__default_image_name" value="tile_0096" />   <property name="__image_url" value="player#sprite" />
+   <property name="go:player_script:life" value="30" type="float"/>
+   <property name="go:player_script:v3" value="1.0, 2.0, 3.0" />
+   <property name="go:player_script:v4" value="4.0, 5.0, 6.0, 7.0" />
+   <property name="go:player_script:quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
+   <property name="go:player_script:url" value="s" />
+   <property name="go:player_script:hash" value="set" />
+   <property name="go:player_script:bool" value="true" type="bool"/>
+   <property name="go:player_script:atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
+   <property name="go:player_script:res_font" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0096.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -30,20 +30,20 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/player/player.collection" />
    <property name="__image_name" value="tile_0097" />
    <property name="__is_collection" value="true" type="bool"/>
-   <property name="__default_image_name" value="tile_0096" />
-   <property name="life" value="20" type="float"/>
-   <property name="v3" value="1.0, 2.0, 3.0" />
-   <property name="v4" value="4.0, 5.0, 6.0, 7.0" />
-   <property name="quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
-   <property name="url" value="s" />
-   <property name="hash" value="set" />
-   <property name="bool" value="true" type="bool"/>
-   <property name="atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
-   <property name="res_font" value="" />
+   <property name="__default_image_name" value="tile_0096" />   <property name="__image_url" value="player#sprite" />
+   <property name="go:player_script:life" value="30" type="float"/>
+   <property name="go:player_script:v3" value="1.0, 2.0, 3.0" />
+   <property name="go:player_script:v4" value="4.0, 5.0, 6.0, 7.0" />
+   <property name="go:player_script:quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
+   <property name="go:player_script:url" value="s" />
+   <property name="go:player_script:hash" value="set" />
+   <property name="go:player_script:bool" value="true" type="bool"/>
+   <property name="go:player_script:atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
+   <property name="go:player_script:res_font" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0097.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -54,20 +54,20 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/player/player.collection" />
    <property name="__image_name" value="tile_0098" />
    <property name="__is_collection" value="true" type="bool"/>
-   <property name="__default_image_name" value="tile_0096" />
-   <property name="life" value="20" type="float"/>
-   <property name="v3" value="1.0, 2.0, 3.0" />
-   <property name="v4" value="4.0, 5.0, 6.0, 7.0" />
-   <property name="quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
-   <property name="url" value="s" />
-   <property name="hash" value="set" />
-   <property name="bool" value="true" type="bool"/>
-   <property name="atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
-   <property name="res_font" value="" />
+   <property name="__default_image_name" value="tile_0096" />   <property name="__image_url" value="player#sprite" />
+   <property name="go:player_script:life" value="30" type="float"/>
+   <property name="go:player_script:v3" value="1.0, 2.0, 3.0" />
+   <property name="go:player_script:v4" value="4.0, 5.0, 6.0, 7.0" />
+   <property name="go:player_script:quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
+   <property name="go:player_script:url" value="s" />
+   <property name="go:player_script:hash" value="set" />
+   <property name="go:player_script:bool" value="true" type="bool"/>
+   <property name="go:player_script:atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
+   <property name="go:player_script:res_font" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0098.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -78,20 +78,20 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/player/player.collection" />
    <property name="__image_name" value="tile_0099" />
    <property name="__is_collection" value="true" type="bool"/>
-   <property name="__default_image_name" value="tile_0096" />
-   <property name="life" value="20" type="float"/>
-   <property name="v3" value="1.0, 2.0, 3.0" />
-   <property name="v4" value="4.0, 5.0, 6.0, 7.0" />
-   <property name="quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
-   <property name="url" value="s" />
-   <property name="hash" value="set" />
-   <property name="bool" value="true" type="bool"/>
-   <property name="atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
-   <property name="res_font" value="" />
+   <property name="__default_image_name" value="tile_0096" />   <property name="__image_url" value="player#sprite" />
+   <property name="go:player_script:life" value="30" type="float"/>
+   <property name="go:player_script:v3" value="1.0, 2.0, 3.0" />
+   <property name="go:player_script:v4" value="4.0, 5.0, 6.0, 7.0" />
+   <property name="go:player_script:quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
+   <property name="go:player_script:url" value="s" />
+   <property name="go:player_script:hash" value="set" />
+   <property name="go:player_script:bool" value="true" type="bool"/>
+   <property name="go:player_script:atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
+   <property name="go:player_script:res_font" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0099.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -102,20 +102,20 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/player/player.collection" />
    <property name="__image_name" value="tile_0100" />
    <property name="__is_collection" value="true" type="bool"/>
-   <property name="__default_image_name" value="tile_0096" />
-   <property name="life" value="20" type="float"/>
-   <property name="v3" value="1.0, 2.0, 3.0" />
-   <property name="v4" value="4.0, 5.0, 6.0, 7.0" />
-   <property name="quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
-   <property name="url" value="s" />
-   <property name="hash" value="set" />
-   <property name="bool" value="true" type="bool"/>
-   <property name="atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
-   <property name="res_font" value="" />
+   <property name="__default_image_name" value="tile_0096" />   <property name="__image_url" value="player#sprite" />
+   <property name="go:player_script:life" value="30" type="float"/>
+   <property name="go:player_script:v3" value="1.0, 2.0, 3.0" />
+   <property name="go:player_script:v4" value="4.0, 5.0, 6.0, 7.0" />
+   <property name="go:player_script:quar" value="quat 0.2880148, 0.2880148, 0.6457921, 0.6457921" />
+   <property name="go:player_script:url" value="s" />
+   <property name="go:player_script:hash" value="set" />
+   <property name="go:player_script:bool" value="true" type="bool"/>
+   <property name="go:player_script:atlas" value="/example/assets/dungeon/tileset/dungeon/dungeon.tilesource" />
+   <property name="go:player_script:res_font" value="" />
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0100.png"/>
   <objectgroup draworder="index">
-   <object id="1" x="8" y="8">
+   <object id="1" x="8" y="16">
     <point/>
    </object>
   </objectgroup>
@@ -126,8 +126,8 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0103" />
    <property name="__is_collection" value="false" type="bool"/>
-   <property name="__default_image_name" value="tile_0126" />
-   <property name="power" value="20" type="float"/>
+   <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
+   <property name="weapon:weapon_script:power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0103.png"/>
   <objectgroup draworder="index">
@@ -142,8 +142,8 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0104" />
    <property name="__is_collection" value="false" type="bool"/>
-   <property name="__default_image_name" value="tile_0126" />
-   <property name="power" value="20" type="float"/>
+   <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
+   <property name="weapon:weapon_script:power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0104.png"/>
   <objectgroup draworder="index">
@@ -158,8 +158,8 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0105" />
    <property name="__is_collection" value="false" type="bool"/>
-   <property name="__default_image_name" value="tile_0126" />
-   <property name="power" value="20" type="float"/>
+   <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
+   <property name="weapon:weapon_script:power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0105.png"/>
   <objectgroup draworder="index">
@@ -174,8 +174,8 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0106" />
    <property name="__is_collection" value="false" type="bool"/>
-   <property name="__default_image_name" value="tile_0126" />
-   <property name="power" value="20" type="float"/>
+   <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
+   <property name="weapon:weapon_script:power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0106.png"/>
   <objectgroup draworder="index">
@@ -190,8 +190,8 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0107" />
    <property name="__is_collection" value="false" type="bool"/>
-   <property name="__default_image_name" value="tile_0126" />
-   <property name="power" value="20" type="float"/>
+   <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
+   <property name="weapon:weapon_script:power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0107.png"/>
   <objectgroup draworder="index">
@@ -206,8 +206,8 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0117" />
    <property name="__is_collection" value="false" type="bool"/>
-   <property name="__default_image_name" value="tile_0126" />
-   <property name="power" value="20" type="float"/>
+   <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
+   <property name="weapon:weapon_script:power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0117.png"/>
   <objectgroup draworder="index">
@@ -222,8 +222,8 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0118" />
    <property name="__is_collection" value="false" type="bool"/>
-   <property name="__default_image_name" value="tile_0126" />
-   <property name="power" value="20" type="float"/>
+   <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
+   <property name="weapon:weapon_script:power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0118.png"/>
   <objectgroup draworder="index">
@@ -238,8 +238,8 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0119" />
    <property name="__is_collection" value="false" type="bool"/>
-   <property name="__default_image_name" value="tile_0126" />
-   <property name="power" value="20" type="float"/>
+   <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
+   <property name="weapon:weapon_script:power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0119.png"/>
   <objectgroup draworder="index">
@@ -254,8 +254,8 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0125" />
    <property name="__is_collection" value="false" type="bool"/>
-   <property name="__default_image_name" value="tile_0126" />
-   <property name="power" value="20" type="float"/>
+   <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
+   <property name="weapon:weapon_script:power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0125.png"/>
   <objectgroup draworder="index">
@@ -270,8 +270,8 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0126" />
    <property name="__is_collection" value="false" type="bool"/>
-   <property name="__default_image_name" value="tile_0126" />
-   <property name="power" value="20" type="float"/>
+   <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
+   <property name="weapon:weapon_script:power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0126.png"/>
   <objectgroup draworder="index">
@@ -286,8 +286,8 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0127" />
    <property name="__is_collection" value="false" type="bool"/>
-   <property name="__default_image_name" value="tile_0126" />
-   <property name="power" value="20" type="float"/>
+   <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
+   <property name="weapon:weapon_script:power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0127.png"/>
   <objectgroup draworder="index">
@@ -302,8 +302,8 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0128" />
    <property name="__is_collection" value="false" type="bool"/>
-   <property name="__default_image_name" value="tile_0126" />
-   <property name="power" value="20" type="float"/>
+   <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
+   <property name="weapon:weapon_script:power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0128.png"/>
   <objectgroup draworder="index">
@@ -318,8 +318,8 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0129" />
    <property name="__is_collection" value="false" type="bool"/>
-   <property name="__default_image_name" value="tile_0126" />
-   <property name="power" value="20" type="float"/>
+   <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
+   <property name="weapon:weapon_script:power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0129.png"/>
   <objectgroup draworder="index">
@@ -334,8 +334,8 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0130" />
    <property name="__is_collection" value="false" type="bool"/>
-   <property name="__default_image_name" value="tile_0126" />
-   <property name="power" value="20" type="float"/>
+   <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
+   <property name="weapon:weapon_script:power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0130.png"/>
   <objectgroup draworder="index">
@@ -350,8 +350,8 @@
    <property name="__go_path" value="/example/assets/dungeon/objects/weapon/weapon.go" />
    <property name="__image_name" value="tile_0131" />
    <property name="__is_collection" value="false" type="bool"/>
-   <property name="__default_image_name" value="tile_0126" />
-   <property name="power" value="20" type="float"/>
+   <property name="__default_image_name" value="tile_0126" />   <property name="__image_url" value="#sprite" />
+   <property name="weapon:weapon_script:power" value="20" type="float"/>
   </properties>
   <image width="16" height="16" source="../images/assets-dungeon-objects/tile_0131.png"/>
   <objectgroup draworder="index">

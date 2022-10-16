@@ -3,12 +3,15 @@ const os = require("os")
 const path = require("path")
 const rimraf = require("rimraf")
 const process = require("process")
+const helper = require("../helper")
 const Quaternion = require('quaternion');
 const { execSync } = require('child_process')
 const defold_parser = require("defold-parser")
 
 const tilesets = require("./process_tilesets")
 const maps = require("./process_maps")
+
+const COLLECTION_TEMPLATE = fs.readFileSync(path.join(__dirname, "templates/collection.template")).toString('utf8')
 
 let TILED_PATH = process.env.TILED || "/Applications/Tiled.app/Contents/MacOS/Tiled"
 
@@ -47,6 +50,61 @@ function get_property(properties, key, default_value) {
 }
 
 
+function get_properties_for_collection(object, mapping_info) {
+	let properties_by_go = {}
+	let result = []
+
+	if (object.properties) {
+		for (let index in object.properties) {
+			let property = object.properties[index]
+			let property_info = helper.tiled_to_defold_property(property.name, property.value, property.type)
+			let property_path = property_info.key.split(":")
+			properties_by_go[property_path[0]] = properties_by_go[property_path[0]] || []
+			properties_by_go[property_path[0]].push({
+				id: [ property_path[1] ],
+				properties: [{
+					id: [ property_path[2] ],
+					value: [ property_info.value ],
+					type: [ property_info.type ]
+				}]
+			})
+		}
+	}
+
+	for (let key in properties_by_go) {
+		result.push({
+			id: [ key ],
+			properties: properties_by_go[key]
+		})
+	}
+
+	return result
+}
+
+
+function get_properties_for_object(object, mapping_info) {
+	let result = []
+
+	if (object.properties) {
+		for (let index in object.properties) {
+			let property = object.properties[index]
+			let property_info = helper.tiled_to_defold_property(property.name, property.value, property.type)
+			let property_path = property_info.key.split(":")
+			result.push({
+				id: [ property_path[1] ],
+				properties: [{
+					id: [ property_path[2] ],
+					value: [ property_info.value ],
+					type: [ property_info.type ]
+				}]
+			})
+		}
+	}
+
+	return result
+}
+
+
 function process_map(map_path, data, output_path, mapping) {
 	let name = path.basename(map_path, ".json")
 	console.log("Process map", name)
@@ -72,7 +130,11 @@ function process_map(map_path, data, output_path, mapping) {
 			tilelayer_counter += 1
 		}
 		if (layer.type == "objectgroup") {
-			let objects = []
+			// Create collection with this layer
+			let layer_name = layer.name.replaceAll(" ", "_").toLowerCase()
+			let collection_layer_name = name + "_" + layer_name
+			let collection_layer = COLLECTION_TEMPLATE.replace("{1}", collection_layer_name)
+			let collection_layer_data = defold_parser.decode_object(collection_layer)
 
 			for (o_key in layer.objects) {
 				let object = layer.objects[o_key]
@@ -80,10 +142,6 @@ function process_map(map_path, data, output_path, mapping) {
 				let mapping_info = mapping[object_info.name]["" + object_info.object_id]
 				if (!mapping_info) {
 					console.log("Error wrong object on layer", object_info, layer.name)
-					continue
-				}
-				if (mapping_info.is_collection) {
-					console.log("COLLECTION", mapping_info.object_name)
 					continue
 				}
 
@@ -101,7 +159,7 @@ function process_map(map_path, data, output_path, mapping) {
 				// Tiled point in left bottom, Defold - in object center
 				// And add sprite anchor.x for visual correct posing from tiled (In Tiled we pos the image)
 				let offset = {
-					x: (mapping_info.width/2 - mapping_info.anchor.x) * scale_x,
+					x: (mapping_info.width/2 + mapping_info.anchor.x) * scale_x,
 					y: (mapping_info.height/2 - mapping_info.anchor.y) * scale_y,
 				}
 				// Rotate offset in case of rotated object
@@ -116,32 +174,49 @@ function process_map(map_path, data, output_path, mapping) {
 
 				// Parse radians to Quaternion. In Defold collections GO have vector4 with quat value
 				let quat_rotation = Quaternion.fromEuler(-rotation, 0, 0).normalize()
-				collection_parsed.instances = collection_parsed.instances || []
-				collection_parsed.instances.push({
-					id: [ object_id ],
-					prototype: [ mapping_info.go_path ],
-					position: [{ x: [ object_x ], y: [ object_y ], z: [ 0 ] }],
-					rotation: [{ x: [ quat_rotation.x ], y: [ quat_rotation.y ], z: [ quat_rotation.z ], w: [ quat_rotation.w ] }],
-					scale3: [{ x: [ scale_x ], y: [ scale_y ], z: [ 1 ] }]
-				})
-				objects.push( object_id )
+				if (mapping_info.is_collection) {
+					let properties = get_properties_for_collection(object, mapping_info)
+					collection_layer_data.collection_instances = collection_layer_data.collection_instances || []
+					collection_layer_data.collection_instances.push({
+						id: [ object_id ],
+						instance_properties: properties,
+						collection: [ mapping_info.go_path ],
+						position: [{ x: [ object_x ], y: [ object_y ], z: [ 0 ] }],
+						rotation: [{ x: [ quat_rotation.x ], y: [ quat_rotation.y ], z: [ quat_rotation.z ], w: [ quat_rotation.w ] }],
+						scale3: [{ x: [ scale_x ], y: [ scale_y ], z: [ 1 ] }]
+					})
+				} else {
+					collection_layer_data.instances = collection_layer_data.instances || []
+					let properties = get_properties_for_object(object, mapping_info)
+					collection_layer_data.instances.push({
+						id: [ object_id ],
+						component_properties: properties,
+						prototype: [ mapping_info.go_path ],
+						position: [{ x: [ object_x ], y: [ object_y ], z: [ 0 ] }],
+						rotation: [{ x: [ quat_rotation.x ], y: [ quat_rotation.y ], z: [ quat_rotation.z ], w: [ quat_rotation.w ] }],
+						scale3: [{ x: [ scale_x ], y: [ scale_y ], z: [ 1 ] }]
+					})
+				}
 			}
 
+			let layer_collection_path = path.join(map_folder, collection_layer_name + ".collection")
+			defold_parser.save_to_file(layer_collection_path, collection_layer_data)
+
 			let object_layer_z = get_property(layer.properties, "z", 0.0001 * tilelayer_counter)
-			// Add parent instance
-			let parent_instance = {
-				id: [ layer.name ],
-				children: objects,
-				data: [ "" ],
+			// Add layer collection
+			let layer_object_instance = {
+				id: [ layer_name ],
+				collection: [ "/" + path.relative(process.cwd(), layer_collection_path) ],
 				position: [ { x: [ 0 ], y: [ 0 ], z: [ object_layer_z ] } ],
 				rotation: [ { x: [ 0 ], y: [ 0 ], z: [ 0 ], w: [ 0 ] } ],
 				scale3: [ { x: [ 0 ], y: [ 0 ], z: [ 0 ] } ],
 			}
-			collection_parsed.embedded_instances = collection_parsed.embedded_instances || []
-			collection_parsed.embedded_instances.push(parent_instance)
+			collection_parsed.collection_instances = collection_parsed.collection_instances || []
+			collection_parsed.collection_instances.push(layer_object_instance)
 		}
 	}
 
+	collection_parsed.name = [ name ]
 	defold_parser.save_to_file(collection_path, collection_parsed)
 
 	fs.mkdirSync(map_folder, { recursive: true })

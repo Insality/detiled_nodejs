@@ -1,5 +1,5 @@
 components {
-  id: "weapon"
+  id: "weapon_script"
   component: "/example/assets/dungeon/objects/weapon/weapon.script"
   position {
     x: 0.0

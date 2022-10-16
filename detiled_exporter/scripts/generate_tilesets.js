@@ -20,18 +20,7 @@ let items = {}
 let tilesources = {}
 let tilesets_db = {}
 
-const PROPERTY_TYPE_NUMBER = "PROPERTY_TYPE_NUMBER"
-const PROPERTY_TYPE_VECTOR3 = "PROPERTY_TYPE_VECTOR3"
-const PROPERTY_TYPE_VECTOR4 = "PROPERTY_TYPE_VECTOR4"
-const PROPERTY_TYPE_QUAT = "PROPERTY_TYPE_QUAT"
-const PROPERTY_TYPE_URL = "PROPERTY_TYPE_URL"
-const PROPERTY_TYPE_HASH = "PROPERTY_TYPE_HASH"
-const PROPERTY_TYPE_BOOLEAN = "PROPERTY_TYPE_BOOLEAN"
 
-const MAP_PROPERTY_TYPE = {
-	PROPERTY_TYPE_BOOLEAN: 'type="bool"',
-	PROPERTY_TYPE_NUMBER: 'type="float"',
-}
 
 
 function parse_tilesets_db_from_tsx(output_path) {
@@ -92,45 +81,7 @@ function check_number(original) {
 }
 
 
-function get_content_in_bracers(line) {
-	let regex = /\((.*?)\)/g
-	while ((m = regex.exec(line)) !== null) {
-		// This is necessary to avoid infinite loops with zero-width matches
-		if (m.index === regex.lastIndex) {
-			regex.lastIndex++;
-		}
-
-		let value =  m[1].trim()
-
-		if ((value.charAt(0) === '"' && value.charAt(value.length -1) === '"') ||
-			(value.charAt(0) === "'" && value.charAt(value.length -1) === "'")) {
-			value = value.substr(1, value.length -2);
-		}
-
-		return value
-	}
-	return ""
-}
-
-
-function parse_vector(vector) {
-	let values = []
-	vector.split(",").forEach(function(value) {
-		let new_value = value.trim()
-		if (new_value.length == 0) {
-			new_value = "0"
-		}
-		if (!new_value.includes(".")) {
-			new_value = new_value + ".0"
-		}
-		values.push(new_value)
-	})
-
-	return values.join(", ")
-}
-
-
-function get_properties_from_script(component) {
+function get_properties_from_script(component, component_name, go_id) {
 	let script_data = fs.readFileSync(path.join(process.cwd(), component)).toString('utf8')
 	let regex = /go.property\(\s*[\"\'](.*)[\"\']\s*,\s*(.*)\s*\)/g
 	let properties = {}
@@ -143,45 +94,14 @@ function get_properties_from_script(component) {
 					regex.lastIndex++;
 				}
 				if (m[1] && m[2]) {
-					let key = m[1].trim()
-					let type = PROPERTY_TYPE_NUMBER
+					let property_info = helper.script_to_defold_property(m[1], m[2])
+					if (!property_info.key.startsWith("detiled_")) {
+						properties[go_id + ":" + component_name + ":" + property_info.key] = {
+							value: check_number(property_info.value),
+							type: property_info.type,
+						}
+					}
 
-					let value = m[2].trim()
-					if (value.startsWith("hash")) {
-						value = get_content_in_bracers(value)
-						type = PROPERTY_TYPE_HASH
-					}
-					if (value.startsWith("msg.url")) {
-						value = get_content_in_bracers(value)
-						type = PROPERTY_TYPE_URL
-					}
-					if (value.startsWith("vmath.vector3")) {
-						value = get_content_in_bracers(value)
-						value = parse_vector(value)
-						type = PROPERTY_TYPE_VECTOR3
-					}
-					if (value.startsWith("vmath.vector4")) {
-						value = get_content_in_bracers(value)
-						value = parse_vector(value)
-						type = PROPERTY_TYPE_VECTOR4
-					}
-					if (value.startsWith("vmath.quat")) {
-						value = get_content_in_bracers(value)
-						value = "quat " + parse_vector(value)
-						type = PROPERTY_TYPE_QUAT
-					}
-					if (value.startsWith("resource.")) {
-						value = get_content_in_bracers(value)
-						type = PROPERTY_TYPE_HASH
-					}
-					if (value == "true" || value == "false") {
-						value = (value == "true") && true || false
-						type = PROPERTY_TYPE_BOOLEAN
-					}
-					properties[key] = {
-						value: check_number(value),
-						type: type,
-					}
 				}
 			}
 		}
@@ -191,12 +111,12 @@ function get_properties_from_script(component) {
 }
 
 
-function parse_properties_from_go(go_parsed, go_properties) {
+function parse_properties_from_go(go_parsed, go_properties, go_id) {
 	for (let i in go_parsed.components) {
 		let elem = go_parsed.components[i]
 		let component = elem.component[0]
 		if (component && component.endsWith(".script")) {
-			let properties = get_properties_from_script(component)
+			let properties = get_properties_from_script(component, elem.id[0], go_id)
 			for (let prop in properties) {
 				if (go_properties[prop]) {
 					console.log("Error: go property duplicate", go_path, prop)
@@ -208,23 +128,51 @@ function parse_properties_from_go(go_parsed, go_properties) {
 		if (elem.properties) {
 			for (let prop_key in elem.properties) {
 				let prop = elem.properties[prop_key]
-				if (prop.type == PROPERTY_TYPE_NUMBER) {
-					prop.value = parseFloat(prop.value)
-				}
-				if (prop.type == PROPERTY_TYPE_BOOLEAN) {
-					prop.value = (prop.value == "true") && true || false
-				}
-				if (prop.type == PROPERTY_TYPE_QUAT) {
-					prop.value = "quat " + prop.value
-				}
-				// id, value, type  (PROPERTY_TYPE_NUMBER, PROPERTY_TYPE_VECTOR3, PROPERTY_TYPE_STRING
-				go_properties[prop.id] = {
-					value: prop.value,
-					type: prop.type
+				let property_info = helper.defold_to_tiled_property_value(prop.id[0], prop.value[0], prop.type[0])
+
+				if (!property_info.key.startsWith("detiled_")) {
+					go_properties[go_id + ":" + elem.id[0] + ":" + property_info.key] = {
+						value: property_info.value,
+						type: property_info.type
+					}
 				}
 			}
 		}
 	}
+}
+
+
+function get_parent_go(collection_data, go_id) {
+	for (i in collection_data.embedded_instances) {
+		let go_info = collection_data.embedded_instances[i]
+		if (go_info.children && go_info.children.indexOf(go_id) >= 0) {
+			return go_info
+		}
+	}
+
+	return null
+}
+
+
+function get_go_anchor_from_collection(collection_data, go_id) {
+	let anchors = { x: 0, y: 0}
+	// Iterate over included go's
+	for (i in collection_data.embedded_instances) {
+		let go_info = collection_data.embedded_instances[i]
+		if (go_info.id[0] == go_id) {
+			anchors.x = anchors.x + go_info.position[0].x[0]
+			anchors.y = anchors.y + go_info.position[0].y[0]
+
+			let parent_go = get_parent_go(collection_data, go_id)
+			while (parent_go) {
+				anchors.x = anchors.x + parent_go.position[0].x[0]
+				anchors.y = anchors.y + parent_go.position[0].y[0]
+				parent_go = get_parent_go(collection_data, parent_go.id[0])
+			}
+		}
+	}
+
+	return anchors
 }
 
 
@@ -240,21 +188,27 @@ function process_collection_asset(asset_path, tileset_path) {
 
 	let anchor_x = 0
 	let anchor_y = 0
+	let default_image = null
+	let image_url = null
 
 	let go_path = path.join(asset_path, asset_name + ".collection")
 	let go_parsed = defold_parser.load_from_file(go_path)
 
 	let go_properties = {}
 	for (i in go_parsed.embedded_instances) {
-		let go_data = go_parsed.embedded_instances[i].data[0]
-		parse_properties_from_go(go_data, go_properties)
+		let go_info = go_parsed.embedded_instances[i]
+		let go_data = go_info.data[0]
+		parse_properties_from_go(go_data, go_properties, go_info.id[0])
 
+		// Image priority: asset_name.go#asset_name, asset_name.go#sprite, #sprite
 		for (let j in go_data.embedded_components) {
 			let component = go_data.embedded_components[j]
 			if (component.id[0] == "sprite") {
-				anchor_x = component.position[0].x[0]
-				anchor_y = component.position[0].y[0]
+				let go_anchor = get_go_anchor_from_collection(go_parsed, go_info.id[0])
+				anchor_x = component.position[0].x[0] + go_anchor.x
+				anchor_y = component.position[0].y[0] + go_anchor.y
 				default_image = component.data[0].default_animation[0]
+				image_url = go_info.id[0] + "#" + component.id[0]
 			}
 		}
 	}
@@ -276,6 +230,7 @@ function process_collection_asset(asset_path, tileset_path) {
 			anchor_y: anchor_y + size.height/2,
 			go_path: "/" + path.relative(process.cwd(), go_path),
 			default_image: default_image,
+			image_url: image_url,
 		}
 		items[tileset_name].push(item)
 	}
@@ -294,21 +249,23 @@ function process_asset(asset_path, tileset_path) {
 
 	let anchor_x = 0
 	let anchor_y = 0
+	let default_image = null
+	let image_url = null
 
 	let go_path = path.join(asset_path, asset_name + ".go")
 	let go_parsed = defold_parser.load_from_file(go_path)
 
 	let go_properties = {}
 
-	parse_properties_from_go(go_parsed, go_properties)
+	parse_properties_from_go(go_parsed, go_properties, asset_name)
 
-	let default_image = null
 	for (let i in go_parsed.embedded_components) {
 		let elem = go_parsed.embedded_components[i]
 		if (elem.id[0] == "sprite") {
 			anchor_x = elem.position[0].x[0]
 			anchor_y = elem.position[0].y[0]
 			default_image = elem.data[0].default_animation[0].replace(/\\\"/g, "")
+			image_url = "#" + elem.id[0]
 		}
 	}
 
@@ -327,6 +284,7 @@ function process_asset(asset_path, tileset_path) {
 			anchor_y: anchor_y + size.height/2,
 			go_path: "/" + path.relative(process.cwd(), go_path),
 			default_image: default_image,
+			image_url: image_url,
 		}
 		items[tileset_name].push(item)
 	}
@@ -450,11 +408,12 @@ function write_tilesets(output_path, items) {
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__image_name").replace("{VALUE}", path.basename(data.image, ".png")).replace("{TYPE}", "") + "\n"
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__is_collection").replace("{VALUE}", data.is_collection && "true" || "false").replace("{TYPE}", 'type="bool"') + "\n"
 			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__default_image_name").replace("{VALUE}", data.default_image).replace("{TYPE}", "")
+			properties += TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", "__image_url").replace("{VALUE}", data.image_url).replace("{TYPE}", "")
 
 			for (let key in data.properties) {
 				let property_type = data.properties[key].type
 				let property = data.properties[key].value
-				let type = MAP_PROPERTY_TYPE[property_type] || ""
+				let type = helper.defold_to_tiled_property_xml_type(property_type)
 				properties += "\n" + TILESET_ITEM_PROPERTY_TEMPLATE.replace("{KEY}", key).replace("{VALUE}", property).replace("{TYPE}", type)
 			}
 
