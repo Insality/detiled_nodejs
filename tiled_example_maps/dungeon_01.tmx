@@ -3,7 +3,7 @@
  <editorsettings>
   <export target="../../../s/dungeon_01..collection" format="defoldcollection"/>
  </editorsettings>
- <tileset firstgid="1" source="../example_tiled_export/tilesets/dungeon.tsx"/>
+ <tileset firstgid="1" source="../example_tiled_export/tilesets/assets-dungeon-tileset-dungeon.tsx"/>
  <tileset firstgid="133" source="../example_tiled_export/tilesets/assets-dungeon-objects.tsx"/>
  <tileset firstgid="161" source=":/automap-tiles.tsx"/>
  <layer id="1" name="Tile Layer 1" width="30" height="20">

@@ -288,7 +288,7 @@ function convert_tilesets_to_json(tiled_tilesets_path, temp_tilesets_folder) {
 		let tileset_name_json = path.basename(tileset_name, ".tsx") + ".json"
 
 		let temp_tileset_path = path.join(temp_tilesets_folder, tileset_name_json)
-		execSync(`${TILED_PATH} --export-tileset ${tileset_path} ${temp_tileset_path}`)
+		execSync(`${TILED_PATH} --export-tileset "${tileset_path}" "${temp_tileset_path}"`)
 	}
 }
 
@@ -305,12 +305,12 @@ function convert_maps_to_json(tiled_maps_path, temp_maps_folder, output_collecti
 		let map_name_collection = map_basename + ".collection"
 
 		let temp_map_json_path = path.join(temp_maps_folder, map_name_json)
-		execSync(`${TILED_PATH} --export-map ${map_path} ${temp_map_json_path}`, {stdio: 'inherit'})
+		execSync(`${TILED_PATH} --export-map "${map_path}" "${temp_map_json_path}"`, {stdio: 'inherit'})
 
 		let map_folder = path.join(output_collection_path, map_basename)
 		let map_collection_path = path.join(map_folder, map_name_collection)
 		fs.mkdirSync(map_folder, { recursive: true })
-		execSync(`${TILED_PATH} --export-map ${map_path} ${map_collection_path}`, {stdio: 'inherit'})
+		execSync(`${TILED_PATH} --export-map "${map_path}" "${map_collection_path}"`, {stdio: 'inherit'})
 	}
 }
 

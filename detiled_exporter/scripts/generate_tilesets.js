@@ -413,9 +413,9 @@ function write_tilesets(output_path, items) {
 	for (let category in tilesources) {
 		for (let index in tilesources[category]) {
 			let tilesource = tilesources[category][index]
-			let name = tilesource.name
+			let filename = category + "-" + tilesource.name
 
-			let tileset = TILESET_ITEM_TILESOURCE.replace("{TILESET_NAME}", name)
+			let tileset = TILESET_ITEM_TILESOURCE.replace("{TILESET_NAME}", tilesource.name)
 			tileset = tileset.replace("{TILESET_WIDTH}", tilesource.width)
 			tileset = tileset.replace("{TILESET_HEIGHT}", tilesource.height)
 			tileset = tileset.replace("{TILESET_SPACING}", tilesource.tile_spacing)
@@ -435,7 +435,7 @@ function write_tilesets(output_path, items) {
 			item = item.replace("{IMAGE_HEIGHT}", tilesource.image_height)
 			tileset = tileset.replace("{ITEMS}", item)
 
-			let tileset_path = path.join(tileset_folder, name + ".tsx")
+			let tileset_path = path.join(tileset_folder, filename + ".tsx")
 			helper.log("Write tilesource tileset", tileset_path)
 			fs.writeFileSync(tileset_path, tileset)
 		}
