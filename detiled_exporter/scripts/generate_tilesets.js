@@ -185,7 +185,6 @@ function process_collection_asset(asset_path, tileset_path) {
 
 		if (go_info.id[0] == "tiled_anchor") {
 			anchors[0] = get_go_anchor_from_collection(go_parsed, go_info.id[0])
-			console.log("Test", anchors)
 		}
 
 		for (let j in go_data.embedded_components) {
