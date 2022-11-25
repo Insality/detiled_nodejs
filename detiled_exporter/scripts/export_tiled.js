@@ -342,7 +342,7 @@ function start_process_dir(tilesets_path, maps_path, output_path) {
 	}
 
 	let mapping_path = path.join(output_path, "mapping.json")
-	fs.writeFileSync(mapping_path, JSON.stringify(mapping))
+	fs.writeFileSync(mapping_path, JSON.stringify(mapping, null, 4))
 	console.log("Write", mapping_path)
 
 	fs.rmSync(temp_tilesets_folder, { recursive: true });
