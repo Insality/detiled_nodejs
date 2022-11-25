@@ -134,7 +134,7 @@ function get_parent_go(collection_data, go_id) {
 
 
 function get_go_anchor_from_collection(collection_data, go_id) {
-	let anchors = { x: 0, y: 0}
+	let anchors = { x: 0, y: 0 }
 	// Iterate over included go's
 	for (i in collection_data.embedded_instances) {
 		let go_info = collection_data.embedded_instances[i]
@@ -169,7 +169,7 @@ function process_collection_asset(asset_path, tileset_path) {
 			.filter(name => name.endsWith(".png"))
 	}
 
-	let anchor = { x: 0, y: 0 }
+	let anchors = [] // with different priorities
 	let default_image = null
 	let image_url = null
 	let go_path = path.join(asset_path, asset_name + ".collection")
@@ -182,18 +182,26 @@ function process_collection_asset(asset_path, tileset_path) {
 		parse_properties_from_go(go_data, go_properties, go_info.id[0])
 
 		// TODO: Image priority: asset_name.go#asset_name, asset_name.go#sprite, #sprite
+
+		if (go_info.id[0] == "tiled_anchor") {
+			anchors[0] = get_go_anchor_from_collection(go_parsed, go_info.id[0])
+			console.log("Test", anchors)
+		}
+
 		for (let j in go_data.embedded_components) {
 			let component = go_data.embedded_components[j]
 			if (component.id[0] == "sprite") {
 				let go_anchor = get_go_anchor_from_collection(go_parsed, go_info.id[0])
-				anchor.x = component.position[0].x[0] + go_anchor.x
-				anchor.y = component.position[0].y[0] + go_anchor.y
+				anchors[1] = {}
+				anchors[1].x = component.position[0].x[0] + go_anchor.x
+				anchors[1].y = component.position[0].y[0] + go_anchor.y
 				default_image = component.data[0].default_animation[0]
 				image_url = go_info.id[0] + "#" + component.id[0]
 			}
 		}
 	}
 
+	let anchor = anchors[0] || anchors[1] || { x: 0, y: 0 }
 	if (images.length > 0) {
 		for (let i in images) {
 			let image_path = path.join(image_folder_path, images[i])

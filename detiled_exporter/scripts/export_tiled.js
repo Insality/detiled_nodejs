@@ -40,17 +40,6 @@ function get_object_info(map_data, object) {
 }
 
 
-function get_property(properties, key, default_value) {
-	for (let i in properties) {
-		if (properties[i].name === key) {
-			return properties[i].value
-		}
-	}
-
-	return default_value
-}
-
-
 function autofill_detiled_properties(object, mapping_info) {
 	if (!mapping_info.properties) {
 		return
@@ -151,111 +140,115 @@ function process_map(map_path, data, output_path, mapping) {
 	let map_name_collection = name + ".collection"
 	let map_folder = path.join(output_path, "maps", name)
 	let map_collection_path = path.join(map_folder, map_name_collection)
-	let collection_path = path.join(map_collection_path)
-	let collection_parsed = defold_parser.load_from_file(collection_path)
 
-	// Add objects
-	let tilelayer_counter = 0
-	for (let index in data.layers) {
-		let layer = data.layers[index]
-		if (layer.type == "tilelayer") {
-			tilelayer_counter += 1
+	let is_export_collection = helper.is_export_collection(data)
+	if (is_export_collection) {
+		let collection_path = path.join(map_collection_path)
+		let collection_parsed = defold_parser.load_from_file(collection_path)
+
+		// Add objects
+		let tilelayer_counter = 0
+		for (let index in data.layers) {
+			let layer = data.layers[index]
+			if (layer.type == "tilelayer") {
+				tilelayer_counter += 1
+			}
+			if (layer.type == "objectgroup") {
+				let is_no_export = helper.get_property(layer.properties, "no_export", false)
+				if (is_no_export) {
+					helper.log("Skip export of layer " + layer.name + " due property no_export")
+					continue;
+				}
+
+				// Create collection with this layer
+				let layer_name = layer.name.replaceAll(" ", "_").toLowerCase()
+				let collection_layer_name = name + "_" + layer_name
+				let collection_layer = COLLECTION_TEMPLATE.replace("{1}", collection_layer_name)
+				let collection_layer_data = defold_parser.decode_object(collection_layer)
+
+				for (o_key in layer.objects) {
+					let object = layer.objects[o_key]
+					let object_info = get_object_info(data, object)
+					let mapping_info = mapping[object_info.name]["" + object_info.object_id]
+					if (!mapping_info) {
+						console.log("Error wrong object on layer", object_info, layer.name)
+						continue
+					}
+
+					let height = data.height * data.tileheight
+					let object_name = object.name.length > 0 && object.name || mapping_info.object_name
+					let object_id = object_name + "_" + object.id
+
+					let rotation = object.rotation * Math.PI/180
+					let scale_x = object.width / mapping_info.width
+					let scale_y = object.height / mapping_info.height
+
+					// TODO: This should be in module Grid. Need to Fill hexgrid and isogrid also
+
+					// Get offset from object point in Tiled to Defold assets object
+					// Tiled point in left bottom, Defold - in object center
+					// And add sprite anchor.x for visual correct posing from tiled (In Tiled we pos the image)
+					let offset = {
+						x: (mapping_info.width/2 + mapping_info.anchor.x) * scale_x,
+						y: (mapping_info.height/2 - mapping_info.anchor.y) * scale_y,
+					}
+					// Rotate offset in case of rotated object
+					let rotated_offset = {
+						x: offset.x * Math.cos(rotation) + offset.y * Math.sin(rotation),
+						y: offset.x * Math.sin(rotation) - offset.y * Math.cos(rotation),
+					}
+
+					let object_x = object.x + rotated_offset.x
+					// Height - {} is only if Y coords are inverted (In Tiled it's true)
+					let object_y = (height - (object.y + rotated_offset.y))
+
+					// Parse radians to Quaternion. In Defold collections GO have vector4 with quat value
+					let quat_rotation = Quaternion.fromEuler(-rotation, 0, 0).normalize()
+					if (mapping_info.is_collection) {
+						let properties = get_properties_for_collection(object, mapping_info)
+						collection_layer_data.collection_instances = collection_layer_data.collection_instances || []
+						collection_layer_data.collection_instances.push({
+							id: [ object_id ],
+							instance_properties: properties,
+							collection: [ mapping_info.go_path ],
+							position: [{ x: [ object_x ], y: [ object_y ], z: [ 0 ] }],
+							rotation: [{ x: [ quat_rotation.x ], y: [ quat_rotation.y ], z: [ quat_rotation.z ], w: [ quat_rotation.w ] }],
+							scale3: [{ x: [ scale_x ], y: [ scale_y ], z: [ 1 ] }]
+						})
+					} else {
+						collection_layer_data.instances = collection_layer_data.instances || []
+						let properties = get_properties_for_object(object, mapping_info)
+						collection_layer_data.instances.push({
+							id: [ object_id ],
+							component_properties: properties,
+							prototype: [ mapping_info.go_path ],
+							position: [{ x: [ object_x ], y: [ object_y ], z: [ 0 ] }],
+							rotation: [{ x: [ quat_rotation.x ], y: [ quat_rotation.y ], z: [ quat_rotation.z ], w: [ quat_rotation.w ] }],
+							scale3: [{ x: [ scale_x ], y: [ scale_y ], z: [ 1 ] }]
+						})
+					}
+				}
+
+				let layer_collection_path = path.join(map_folder, collection_layer_name + ".collection")
+				defold_parser.save_to_file(layer_collection_path, collection_layer_data)
+
+				let object_layer_z = helper.get_property(layer.properties, "z", 0.0001 * tilelayer_counter)
+				// Add layer collection
+				let layer_object_instance = {
+					id: [ layer_name ],
+					collection: [ "/" + path.relative(process.cwd(), layer_collection_path) ],
+					position: [ { x: [ 0 ], y: [ 0 ], z: [ object_layer_z ] } ],
+					rotation: [ { x: [ 0 ], y: [ 0 ], z: [ 0 ], w: [ 0 ] } ],
+					scale3: [ { x: [ 0 ], y: [ 0 ], z: [ 0 ] } ],
+				}
+				collection_parsed.collection_instances = collection_parsed.collection_instances || []
+				collection_parsed.collection_instances.push(layer_object_instance)
+			}
 		}
-		if (layer.type == "objectgroup") {
-			let is_no_export = get_property(layer.properties, "no_export", false)
-			if (is_no_export) {
-				helper.log("Skip export of layer " + layer.name + " due property no_export")
-				continue;
-			}
 
-			// Create collection with this layer
-			let layer_name = layer.name.replaceAll(" ", "_").toLowerCase()
-			let collection_layer_name = name + "_" + layer_name
-			let collection_layer = COLLECTION_TEMPLATE.replace("{1}", collection_layer_name)
-			let collection_layer_data = defold_parser.decode_object(collection_layer)
-
-			for (o_key in layer.objects) {
-				let object = layer.objects[o_key]
-				let object_info = get_object_info(data, object)
-				let mapping_info = mapping[object_info.name]["" + object_info.object_id]
-				if (!mapping_info) {
-					console.log("Error wrong object on layer", object_info, layer.name)
-					continue
-				}
-
-				let height = data.height * data.tileheight
-				let object_name = object.name.length > 0 && object.name || mapping_info.object_name
-				let object_id = object_name + "_" + object.id
-
-				let rotation = object.rotation * Math.PI/180
-				let scale_x = object.width / mapping_info.width
-				let scale_y = object.height / mapping_info.height
-
-				// TODO: This should be in module Grid. Need to Fill hexgrid and isogrid also
-
-				// Get offset from object point in Tiled to Defold assets object
-				// Tiled point in left bottom, Defold - in object center
-				// And add sprite anchor.x for visual correct posing from tiled (In Tiled we pos the image)
-				let offset = {
-					x: (mapping_info.width/2 + mapping_info.anchor.x) * scale_x,
-					y: (mapping_info.height/2 - mapping_info.anchor.y) * scale_y,
-				}
-				// Rotate offset in case of rotated object
-				let rotated_offset = {
-					x: offset.x * Math.cos(rotation) + offset.y * Math.sin(rotation),
-					y: offset.x * Math.sin(rotation) - offset.y * Math.cos(rotation),
-				}
-
-				let object_x = object.x + rotated_offset.x
-				// Height - {} is only if Y coords are inverted (In Tiled it's true)
-				let object_y = (height - (object.y + rotated_offset.y))
-
-				// Parse radians to Quaternion. In Defold collections GO have vector4 with quat value
-				let quat_rotation = Quaternion.fromEuler(-rotation, 0, 0).normalize()
-				if (mapping_info.is_collection) {
-					let properties = get_properties_for_collection(object, mapping_info)
-					collection_layer_data.collection_instances = collection_layer_data.collection_instances || []
-					collection_layer_data.collection_instances.push({
-						id: [ object_id ],
-						instance_properties: properties,
-						collection: [ mapping_info.go_path ],
-						position: [{ x: [ object_x ], y: [ object_y ], z: [ 0 ] }],
-						rotation: [{ x: [ quat_rotation.x ], y: [ quat_rotation.y ], z: [ quat_rotation.z ], w: [ quat_rotation.w ] }],
-						scale3: [{ x: [ scale_x ], y: [ scale_y ], z: [ 1 ] }]
-					})
-				} else {
-					collection_layer_data.instances = collection_layer_data.instances || []
-					let properties = get_properties_for_object(object, mapping_info)
-					collection_layer_data.instances.push({
-						id: [ object_id ],
-						component_properties: properties,
-						prototype: [ mapping_info.go_path ],
-						position: [{ x: [ object_x ], y: [ object_y ], z: [ 0 ] }],
-						rotation: [{ x: [ quat_rotation.x ], y: [ quat_rotation.y ], z: [ quat_rotation.z ], w: [ quat_rotation.w ] }],
-						scale3: [{ x: [ scale_x ], y: [ scale_y ], z: [ 1 ] }]
-					})
-				}
-			}
-
-			let layer_collection_path = path.join(map_folder, collection_layer_name + ".collection")
-			defold_parser.save_to_file(layer_collection_path, collection_layer_data)
-
-			let object_layer_z = get_property(layer.properties, "z", 0.0001 * tilelayer_counter)
-			// Add layer collection
-			let layer_object_instance = {
-				id: [ layer_name ],
-				collection: [ "/" + path.relative(process.cwd(), layer_collection_path) ],
-				position: [ { x: [ 0 ], y: [ 0 ], z: [ object_layer_z ] } ],
-				rotation: [ { x: [ 0 ], y: [ 0 ], z: [ 0 ], w: [ 0 ] } ],
-				scale3: [ { x: [ 0 ], y: [ 0 ], z: [ 0 ] } ],
-			}
-			collection_parsed.collection_instances = collection_parsed.collection_instances || []
-			collection_parsed.collection_instances.push(layer_object_instance)
-		}
+		collection_parsed.name = [ name ]
+		defold_parser.save_to_file(collection_path, collection_parsed)
 	}
-
-	collection_parsed.name = [ name ]
-	defold_parser.save_to_file(collection_path, collection_parsed)
 
 	fs.mkdirSync(map_folder, { recursive: true })
 	let map_output_path = path.join(output_path, "json_maps")
@@ -307,10 +300,15 @@ function convert_maps_to_json(tiled_maps_path, temp_maps_folder, output_collecti
 		let temp_map_json_path = path.join(temp_maps_folder, map_name_json)
 		execSync(`${TILED_PATH} --export-map "${map_path}" "${temp_map_json_path}"`, {stdio: 'inherit'})
 
-		let map_folder = path.join(output_collection_path, map_basename)
-		let map_collection_path = path.join(map_folder, map_name_collection)
-		fs.mkdirSync(map_folder, { recursive: true })
-		execSync(`${TILED_PATH} --export-map "${map_path}" "${map_collection_path}"`, {stdio: 'inherit'})
+		let json_content = JSON.parse(fs.readFileSync(temp_map_json_path))
+		let is_export_collection = helper.is_export_collection(json_content)
+
+		if (is_export_collection) {
+			let map_folder = path.join(output_collection_path, map_basename)
+			let map_collection_path = path.join(map_folder, map_name_collection)
+			fs.mkdirSync(map_folder, { recursive: true })
+			execSync(`${TILED_PATH} --export-map "${map_path}" "${map_collection_path}"`, {stdio: 'inherit'})
+		}
 	}
 }
 

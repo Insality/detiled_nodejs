@@ -23,4 +23,3 @@ include_dirs = detiled
 [graphics]
 default_texture_min_filter = nearest
 default_texture_mag_filter = nearest
-

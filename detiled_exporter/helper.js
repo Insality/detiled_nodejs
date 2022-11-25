@@ -207,4 +207,21 @@ M.get_assets_item_data = function(image_path, asset_name, properties, size, anch
 }
 
 
+M.is_export_collection = function(map_data) {
+	return !M.get_property(map_data.properties, "no_export", false)
+}
+
+
+M.get_property = function(properties, key, default_value) {
+	properties = properties || [];
+	for (let i in properties) {
+		if (properties[i].name === key) {
+			return properties[i].value
+		}
+	}
+
+	return default_value
+}
+
+
 module.exports = M
